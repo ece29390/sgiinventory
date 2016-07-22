@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B0CAF47-CED5-4B6C-ACD7-786400FD759A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGInventory.Presenters</RootNamespace>
+    <AssemblyName>SGInventory.Presenters</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <DontImportPostSharp>True</DontImportPostSharp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PostSharp">
+      <HintPath>..\packages\PostSharp.3.1.48\lib\net20\PostSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryEditPresenter.cs" />
+    <Compile Include="CategorySearchPresenter.cs" />
+    <Compile Include="ChangePasswordPresenter.cs" />
+    <Compile Include="ColorEditPresenter.cs" />
+    <Compile Include="ColorPresenter.cs" />
+    <Compile Include="ColorSearchPresenter.cs" />
+    <Compile Include="DeliveryPresenter.cs" />
+    <Compile Include="DeliveryPresenterBase.cs" />
+    <Compile Include="DeliveryToOutletDetailEditPresenter.cs" />
+    <Compile Include="DeliveryToOutletPresenter.cs" />
+    <Compile Include="DeliveryToOutletSearchPresenter.cs" />
+    <Compile Include="DisplaySalesArg.cs" />
+    <Compile Include="EditPresenterBase.cs" />
+    <Compile Include="ISearchPresenter.cs" />
+    <Compile Include="LoginPresenter.cs" />
+    <Compile Include="Model\DeliveryGridModel.cs" />
+    <Compile Include="Model\ProductDetailLookupModel.cs" />
+    <Compile Include="Model\SalesDisplayModel.cs" />
+    <Compile Include="Model\SupplierDelivery.cs" />
+    <Compile Include="OutletEditPresenter.cs" />
+    <Compile Include="OutletSearchPresenter.cs" />
+    <Compile Include="ProductDetailEditPresenter.cs" />
+    <Compile Include="ProductDetailSearchPresenter.cs" />
+    <Compile Include="ProductEditPresenter.cs" />
+    <Compile Include="Model\ProductSearchDisplayModel.cs" />
+    <Compile Include="ProductSearchPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesEditPresenter.cs" />
+    <Compile Include="SalesSearchPresenter.cs" />
+    <Compile Include="ScannerPresenter.cs" />
+    <Compile Include="ScannerResponse.cs" />
+    <Compile Include="SearchPresenterBase.cs" />
+    <Compile Include="SizeEditPresenter.cs" />
+    <Compile Include="SizeSearchPresenter.cs" />
+    <Compile Include="SupplierDeliveryEditPresenter.cs" />
+    <Compile Include="SupplierEditPresenter.cs" />
+    <Compile Include="SupplierSearchDeliveryPresenter.cs" />
+    <Compile Include="SupplierSearchPresenter.cs" />
+    <Compile Include="UserEditPresenter.cs" />
+    <Compile Include="UserSearchPresenter.cs" />
+    <Compile Include="Utilities\DeliveryGridConstructor.cs" />
+    <Compile Include="WashingEditPresenter.cs" />
+    <Compile Include="WashingSearchPresenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGInventory.Business.Model\SGInventory.Business.Model.csproj">
+      <Project>{C976F680-2EE3-4ABD-B71C-111DF1C1E0AC}</Project>
+      <Name>SGInventory.Business.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Enums\SGInventory.Enums.csproj">
+      <Project>{AA71B832-4F8E-4783-B9F3-99E825DCB927}</Project>
+      <Name>SGInventory.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Extensions\SGInventory.Extensions.csproj">
+      <Project>{919105D1-6DE7-4D68-AE1C-C863A5869D6F}</Project>
+      <Name>SGInventory.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Helpers\SGInventory.Helpers.csproj">
+      <Project>{6BF46DEB-FCB6-4512-9FFC-B59321F8FF87}</Project>
+      <Name>SGInventory.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Interfaces\SGInventory.Common.Interfaces.csproj">
+      <Project>{68E2461C-AD55-43B3-917C-108CACE7D3E6}</Project>
+      <Name>SGInventory.Common.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Model\SGInventory.Model.csproj">
+      <Project>{58F603B7-4267-4587-B0CF-9835577A3920}</Project>
+      <Name>SGInventory.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Views\SGInventory.Views.csproj">
+      <Project>{20AF4100-203D-423B-A878-B029055FE855}</Project>
+      <Name>SGInventory.Views</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\PostSharp.3.1.48\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.3.1.48\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1 @@
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Forms\bin\Release\SGInventory.exe.config

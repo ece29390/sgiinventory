@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{87ADCC06-CD91-430C-B7EA-D88906840276}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGInventory.BusinessModel.Test</RootNamespace>
+    <AssemblyName>SGInventory.BusinessModel.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryBusinessModelTest.cs" />
+    <Compile Include="ColorBusinessModelTest.cs" />
+    <Compile Include="DeliveryBusinessModelTest.cs" />
+    <Compile Include="OutletBusinessModelTest.cs" />
+    <Compile Include="ProductBusinessModelTest.cs" />
+    <Compile Include="ProductDetailBusinessModelTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SizeBusinessModelTest.cs" />
+    <Compile Include="SupplierBusinessModelTest.cs" />
+    <Compile Include="UserBusinessModelTest.cs" />
+    <Compile Include="WashingBusinessModelTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGInventory.Business.Model\SGInventory.Business.Model.csproj">
+      <Project>{C976F680-2EE3-4ABD-B71C-111DF1C1E0AC}</Project>
+      <Name>SGInventory.Business.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Enums\SGInventory.Enums.csproj">
+      <Project>{AA71B832-4F8E-4783-B9F3-99E825DCB927}</Project>
+      <Name>SGInventory.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Helpers\SGInventory.Helpers.csproj">
+      <Project>{6BF46DEB-FCB6-4512-9FFC-B59321F8FF87}</Project>
+      <Name>SGInventory.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Interfaces\SGInventory.Common.Interfaces.csproj">
+      <Project>{68E2461C-AD55-43B3-917C-108CACE7D3E6}</Project>
+      <Name>SGInventory.Common.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Model\SGInventory.Model.csproj">
+      <Project>{58F603B7-4267-4587-B0CF-9835577A3920}</Project>
+      <Name>SGInventory.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Test.Data\SGInventory.Test.Data.csproj">
+      <Project>{EC718E9C-13F7-48A6-A02A-EEE9AB765358}</Project>
+      <Name>SGInventory.Test.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInvetory.DAL\SGInventory.DAL.csproj">
+      <Project>{AFC69205-9A57-4E0A-A893-7574B67B46C2}</Project>
+      <Name>SGInventory.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

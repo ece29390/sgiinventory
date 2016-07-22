@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20AF4100-203D-423B-A878-B029055FE855}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGInventory.Views</RootNamespace>
+    <AssemblyName>SGInventory.Views</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ICategoryEditView.cs.cs" />
+    <Compile Include="ICategorySearchView.cs" />
+    <Compile Include="IChangePasswordView.cs" />
+    <Compile Include="ICloseForm.cs" />
+    <Compile Include="ICode.cs" />
+    <Compile Include="IColorEditView.cs" />
+    <Compile Include="IColorSearchView.cs" />
+    <Compile Include="IDateRangeFilter.cs" />
+    <Compile Include="IDeliveryBaseView.cs" />
+    <Compile Include="IDeliveryEditBaseView.cs" />
+    <Compile Include="IDeliveryPresenterView.cs" />
+    <Compile Include="IDeliveryToOutletSearchView.cs" />
+    <Compile Include="IDeliveryToOutletView.cs" />
+    <Compile Include="IEditViewAddress.cs" />
+    <Compile Include="IEditViewLoadData.cs" />
+    <Compile Include="IEditViewName.cs" />
+    <Compile Include="IEditViewUser.cs" />
+    <Compile Include="IEventEditView.cs" />
+    <Compile Include="IGetColorWashingSize.cs" />
+    <Compile Include="IGetItemLimit.cs" />
+    <Compile Include="IGetStockNumber.cs" />
+    <Compile Include="ILoginView.cs" />
+    <Compile Include="IMessageBox.cs" />
+    <Compile Include="IModelSearchView.cs" />
+    <Compile Include="IDeliveryToOutletEditView.cs" />
+    <Compile Include="IOnModelUpdateSuccessful.cs" />
+    <Compile Include="IOutletEditView.cs" />
+    <Compile Include="IOutletSearchView.cs" />
+    <Compile Include="IProductDetailEditView.cs" />
+    <Compile Include="IProductDetailSearchView.cs" />
+    <Compile Include="IProductEditView.cs" />
+    <Compile Include="IProductSearchView.cs" />
+    <Compile Include="ISalesEditView.cs" />
+    <Compile Include="ISalesSearchView.cs" />
+    <Compile Include="IScanBarcodeDisplay.cs" />
+    <Compile Include="IScanDisplayView.cs" />
+    <Compile Include="IScannerView.cs" />
+    <Compile Include="IShowMessage.cs" />
+    <Compile Include="ISizeEditView.cs" />
+    <Compile Include="ISizeSearchView.cs" />
+    <Compile Include="ISupplierDeliveryEditView.cs" />
+    <Compile Include="ISupplierEditView.cs" />
+    <Compile Include="ISupplierSearchDeliveryView.cs" />
+    <Compile Include="ISupplierSearchView.cs" />
+    <Compile Include="IUserEditView.cs" />
+    <Compile Include="IUserSearchView.cs" />
+    <Compile Include="IWashingEditView.cs" />
+    <Compile Include="IWashingSearchView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIModel\SupplierDeliveryViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGInventory.CustomEventArgs\SGInventory.CustomEventArgs.csproj">
+      <Project>{6852DCCC-6ED6-4C0B-A74F-04DE17B3B403}</Project>
+      <Name>SGInventory.CustomEventArgs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Enums\SGInventory.Enums.csproj">
+      <Project>{AA71B832-4F8E-4783-B9F3-99E825DCB927}</Project>
+      <Name>SGInventory.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Model\SGInventory.Model.csproj">
+      <Project>{58F603B7-4267-4587-B0CF-9835577A3920}</Project>
+      <Name>SGInventory.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

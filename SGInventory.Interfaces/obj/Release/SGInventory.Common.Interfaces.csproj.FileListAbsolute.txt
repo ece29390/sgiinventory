@@ -1,0 +1,14 @@
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.dll
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.pdb
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\obj\Release\ResolveAssemblyReference.cache
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.dll
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.pdb
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.pdb
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\ResolveAssemblyReference.cache
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.pdb

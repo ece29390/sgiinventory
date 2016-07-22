@@ -1,0 +1,223 @@
+2014-04-14 07:13:14,765 [1] ERROR SGIInventoryLogger Error at ProductEditForm_Load
+System.Exception: Sample Exception
+   at SGInventory.ProductForm.ProductEditForm.ProductEditForm_Load(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 115
+
+   u: Sabilocom00
+p: Sabilo+53787
+
+mysql5_938538_sabilo
+
+u: dededomayor
+p: DededoMayor+53787
+[6:32:34 PM] aipoh achilles: ftp user name: 0132064|dededomayor
+[6:32:54 PM] aipoh achilles: FTP Username: 0132064|dededomayor 
+FTP Password: Same as Control Panel Password  
+FTP Address: ftp.dededomayor.com 
+Alternative FTP Address(kiss) ftp.dededomayor.web711.discountasp.net2014-06-25 06:08:38,765 [1] ERROR SGIInventoryLogger Error at ProductEditForm_Load
+NHibernate.LazyInitializationException: Initializing[SGInventory.Model.Product#B-482]-failed to lazily initialize a collection of role: SGInventory.Model.Product.ProductDetails, no session or session was closed
+   at NHibernate.Collection.AbstractPersistentCollection.ThrowLazyInitializationException(String message)
+   at NHibernate.Collection.AbstractPersistentCollection.ThrowLazyInitializationExceptionIfNotConnected()
+   at NHibernate.Collection.AbstractPersistentCollection.Initialize(Boolean writing)
+   at NHibernate.Collection.AbstractPersistentCollection.Read()
+   at NHibernate.Collection.Generic.PersistentGenericBag`1.System.Collections.Generic.IList<T>.get_Item(Int32 index)
+   at SGInventory.ProductForm.ProductEditForm.LoadData(Product model)
+   at SGInventory.Presenters.EditPresenterBase`1.LoadEntity[V](V view) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\EditPresenterBase.cs:line 56
+   at SGInventory.Presenters.ProductEditPresenter.LoadModels(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 87
+   at SGInventory.ProductForm.ProductEditForm.ProductEditForm_Load(Object sender, EventArgs e)
+2014-06-25 07:21:06,953 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 268
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 97
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 71
+2014-07-02 06:47:23,093 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 268
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 97
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 71
+2014-07-02 08:48:46,125 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+NHibernate.QueryException: Type mismatch in NHibernate.Criterion.SimpleExpression: IsActive expected type System.Boolean, actual type System.Int32
+   at NHibernate.Criterion.CriterionUtil.GetColumnNamesUsingPropertyName(ICriteriaQuery criteriaQuery, ICriteria criteria, String propertyName, Object value, ICriterion critertion)
+   at NHibernate.Criterion.CriterionUtil.GetColumnNamesForSimpleExpression(String propertyName, IProjection projection, ICriteriaQuery criteriaQuery, ICriteria criteria, IDictionary`2 enabledFilters, ICriterion criterion, Object value)
+   at NHibernate.Criterion.SimpleExpression.ToSqlString(ICriteria criteria, ICriteriaQuery criteriaQuery, IDictionary`2 enabledFilters)
+   at NHibernate.Loader.Criteria.CriteriaQueryTranslator.GetWhereCondition(IDictionary`2 enabledFilters)
+   at NHibernate.Loader.Criteria.CriteriaJoinWalker..ctor(IOuterJoinLoadable persister, CriteriaQueryTranslator translator, ISessionFactoryImplementor factory, ICriteria criteria, String rootEntityName, IDictionary`2 enabledFilters)
+   at NHibernate.Loader.Criteria.CriteriaLoader..ctor(IOuterJoinLoadable persister, ISessionFactoryImplementor factory, CriteriaImpl rootCriteria, String rootEntityName, IDictionary`2 enabledFilters)
+   at NHibernate.Impl.SessionImpl.List(CriteriaImpl criteria, IList results)
+   at NHibernate.Impl.CriteriaImpl.List(IList results)
+   at NHibernate.Impl.CriteriaImpl.List[T]()
+   at SGInventory.Dal.ProductDetailDal.SelectActiveByParent(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDetailDal.cs:line 127
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 90
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 71
+2014-07-08 08:42:49,218 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.FileNotFoundException: Could not find file 'E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\bin\Debug\PicturesBlue hills1.jpg'.
+File name: 'E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\bin\Debug\PicturesBlue hills1.jpg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at SGInventory.Helpers.SgiHelper.LoadToIsolatedStorageMachineStore(String folderName, String originalDestination, String newDestination) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 148
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 87
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 104
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:08:14,500 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+NHibernate.Exceptions.GenericADOException: could not delete collection: [SGInventory.Model.Product.PriceHistory#1368][SQL: UPDATE `ProductPricesHistory` SET Product_id = null WHERE Product_id = ?p0] ---> MySql.Data.MySqlClient.MySqlException: Unknown column 'Product_id' in 'where clause'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd)
+   at NHibernate.Persister.Collection.AbstractCollectionPersister.Remove(Object id, ISessionImplementor session)
+   --- End of inner exception stack trace ---
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 200
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:09:47,578 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+NHibernate.Exceptions.GenericADOException: could not delete collection: [SGInventory.Model.Product.PriceHistory#1368][SQL: UPDATE `ProductPricesHistory` SET Product_id = null WHERE Product_id = ?p0] ---> MySql.Data.MySqlClient.MySqlException: Unknown column 'Product_id' in 'where clause'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd)
+   at NHibernate.Persister.Collection.AbstractCollectionPersister.Remove(Object id, ISessionImplementor session)
+   --- End of inner exception stack trace ---
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 200
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:45:03,343 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 200
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 113
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:47:18,593 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: Nullable object must have a value.
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 205
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:47:36,625 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: Nullable object must have a value.
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 205
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:48:18,625 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: Nullable object must have a value.
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 205
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-07-08 09:49:38,265 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: Nullable object must have a value.
+   at SGInventory.Dal.ProductDal.SaveTransaction(Product model, List`1 productDetails) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInvetory.DAL\ProductDal.cs:line 205
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 123
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 100
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-08-13 07:41:36,812 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 301
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 106
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-08-13 07:42:59,546 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 301
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 106
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-08-13 07:43:02,328 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 301
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 106
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-08-19 08:00:15,875 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 301
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 110
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-08-19 08:30:19,281 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+NHibernate.LazyInitializationException: Initializing[SGInventory.Model.Product#w-015]-failed to lazily initialize a collection of role: SGInventory.Model.Product.ProductDetails, no session or session was closed
+   at NHibernate.Collection.AbstractPersistentCollection.ThrowLazyInitializationException(String message)
+   at NHibernate.Collection.AbstractPersistentCollection.ThrowLazyInitializationExceptionIfNotConnected()
+   at NHibernate.Collection.AbstractPersistentCollection.Initialize(Boolean writing)
+   at NHibernate.Collection.AbstractPersistentCollection.Read()
+   at NHibernate.Collection.Generic.PersistentGenericBag`1.System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at SGInventory.Business.Model.ValdiateFactories.ProductValidate.Validate(List`1 arguments) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ValdiateFactories\ProductValidate.cs:line 61
+   at SGInventory.Business.Model.Aspect.GenericValidateAttribute.OnEntry(MethodExecutionArgs args) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\Aspect\GenericValidateAttribute.cs:line 21
+   at SGInventory.Business.Model.ProductBusinessModel.SaveUsingTransaction(String modelName, Product model, Product dbModel, Color selectedColor, Washing selectedWashing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 131
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 73
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 73
+2014-10-08 08:43:29,682 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SGInventory.Business.Model.ProductBusinessModel.SelectByPrimaryId(String id) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\ProductBusinessModel.cs:line 62
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 52
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 74
+2014-10-11 22:41:53,703 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.InvalidOperationException: No Sizes are selected
+   at SGInventory.ProductForm.ProductEditForm.AttachProductDetails(Product model, Color color, Washing washing) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 313
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 70
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 74
+2014-12-11 07:56:23,924 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Pictures\Pictures\Buboy.jpg'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName)
+   at SGInventory.Helpers.SgiHelper.LoadToFileSystemStorage(String folderName, String originalDestination, String newDestination) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 149
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 96
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 77
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 80
+2015-04-17 22:43:22,171 [1] ERROR SGIInventoryLogger Error at ProductEditForm_Load
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SGInventory.Presenters.ProductEditPresenter..ctor(IProductEditView iProductEditView, IProductBusinessModel iProductBusinessModel, Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 28
+   at SGInventory.ProductForm.ProductEditForm.ProductEditForm_Load(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 211
+2015-04-17 22:43:29,406 [1] ERROR SGIInventoryLogger Error at ProductEditForm_Load
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SGInventory.Presenters.ProductEditPresenter..ctor(IProductEditView iProductEditView, IProductBusinessModel iProductBusinessModel, Product model) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 28
+   at SGInventory.ProductForm.ProductEditForm.ProductEditForm_Load(Object sender, EventArgs e) in E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 211
+2016-06-22 20:53:56,972 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.IOException: The file 'C:\Pictures\1897863_693802743996088_244609941_n.jpg' already exists.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.FileInfo.CopyTo(String destFileName)
+   at SGInventory.Helpers.SgiHelper.LoadToFileSystemStorage(String folderName, String originalDestination, String newDestination) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 149
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 96
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 92
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 80
+2016-06-26 20:18:16,652 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\bin\Debug\Pictures\UB-03 Black.jpg'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.FileInfo.CopyTo(String destFileName)
+   at SGInventory.Helpers.SgiHelper.LoadToFileSystemStorage(String folderName, String originalDestination, String newDestination) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 149
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 96
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 92
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 80
+2016-06-26 20:19:24,494 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\bin\Debug\Pictures\UB-03 Black.jpg'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.FileInfo.CopyTo(String destFileName)
+   at SGInventory.Helpers.SgiHelper.LoadToFileSystemStorage(String folderName, String originalDestination, String newDestination) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 149
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 96
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 92
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 80
+2016-06-26 21:35:10,282 [1] ERROR SGIInventoryLogger ucSaveEditForm1_SaveButtonClick
+System.IO.IOException: The file 'C:\Pictures\UB-03 Black.jpg' already exists.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.FileInfo.CopyTo(String destFileName)
+   at SGInventory.Helpers.SgiHelper.LoadToFileSystemStorage(String folderName, String originalDestination, String newDestination) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Helpers\SgiHelper.cs:line 149
+   at SGInventory.ProductForm.ProductEditForm.<>c__DisplayClass2.<ucSaveEditForm1_SaveButtonClick>b__0(String message, List`1 list) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 96
+   at SGInventory.Presenters.ProductEditPresenter.Save(Action`2 callBackAfterSaving) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\ProductEditPresenter.cs:line 92
+   at SGInventory.ProductForm.ProductEditForm.ucSaveEditForm1_SaveButtonClick(Object sender, EventArgs e) in c:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\ProductForm\ProductEditForm.cs:line 80

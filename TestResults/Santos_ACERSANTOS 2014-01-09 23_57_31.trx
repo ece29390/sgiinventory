@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="cfdca69d-b58a-42f7-9e57-458b2dcef395" name="Santos@ACERSANTOS 2014-01-09 23:57:31" runUser="ACERSANTOS\Santos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="66962cd2-99c7-4af5-b1c3-3f24a3ebdd1e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Santos_ACERSANTOS 2014-01-09 23_57_31">
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Interfaces\bin\Debug\SGInventory.Common.Interfaces.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Business.Model\bin\Debug\SGInventory.Business.Model.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\bin\Debug\SGInventory.Enums.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Presenter\bin\Debug\SGInventory.Presenters.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\packages\Moq.4.0.10827\lib\NET40\Moq.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\Views\bin\Debug\SGInventory.Views.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Model\bin\Debug\SGInventory.Model.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Test.Data\bin\Debug\SGInventory.Test.Data.dll" />
+      <DeploymentItem filename="E:\Projects\SGIInventory\SGInvetory\SGInventory.Helpers\bin\Debug\SGInventory.Helpers.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-01-09T23:57:31.2411022+08:00" queuing="2014-01-09T23:57:31.2879772+08:00" start="2014-01-09T23:57:31.3036022+08:00" finish="2014-01-09T23:57:32.7567272+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ScannerResponseNotOkTest" storage="e:\projects\sgiinventory\sginvetory\sginventory.presenters.test\bin\debug\sginventory.presenters.test.dll" id="b32a286d-447c-44f2-f0e5-3665f3adba00">
+      <Execution id="356bd24a-39d7-4b11-b9d4-5e19bc30697f" />
+      <TestMethod codeBase="E:/Projects/SGIInventory/SGInvetory/SGInventory.Presenters.Test/bin/Debug/SGInventory.Presenters.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SGInventory.Presenters.Test.ScannerPresenterTest, SGInventory.Presenters.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ScannerResponseNotOkTest" />
+    </UnitTest>
+    <UnitTest name="ScannerResponseOkTest" storage="e:\projects\sgiinventory\sginvetory\sginventory.presenters.test\bin\debug\sginventory.presenters.test.dll" id="252088c8-e5fa-6ee6-59ad-76481223e49b">
+      <Execution id="1c913ef1-f782-44bb-837f-09bbdff4fe7c" />
+      <TestMethod codeBase="E:/Projects/SGIInventory/SGInvetory/SGInventory.Presenters.Test/bin/Debug/SGInventory.Presenters.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SGInventory.Presenters.Test.ScannerPresenterTest, SGInventory.Presenters.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ScannerResponseOkTest" />
+    </UnitTest>
+    <UnitTest name="AfterUnSuccessfulScanTest" storage="e:\projects\sgiinventory\sginvetory\sginventory.presenters.test\bin\debug\sginventory.presenters.test.dll" id="67875e0c-5550-068d-ac64-4f2ca3fd1d32">
+      <Execution id="f754b868-9043-40a3-9295-eb2b319aa4c9" />
+      <TestMethod codeBase="E:/Projects/SGIInventory/SGInvetory/SGInventory.Presenters.Test/bin/Debug/SGInventory.Presenters.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SGInventory.Presenters.Test.ScannerPresenterTest, SGInventory.Presenters.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AfterUnSuccessfulScanTest" />
+    </UnitTest>
+    <UnitTest name="AfterSuccessfulScanTest" storage="e:\projects\sgiinventory\sginvetory\sginventory.presenters.test\bin\debug\sginventory.presenters.test.dll" id="afe64092-4820-a707-e759-3cf1c5c9fc84">
+      <Execution id="c69d2a6d-e486-4312-a4e3-3d659081d304" />
+      <TestMethod codeBase="E:/Projects/SGIInventory/SGInvetory/SGInventory.Presenters.Test/bin/Debug/SGInventory.Presenters.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SGInventory.Presenters.Test.ScannerPresenterTest, SGInventory.Presenters.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AfterSuccessfulScanTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="252088c8-e5fa-6ee6-59ad-76481223e49b" executionId="1c913ef1-f782-44bb-837f-09bbdff4fe7c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67875e0c-5550-068d-ac64-4f2ca3fd1d32" executionId="f754b868-9043-40a3-9295-eb2b319aa4c9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afe64092-4820-a707-e759-3cf1c5c9fc84" executionId="c69d2a6d-e486-4312-a4e3-3d659081d304" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b32a286d-447c-44f2-f0e5-3665f3adba00" executionId="356bd24a-39d7-4b11-b9d4-5e19bc30697f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="1c913ef1-f782-44bb-837f-09bbdff4fe7c" testId="252088c8-e5fa-6ee6-59ad-76481223e49b" testName="ScannerResponseOkTest" computerName="ACERSANTOS" duration="00:00:00.8318235" startTime="2014-01-09T23:57:31.3192272+08:00" endTime="2014-01-09T23:57:32.5223522+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c913ef1-f782-44bb-837f-09bbdff4fe7c">
+    </UnitTestResult>
+    <UnitTestResult executionId="f754b868-9043-40a3-9295-eb2b319aa4c9" testId="67875e0c-5550-068d-ac64-4f2ca3fd1d32" testName="AfterUnSuccessfulScanTest" computerName="ACERSANTOS" duration="00:00:00.1125802" startTime="2014-01-09T23:57:32.5379772+08:00" endTime="2014-01-09T23:57:32.6473522+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f754b868-9043-40a3-9295-eb2b319aa4c9">
+    </UnitTestResult>
+    <UnitTestResult executionId="c69d2a6d-e486-4312-a4e3-3d659081d304" testId="afe64092-4820-a707-e759-3cf1c5c9fc84" testName="AfterSuccessfulScanTest" computerName="ACERSANTOS" duration="00:00:00.0007255" startTime="2014-01-09T23:57:32.6629772+08:00" endTime="2014-01-09T23:57:32.6786022+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c69d2a6d-e486-4312-a4e3-3d659081d304">
+    </UnitTestResult>
+    <UnitTestResult executionId="356bd24a-39d7-4b11-b9d4-5e19bc30697f" testId="b32a286d-447c-44f2-f0e5-3665f3adba00" testName="ScannerResponseNotOkTest" computerName="ACERSANTOS" duration="00:00:00.0004972" startTime="2014-01-09T23:57:32.6786022+08:00" endTime="2014-01-09T23:57:32.6942272+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="356bd24a-39d7-4b11-b9d4-5e19bc30697f">
+    </UnitTestResult>
+  </Results>
+</TestRun>

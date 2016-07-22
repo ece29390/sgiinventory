@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B20C7A3-CF04-4D3C-80A7-E6CD43BA2DC3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGInventory</RootNamespace>
+    <AssemblyName>SGInventory</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.6.4\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.2.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="SGInventory, Version=1.4.5019.41787, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>obj\Debug\SGInventory.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryForm\CategoryEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryForm\CategoryEditForm.Designer.cs">
+      <DependentUpon>CategoryEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryForm\CategorySearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryForm\CategorySearchForm.Designer.cs">
+      <DependentUpon>CategorySearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessModelContainer.cs" />
+    <Compile Include="ColorForm\ColorEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorForm\ColorEditForm.Designer.cs">
+      <DependentUpon>ColorEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorForm\ColorSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorForm\ColorSearchForm.Designer.cs">
+      <DependentUpon>ColorSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\DeliverySearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\DeliverySearchForm.Designer.cs">
+      <DependentUpon>DeliverySearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletEditForm.Designer.cs">
+      <DependentUpon>DeliveryToOutletEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletForm.Designer.cs">
+      <DependentUpon>DeliveryToOutletForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletPrintForm.Designer.cs">
+      <DependentUpon>DeliveryToOutletPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletReport.cs" />
+    <Compile Include="Delivery\DeliveryToOutletSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\DeliveryToOutletSearchForm.Designer.cs">
+      <DependentUpon>DeliveryToOutletSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\ScannerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\ScannerForm.Designer.cs">
+      <DependentUpon>ScannerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\SupplierDeliveryEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\SupplierDeliveryEditForm.Designer.cs">
+      <DependentUpon>SupplierDeliveryEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery\SupplierDeliveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\SupplierDeliveryForm.Designer.cs">
+      <DependentUpon>SupplierDeliveryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="InventoryMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryMainForm.Designer.cs">
+      <DependentUpon>InventoryMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\Adjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\Adjustment.Designer.cs">
+      <DependentUpon>Adjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\AdjustmentDeliveryOutlet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\AdjustmentDeliveryOutlet.Designer.cs">
+      <DependentUpon>AdjustmentDeliveryOutlet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\AdjustmentDeliverySupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\AdjustmentDeliverySupplier.Designer.cs">
+      <DependentUpon>AdjustmentDeliverySupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ProductInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\ProductInventory.Designer.cs">
+      <DependentUpon>ProductInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ProductInventoryViewComparer.cs" />
+    <Compile Include="Inventory\ViewHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\ViewHistory.Designer.cs">
+      <DependentUpon>ViewHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ViewHistoryReport.cs" />
+    <Compile Include="LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInEventArgs.cs" />
+    <Compile Include="OutletForm\OutletEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutletForm\OutletEditForm.Designer.cs">
+      <DependentUpon>OutletEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutletForm\OutletSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutletForm\OutletSearchForm.Designer.cs">
+      <DependentUpon>OutletSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ColorForm.Designer.cs">
+      <DependentUpon>ColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\PriceHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\PriceHistory.Designer.cs">
+      <DependentUpon>PriceHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ProductDetailEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ProductDetailEditForm.Designer.cs">
+      <DependentUpon>ProductDetailEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ProductDetailSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ProductDetailSearchForm.Designer.cs">
+      <DependentUpon>ProductDetailSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ProductEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ProductEditForm.Designer.cs">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ProductSearchForm.Designer.cs">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\UploadPicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\UploadPicForm.Designer.cs">
+      <DependentUpon>UploadPicForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SalesEditForm.Designer.cs">
+      <DependentUpon>SalesEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SalesSearchForm.Designer.cs">
+      <DependentUpon>SalesSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SizeForm\SizeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SizeForm\SizeEditForm.Designer.cs">
+      <DependentUpon>SizeEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SizeForm\SizeSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SizeForm\SizeSearchForm.Designer.cs">
+      <DependentUpon>SizeSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierForm\SupplierEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierForm\SupplierEditForm.Designer.cs">
+      <DependentUpon>SupplierEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierForm\SupplierSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierForm\SupplierSearchForm.Designer.cs">
+      <DependentUpon>SupplierSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BaseDeliveryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BaseDeliveryUserControl.Designer.cs">
+      <DependentUpon>BaseDeliveryUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAutoComplete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAutoComplete.Designer.cs">
+      <DependentUpon>ucAutoComplete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NumericControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NumericControl.Designer.cs">
+      <DependentUpon>NumericControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucBarcodePriceQuantity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucBarcodePriceQuantity.Designer.cs">
+      <DependentUpon>ucBarcodePriceQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucCode.Designer.cs">
+      <DependentUpon>ucCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcDateRangeFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcDateRangeFilter.Designer.cs">
+      <DependentUpon>UcDateRangeFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucItemEditMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucItemEditMenu.Designer.cs">
+      <DependentUpon>ucItemEditMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucManualEntryDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucManualEntryDisplay.Designer.cs">
+      <DependentUpon>ucManualEntryDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucScanBarcodeDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucScanBarcodeDisplay.Designer.cs">
+      <DependentUpon>ucScanBarcodeDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucStatus.Designer.cs">
+      <DependentUpon>ucStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucNameAddress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucNameAddress.Designer.cs">
+      <DependentUpon>ucNameAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ITextChanged.cs" />
+    <Compile Include="UserControls\ucAddDelete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAddDelete.Designer.cs">
+      <DependentUpon>ucAddDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAddress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAddress.Designer.cs">
+      <DependentUpon>ucAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucDescription.Designer.cs">
+      <DependentUpon>ucDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucName.Designer.cs">
+      <DependentUpon>ucName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucPriceHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucPriceHistory.designer.cs">
+      <DependentUpon>ucPriceHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucSaveEditForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucSaveEditForm.Designer.cs">
+      <DependentUpon>ucSaveEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucUserNamePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucUserNamePassword.Designer.cs">
+      <DependentUpon>ucUserNamePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlSearch.Designer.cs">
+      <DependentUpon>UserControlSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlSelectProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlSelectProduct.Designer.cs">
+      <DependentUpon>UserControlSelectProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserEditForm.Designer.cs">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserSearchForm.Designer.cs">
+      <DependentUpon>UserSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WashingForm\WashingEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WashingForm\WashingEditForm.Designer.cs">
+      <DependentUpon>WashingEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WashingForm\WashingSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WashingForm\WashingSearchForm.Designer.cs">
+      <DependentUpon>WashingSearchForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CategoryForm\CategoryEditForm.resx">
+      <DependentUpon>CategoryEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryForm\CategorySearchForm.resx">
+      <DependentUpon>CategorySearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorForm\ColorEditForm.resx">
+      <DependentUpon>ColorEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorForm\ColorSearchForm.resx">
+      <DependentUpon>ColorSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\DeliverySearchForm.resx">
+      <DependentUpon>DeliverySearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\DeliveryToOutletEditForm.resx">
+      <DependentUpon>DeliveryToOutletEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\DeliveryToOutletForm.resx">
+      <DependentUpon>DeliveryToOutletForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\DeliveryToOutletPrintForm.resx">
+      <DependentUpon>DeliveryToOutletPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\DeliveryToOutletReport.rdlc" />
+    <EmbeddedResource Include="Delivery\DeliveryToOutletSearchForm.resx">
+      <DependentUpon>DeliveryToOutletSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\ScannerForm.resx">
+      <DependentUpon>ScannerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\SupplierDeliveryEditForm.resx">
+      <DependentUpon>SupplierDeliveryEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\SupplierDeliveryForm.resx">
+      <DependentUpon>SupplierDeliveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMainForm.resx">
+      <DependentUpon>InventoryMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\Adjustment.resx">
+      <DependentUpon>Adjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\AdjustmentDeliveryOutlet.resx">
+      <DependentUpon>AdjustmentDeliveryOutlet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\AdjustmentDeliverySupplier.resx">
+      <DependentUpon>AdjustmentDeliverySupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\ProductInventory.resx">
+      <DependentUpon>ProductInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\ViewHistory.resx">
+      <DependentUpon>ViewHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutletForm\OutletEditForm.resx">
+      <DependentUpon>OutletEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutletForm\OutletSearchForm.resx">
+      <DependentUpon>OutletSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ColorForm.resx">
+      <DependentUpon>ColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\PriceHistory.resx">
+      <DependentUpon>PriceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ProductDetailEditForm.resx">
+      <DependentUpon>ProductDetailEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ProductDetailSearchForm.resx">
+      <DependentUpon>ProductDetailSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ProductEditForm.resx">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ProductSearchForm.resx">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\UploadPicForm.resx">
+      <DependentUpon>UploadPicForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SalesEditForm.resx">
+      <DependentUpon>SalesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SalesSearchForm.resx">
+      <DependentUpon>SalesSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SizeForm\SizeEditForm.resx">
+      <DependentUpon>SizeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SizeForm\SizeSearchForm.resx">
+      <DependentUpon>SizeSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierForm\SupplierEditForm.resx">
+      <DependentUpon>SupplierEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierForm\SupplierSearchForm.resx">
+      <DependentUpon>SupplierSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BaseDeliveryUserControl.resx">
+      <DependentUpon>BaseDeliveryUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAutoComplete.resx">
+      <DependentUpon>ucAutoComplete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NumericControl.resx">
+      <DependentUpon>NumericControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucBarcodePriceQuantity.resx">
+      <DependentUpon>ucBarcodePriceQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucCode.resx">
+      <DependentUpon>ucCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcDateRangeFilter.resx">
+      <DependentUpon>UcDateRangeFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucItemEditMenu.resx">
+      <DependentUpon>ucItemEditMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucManualEntryDisplay.resx">
+      <DependentUpon>ucManualEntryDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucScanBarcodeDisplay.resx">
+      <DependentUpon>ucScanBarcodeDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucStatus.resx">
+      <DependentUpon>ucStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucNameAddress.resx">
+      <DependentUpon>ucNameAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\ucAddDelete.resx">
+      <DependentUpon>ucAddDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAddress.resx">
+      <DependentUpon>ucAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucDescription.resx">
+      <DependentUpon>ucDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucName.resx">
+      <DependentUpon>ucName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucPriceHistory.resx">
+      <DependentUpon>ucPriceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucSaveEditForm.resx">
+      <DependentUpon>ucSaveEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucUserNamePassword.resx">
+      <DependentUpon>ucUserNamePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlSearch.resx">
+      <DependentUpon>UserControlSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlSelectProduct.resx">
+      <DependentUpon>UserControlSelectProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserEditForm.resx">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserSearchForm.resx">
+      <DependentUpon>UserSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WashingForm\WashingEditForm.resx">
+      <DependentUpon>WashingEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WashingForm\WashingSearchForm.resx">
+      <DependentUpon>WashingSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\SGInventory.Delivery.DeliveryToOutletReport.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Model.ProductDetails.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Model.Sales.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Presenters.Model.ProductDetailLookupModel.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Presenters.Model.SalesDisplayModel.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Views.UIModel.SupplierDeliveryViewModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGIInventory.Logger\SGIInventory.Logger.csproj">
+      <Project>{044D0525-95DE-4FBF-AD2F-5450E40D1CB7}</Project>
+      <Name>SGIInventory.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Business.Model\SGInventory.Business.Model.csproj">
+      <Project>{C976F680-2EE3-4ABD-B71C-111DF1C1E0AC}</Project>
+      <Name>SGInventory.Business.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.CustomEventArgs\SGInventory.CustomEventArgs.csproj">
+      <Project>{6852DCCC-6ED6-4C0B-A74F-04DE17B3B403}</Project>
+      <Name>SGInventory.CustomEventArgs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Enums\SGInventory.Enums.csproj">
+      <Project>{AA71B832-4F8E-4783-B9F3-99E825DCB927}</Project>
+      <Name>SGInventory.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Extensions\SGInventory.Extensions.csproj">
+      <Project>{919105D1-6DE7-4D68-AE1C-C863A5869D6F}</Project>
+      <Name>SGInventory.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Helpers\SGInventory.Helpers.csproj">
+      <Project>{6BF46DEB-FCB6-4512-9FFC-B59321F8FF87}</Project>
+      <Name>SGInventory.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Interfaces\SGInventory.Common.Interfaces.csproj">
+      <Project>{68E2461C-AD55-43B3-917C-108CACE7D3E6}</Project>
+      <Name>SGInventory.Common.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Model\SGInventory.Model.csproj">
+      <Project>{58F603B7-4267-4587-B0CF-9835577A3920}</Project>
+      <Name>SGInventory.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Presenter\SGInventory.Presenters.csproj">
+      <Project>{4B0CAF47-CED5-4B6C-ACD7-786400FD759A}</Project>
+      <Name>SGInventory.Presenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInventory.Test.Data\SGInventory.Test.Data.csproj">
+      <Project>{EC718E9C-13F7-48A6-A02A-EEE9AB765358}</Project>
+      <Name>SGInventory.Test.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGInvetory.DAL\SGInventory.DAL.csproj">
+      <Project>{AFC69205-9A57-4E0A-A893-7574B67B46C2}</Project>
+      <Name>SGInventory.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Views\SGInventory.Views.csproj">
+      <Project>{20AF4100-203D-423B-A878-B029055FE855}</Project>
+      <Name>SGInventory.Views</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if exist "$(TargetPath)" if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

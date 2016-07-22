@@ -1,0 +1,14 @@
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\SGIInventory.Logger.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\SGIInventory.Logger.pdb
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\log4net.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\log4net.xml
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\ResolveAssemblyReference.cache
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\SGIInventory.Logger.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\SGIInventory.Logger.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\log4net.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Release\log4net.xml
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.csprojResolveAssemblyReference.cache
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.pdb

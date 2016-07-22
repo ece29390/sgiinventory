@@ -1,0 +1,14 @@
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.dll
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.pdb
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\obj\Release\ResolveAssemblyReference.cache
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.dll
+E:\Projects\SGIInventory\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.pdb
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.pdb
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\ResolveAssemblyReference.cache
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.dll
+E:\Projects\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.dll
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.pdb
