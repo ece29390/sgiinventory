@@ -30,9 +30,7 @@ namespace SGInventory.Views
         void LoadDelivery(DeliveryDetail deliveryDetails);
 
         DateTime GetDeliveryDate();
-
-        void DisableDeliveryControls();
-
+        
         double GetPrice();
 
         void EnableProductDetailsGroup(bool enable);

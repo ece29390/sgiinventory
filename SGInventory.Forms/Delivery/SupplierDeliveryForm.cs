@@ -128,7 +128,7 @@ namespace SGInventory.Delivery
 
         public void LoadProducts(List<Model.Product> list)
         {
-            //ucScanBarcodeDisplay1.LoadProducts(list);            
+                 
         }
 
         public string GetStockNumber()
@@ -138,31 +138,26 @@ namespace SGInventory.Delivery
        
         public Model.Product GetSelectedProduct()
         {
-            return null;//ucScanBarcodeDisplay1.GetSelectedProduct();
+            return null;
         }
 
         public void LoadColors(List<Model.Color> list)
-        {
-            //ucScanBarcodeDisplay1.LoadColors(list);            
+        {                  
             _colors = list;
         }
 
         public void LoadWashings(List<Model.Washing> list)
-        {
-            //ucScanBarcodeDisplay1.LoadWashings(list);
+        {            
             _washings = list;
         }
 
         public void LoadSizes(List<Model.Size> list)
-        {
-            //ucScanBarcodeDisplay1.LoadSizes(list);
+        {           
             _sizes = list;
         }
 
         private void DeliveryForm_Load(object sender, EventArgs e)
-        {
-            //ucScanBarcodeDisplay1.InitializeControls(_presenter.UsingScanner);
-
+        {           
             if (_deliveryId > 0)
             {
                 _delivery = _container.DeliveryBusinessModel.SelectByPrimaryId(_deliveryId);
@@ -177,17 +172,17 @@ namespace SGInventory.Delivery
         
         public string GetColorCode()
         {
-            return "";// ucScanBarcodeDisplay1.GetColorCode();
+            return "";
         }
 
         public string GetWashingCode()
         {
-            return "";// ucScanBarcodeDisplay1.GetWashingCode();
+            return "";
         }
 
         public string GetSizeCode()
         {
-            return "";// ucScanBarcodeDisplay1.GetSizeCode();
+            return "";
         }
       
         public void LoadProductIntoForm(Product product)
@@ -202,8 +197,7 @@ namespace SGInventory.Delivery
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //_presenter.SelectProductStatus((ProductStatus)StatusComboBox.SelectedItem);
-            //_presenter.DisableOrEnableSaveDeliveryDetailButton();
+          
         }
       
         private void SupplierAutoComplete_Leave(object sender, EventArgs e)
@@ -238,8 +232,8 @@ namespace SGInventory.Delivery
 
         public void EnableSaveDeliveryButton(bool shouldEnable)
         {
-           //ucSaveDelivery.EnabledButton(shouldEnable);
-        }
+          
+        }   
 
         public ProductStatus GetProductStatus()
         {
@@ -286,13 +280,7 @@ namespace SGInventory.Delivery
             return DeliveryDateDtp.Value;
         }
 
-        public void DisableDeliveryControls()
-        {
-            SupplierAutoComplete.Enabled = false;
-            DeliveryDateDtp.Enabled = false;
-            OrTextbox.Enabled = false;
-            //ucScanBarcodeDisplay1.StockNumberComboBoxControl.Enabled = false;            
-        }
+       
 
         public double GetPrice()
         {
@@ -306,35 +294,31 @@ namespace SGInventory.Delivery
 
         public void EnableProductDetailsGroup(bool enable)
         {
-            //this.ProductGroupBox.Enabled = enable;
+           
         }
 
         public void ResetPreviousControlState()
         {
             QuantityTextbox.Text = "1";
             QuantityTextbox.Focus();
-            StatusDescriptionTextbox.Clear();
-            //ucScanBarcodeDisplay1.StockNumberComboBoxControl.ResetText();
-            //ucScanBarcodeDisplay1.SizeAutoCompleteControl.AutoCompleteValue = "";
-            //ucScanBarcodeDisplay1.WashingAutoCompleteControl.AutoCompleteValue = "";
-            //ucScanBarcodeDisplay1.ColorAutoCompleteControl.AutoCompleteValue = "";
+            StatusDescriptionTextbox.Clear();           
             CostNumericControl.Numeric = 0.0;
             StatusDescriptionTextbox.Clear();
         }
 
         public Model.Size GetSelectedSize()
         {
-            return null; //SgiHelper.SelectModelByNameInTheCollection<Model.Size>(_sizes, ucScanBarcodeDisplay1.SizeAutoCompleteControl.AutoCompleteValue);
+            return null; 
         }
 
         public Washing GetSelectedWashing()
         {
-            return null;// SgiHelper.SelectModelByNameInTheCollection<Model.Washing>(_washings, ucScanBarcodeDisplay1.WashingAutoCompleteControl.AutoCompleteValue);
+            return null;
         }
 
         public Model.Color GetSelectedColor()
         {
-            return null;// SgiHelper.SelectModelByNameInTheCollection<Model.Color>(_colors, ucScanBarcodeDisplay1.ColorAutoCompleteControl.AutoCompleteValue);
+            return null;
         }
 
         public void SetDeliveryDetailItemCost(double? cost)
@@ -347,7 +331,7 @@ namespace SGInventory.Delivery
 
         public void EnableSaveDeliveryDetailButton(bool shouldEnable)
         {
-            //ucSaveDeliveryDetail.EnabledButton(shouldEnable);
+            
         }
 
         public void LoadDamageIntoForm(List<Damage> list)
@@ -357,7 +341,7 @@ namespace SGInventory.Delivery
 
         public void ShouldEnableDamageDetailGroup(bool isEnable)
         {
-            //gbDamageDetail.Enabled = isEnable;
+          
         }
 
         private void cboDamageStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -378,27 +362,27 @@ namespace SGInventory.Delivery
        
         public bool GetSelectByProductCode()
         {
-            return true;//ucScanBarcodeDisplay1.GetSelectByProductCode();
+            return true;
         }
 
         public void DisabledProductDetail(bool disable)
         {
-            //ucScanBarcodeDisplay1.DisabledProductDetail(disable);
+            
         }
 
         public void RenameStockOrCodeLabel(string label)
         {
-            //ucScanBarcodeDisplay1.RenameStockOrCodeLabel(label);
+            
         }
 
         public void LoadProducts(List<ProductDetails> list)
         {
-            //ucScanBarcodeDisplay1.LoadProducts(list);
+           
         }
 
         public ProductDetails GetSelectedProductDetails()
         {           
-            return null;// ucScanBarcodeDisplay1.GetSelectedProductDetails();
+            return null;
         }
 
         public void LoadProductIntoForm(ProductDetails productDetails)
@@ -406,22 +390,19 @@ namespace SGInventory.Delivery
             if (productDetails == null)
                 return;
             CostNumericControl.Numeric = productDetails.OverrideCost.HasValue ? productDetails.OverrideCost.Value : productDetails.Product.Cost;
-            //ucScanBarcodeDisplay1.SizeAutoCompleteControl.AutoCompleteValue = productDetails.Size.Name;
-            //ucScanBarcodeDisplay1.ColorAutoCompleteControl.AutoCompleteValue = productDetails.Color.Name;
-            //ucScanBarcodeDisplay1.WashingAutoCompleteControl.AutoCompleteValue = productDetails.Washing.Name;
+           
         }
 
         public void ClearProductDetailControls()
         {
-            //ucScanBarcodeDisplay1.ClearProductDetailControls();
+            
         }
        
         public void ShowScannerWindow(bool useScanner)
         {
             if (useScanner)
             {
-                var window = new ScannerForm();
-                //window.Presenter.OnScanAction += new EventHandler<ScannerResponse>(Presenter_OnScanAction);
+                var window = new ScannerForm();                
                 window.OnScannerFormClosing += new EventHandler<EventArgs>(window_OnScannerFormClosing);
                 window.Show();
             }
@@ -429,20 +410,18 @@ namespace SGInventory.Delivery
         }
 
         void window_OnScannerFormClosing(object sender, EventArgs e)
-        {
-            //ucScanBarcodeDisplay1.ChkBarcodeOrStockNumberControl.Checked = false;
-
+        {            
         }
        
         public void SetSelectByBarcodeTo(bool selectByBarcode)
         {
-            //ucScanBarcodeDisplay1.SetSelectByBarcodeTo(selectByBarcode); 
+            
         }
 
         public void SetBarcodeAs(ProductDetails productDetails)
         {            
             LoadProducts(new List<ProductDetails> { productDetails });
-            //ucScanBarcodeDisplay1.StockNumberComboBoxControl.SelectedIndex = 0;
+            
         }
        
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -459,7 +438,7 @@ namespace SGInventory.Delivery
 
         public void EnableSaveAddProductButton(bool enable)
         {
-            //buttonAdd.Enabled = enable;
+           
         }
         
         private void editDeliveriesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -564,7 +543,7 @@ namespace SGInventory.Delivery
         {
             if (_presenter.UsingScanner && e.KeyCode == Keys.Enter)
             {
-                //ucScanBarcodeDisplay1.FocusOnInputText();
+               
             }
         }
 
@@ -597,7 +576,7 @@ namespace SGInventory.Delivery
       
         public void SetWashingCode(string washing)
         {
-            //ucScanBarcodeDisplay1.WashingAutoCompleteControl.AutoCompleteValue = washing;
+           
         }
     }
 

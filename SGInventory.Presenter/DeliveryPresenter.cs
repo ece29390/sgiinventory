@@ -178,9 +178,7 @@ namespace SGInventory.Presenters
 
             var lastIndex = delivery.DeliveryDetails.ToList().GetLastIndex();
             _deliveryPresenterView.LoadDelivery(delivery.DeliveryDetails[lastIndex]);
-            _deliveryPresenterView.ShowMessage(message);
-            _deliveryPresenterView.DisableDeliveryControls();
-
+            _deliveryPresenterView.ShowMessage(message);            
         }
 
         private string GetDamageNameByCode(int enumValue)
