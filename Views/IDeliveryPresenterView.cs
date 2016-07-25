@@ -34,9 +34,7 @@ namespace SGInventory.Views
         double GetPrice();
 
         void EnableProductDetailsGroup(bool enable);
-
-        void ResetPreviousControlState();
-
+      
         Size GetSelectedSize();
 
         Washing GetSelectedWashing();
@@ -62,6 +60,7 @@ namespace SGInventory.Views
         string Stocknumber { set; }
         int GetRowCount();
         void LoadResultToView(List<ProductDetails> result);
-        
+
+        void ResetViewBindings(bool resetBindings);
     }
 }

@@ -15,6 +15,5 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Debug\SGIInventory.Logger.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Debug\log4net.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin\Debug\log4net.xml
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.pdb

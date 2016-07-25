@@ -99,9 +99,11 @@ namespace SGInventory.Delivery
             return delivery;
         }
 
-        public void OpenSupplierDeliveryEditForm(Model.Delivery delivery,bool useScanner)
+      
+
+        public void OpenSupplierDeliveryEditForm(Model.Delivery delivery)
         {
-            var supplierDeliveryForm = new SupplierDeliveryForm(_container, delivery.Id,useScanner);
+            var supplierDeliveryForm = new SupplierDeliveryForm(_container, delivery.Id);
             supplierDeliveryForm.ShowDialog();
         }
 

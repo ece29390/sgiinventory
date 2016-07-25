@@ -32,16 +32,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ProductGroupBox = new System.Windows.Forms.GroupBox();
-            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
-            this.supplierDeliveryViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAdd = new System.Windows.Forms.Button();
             this.gbDamageDetail = new System.Windows.Forms.GroupBox();
             this.cboDamageStatus = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.StatusDescriptionTextbox = new System.Windows.Forms.TextBox();
             this.QuantityTextbox = new System.Windows.Forms.TextBox();
-            this.ucSaveDeliveryDetail = new SGInventory.UserControls.ucSaveEditForm();
-            this.CostNumericControl = new SGInventory.UserControls.NumericControl();
             this.label2 = new System.Windows.Forms.Label();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,7 +47,6 @@
             this.SupplierGroupBox = new System.Windows.Forms.GroupBox();
             this.supplierLabel = new System.Windows.Forms.Label();
             this.DeliveryDateDtp = new System.Windows.Forms.DateTimePicker();
-            this.SupplierAutoComplete = new SGInventory.UserControls.ucAutoComplete();
             this.DeliveryDateLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.OrTextbox = new System.Windows.Forms.TextBox();
@@ -63,10 +58,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editDeliveriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
+            this.supplierDeliveryViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ucSaveDeliveryDetail = new SGInventory.UserControls.ucSaveEditForm();
+            this.CostNumericControl = new SGInventory.UserControls.NumericControl();
+            this.SupplierAutoComplete = new SGInventory.UserControls.ucAutoComplete();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.ProductGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierDeliveryViewModelBindingSource)).BeginInit();
             this.gbDamageDetail.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SupplierGroupBox.SuspendLayout();
@@ -75,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDeliveryDetails)).BeginInit();
             this.panel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierDeliveryViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,18 +122,6 @@
             this.ProductGroupBox.TabStop = false;
             this.ProductGroupBox.Text = "Product";
             // 
-            // userControlSelectProduct1
-            // 
-            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.supplierDeliveryViewModelBindingSource, "ProductDetailEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.userControlSelectProduct1.Location = new System.Drawing.Point(5, 331);
-            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
-            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 227);
-            this.userControlSelectProduct1.TabIndex = 25;
-            // 
-            // supplierDeliveryViewModelBindingSource
-            // 
-            this.supplierDeliveryViewModelBindingSource.DataSource = typeof(SGInventory.Views.UIModel.SupplierDeliveryViewModel);
-            // 
             // buttonAdd
             // 
             this.buttonAdd.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.supplierDeliveryViewModelBindingSource, "AddButtonEnable", true));
@@ -174,7 +162,6 @@
             this.cboDamageStatus.Name = "cboDamageStatus";
             this.cboDamageStatus.Size = new System.Drawing.Size(249, 24);
             this.cboDamageStatus.TabIndex = 21;
-            this.cboDamageStatus.SelectedIndexChanged += new System.EventHandler(this.cboDamageStatus_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -213,29 +200,6 @@
             this.QuantityTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuantityTextbox_KeyPress);
             this.QuantityTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.QuantityTextbox_KeyUp);
             // 
-            // ucSaveDeliveryDetail
-            // 
-            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("SaveButtonEnabled", this.supplierDeliveryViewModelBindingSource, "SaveDeliveryEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ucSaveDeliveryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucSaveDeliveryDetail.Location = new System.Drawing.Point(335, 556);
-            this.ucSaveDeliveryDetail.Margin = new System.Windows.Forms.Padding(5);
-            this.ucSaveDeliveryDetail.Name = "ucSaveDeliveryDetail";
-            this.ucSaveDeliveryDetail.SaveButtonEnabled = false;
-            this.ucSaveDeliveryDetail.Size = new System.Drawing.Size(105, 54);
-            this.ucSaveDeliveryDetail.TabIndex = 38;
-            // 
-            // CostNumericControl
-            // 
-            this.CostNumericControl.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.supplierDeliveryViewModelBindingSource, "Cost", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
-            this.CostNumericControl.Enabled = false;
-            this.CostNumericControl.Location = new System.Drawing.Point(164, 22);
-            this.CostNumericControl.Margin = new System.Windows.Forms.Padding(5);
-            this.CostNumericControl.Name = "CostNumericControl";
-            this.CostNumericControl.Numeric = 0D;
-            this.CostNumericControl.Size = new System.Drawing.Size(141, 27);
-            this.CostNumericControl.TabIndex = 15;
-            this.CostNumericControl.Visible = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -273,13 +237,13 @@
             // StatusComboBox
             // 
             this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierDeliveryViewModelBindingSource, "Status", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.supplierDeliveryViewModelBindingSource, "Status", true));
             this.StatusComboBox.FormattingEnabled = true;
             this.StatusComboBox.Location = new System.Drawing.Point(163, 86);
             this.StatusComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(271, 24);
             this.StatusComboBox.TabIndex = 19;
-            this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -340,17 +304,6 @@
             this.DeliveryDateDtp.Name = "DeliveryDateDtp";
             this.DeliveryDateDtp.Size = new System.Drawing.Size(149, 22);
             this.DeliveryDateDtp.TabIndex = 13;
-            // 
-            // SupplierAutoComplete
-            // 
-            this.SupplierAutoComplete.AutoCompleteValue = "";
-            this.SupplierAutoComplete.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.supplierDeliveryViewModelBindingSource, "Supplier", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SupplierAutoComplete.Location = new System.Drawing.Point(164, 16);
-            this.SupplierAutoComplete.Margin = new System.Windows.Forms.Padding(5);
-            this.SupplierAutoComplete.Name = "SupplierAutoComplete";
-            this.SupplierAutoComplete.Size = new System.Drawing.Size(269, 26);
-            this.SupplierAutoComplete.TabIndex = 9;
-            this.SupplierAutoComplete.Leave += new System.EventHandler(this.SupplierAutoComplete_Leave);
             // 
             // DeliveryDateLabel
             // 
@@ -430,6 +383,7 @@
             // lblStockNumber
             // 
             this.lblStockNumber.AutoSize = true;
+            this.lblStockNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierDeliveryViewModelBindingSource, "SelectedStockNumber", true));
             this.lblStockNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStockNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockNumber.Location = new System.Drawing.Point(0, 0);
@@ -467,6 +421,52 @@
             this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 15;
             // 
+            // userControlSelectProduct1
+            // 
+            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.supplierDeliveryViewModelBindingSource, "ProductDetailEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.userControlSelectProduct1.Location = new System.Drawing.Point(5, 331);
+            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
+            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 227);
+            this.userControlSelectProduct1.TabIndex = 25;
+            // 
+            // supplierDeliveryViewModelBindingSource
+            // 
+            this.supplierDeliveryViewModelBindingSource.DataSource = typeof(SGInventory.Views.UIModel.SupplierDeliveryViewModel);
+            // 
+            // ucSaveDeliveryDetail
+            // 
+            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("SaveButtonEnabled", this.supplierDeliveryViewModelBindingSource, "SaveDeliveryEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ucSaveDeliveryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucSaveDeliveryDetail.Location = new System.Drawing.Point(335, 556);
+            this.ucSaveDeliveryDetail.Margin = new System.Windows.Forms.Padding(5);
+            this.ucSaveDeliveryDetail.Name = "ucSaveDeliveryDetail";
+            this.ucSaveDeliveryDetail.SaveButtonEnabled = false;
+            this.ucSaveDeliveryDetail.Size = new System.Drawing.Size(105, 54);
+            this.ucSaveDeliveryDetail.TabIndex = 38;
+            // 
+            // CostNumericControl
+            // 
+            this.CostNumericControl.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.supplierDeliveryViewModelBindingSource, "Cost", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
+            this.CostNumericControl.Enabled = false;
+            this.CostNumericControl.Location = new System.Drawing.Point(164, 22);
+            this.CostNumericControl.Margin = new System.Windows.Forms.Padding(5);
+            this.CostNumericControl.Name = "CostNumericControl";
+            this.CostNumericControl.Numeric = 0D;
+            this.CostNumericControl.Size = new System.Drawing.Size(141, 27);
+            this.CostNumericControl.TabIndex = 15;
+            this.CostNumericControl.Visible = false;
+            // 
+            // SupplierAutoComplete
+            // 
+            this.SupplierAutoComplete.AutoCompleteValue = "";
+            this.SupplierAutoComplete.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.supplierDeliveryViewModelBindingSource, "Supplier", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SupplierAutoComplete.Location = new System.Drawing.Point(164, 16);
+            this.SupplierAutoComplete.Margin = new System.Windows.Forms.Padding(5);
+            this.SupplierAutoComplete.Name = "SupplierAutoComplete";
+            this.SupplierAutoComplete.Size = new System.Drawing.Size(269, 26);
+            this.SupplierAutoComplete.TabIndex = 9;
+            this.SupplierAutoComplete.Leave += new System.EventHandler(this.SupplierAutoComplete_Leave);
+            // 
             // SupplierDeliveryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -484,7 +484,6 @@
             this.panel4.ResumeLayout(false);
             this.ProductGroupBox.ResumeLayout(false);
             this.ProductGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierDeliveryViewModelBindingSource)).EndInit();
             this.gbDamageDetail.ResumeLayout(false);
             this.gbDamageDetail.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -498,6 +497,7 @@
             this.panel5.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierDeliveryViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

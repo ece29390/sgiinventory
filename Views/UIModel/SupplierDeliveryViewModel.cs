@@ -48,7 +48,7 @@ namespace SGInventory.Views.UIModel
         public DateTime DeliveryDate { get; set; }
         public double Cost { get; set; }
         public int Quantity { get; set; }
-
+        public string SelectedStockNumber { get; set; }
         public ProductStatus? Status
         {
             get { return _status; }
@@ -139,6 +139,6 @@ namespace SGInventory.Views.UIModel
         {
             EnableProductGroupBox();
             EnableProductDetail();
-        }
+        }       
     }
 }

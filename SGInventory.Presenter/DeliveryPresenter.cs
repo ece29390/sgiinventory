@@ -55,10 +55,9 @@ namespace SGInventory.Presenters
             , IColorBusinessModel colorBusinessModel
             , ISizeBusinessModel sizeBusinessModel
             , IWashingBusinessModel washingBusinessModel
-            , IDeliveryBusinessModel deliveryBusinessModel
-            , bool useScanner
+            , IDeliveryBusinessModel deliveryBusinessModel          
             , SupplierDeliveryViewModel viewModel
-            ):base(productBusinessModel,productDetailBusinessModel,colorBusinessModel,sizeBusinessModel,washingBusinessModel, deliveryPresenterView,useScanner)
+            ):base(productBusinessModel,productDetailBusinessModel,colorBusinessModel,sizeBusinessModel,washingBusinessModel, deliveryPresenterView,true)
         {          
             _deliveryPresenterView = deliveryPresenterView;
             _supplierBusinessModel = supplierBusinessModel;
@@ -180,132 +179,12 @@ namespace SGInventory.Presenters
             _deliveryPresenterView.LoadDelivery(delivery.DeliveryDetails[lastIndex]);
             _deliveryPresenterView.ShowMessage(message);            
         }
-
-        private string GetDamageNameByCode(int enumValue)
-        {
-            var damage=Damage.Others;
-            switch (enumValue)
-            {
-                case (int)Damage.Fabric:
-                    damage = Damage.Fabric;
-                    break;
-                case (int)Damage.Holes:
-                    damage = Damage.Holes;
-                    break;
-                case (int)Damage.Stain:
-                    damage = Damage.Stain;
-                    break;
-                case (int)Damage.Washing:
-                    damage = Damage.Washing;
-                    break; 
-            }
-            return Enum.GetName(typeof(Damage), damage);
-        }
-
-        private int GetDamageNameByCode(string enumValue)
-        {
-            var damage =(int)Damage.Others;
-            switch (enumValue)
-            {
-                case "Fabric":
-                    damage =(int)Damage.Fabric;
-                    break;
-                case "Holes":
-                    damage = (int)Damage.Holes;
-                    break;
-                case "Stain":
-                    damage = (int)Damage.Stain;
-                    break;
-                case "Washing":
-                    damage = (int)Damage.Washing;
-                    break;
-            }
-            return damage;
-        }
-
-        private List<DeliveryDetail> GetDamageItem()
-        {
-            var deliveryDetailsDamages = Delivery.DeliveryDetails.Where(d => d.Status == (int)ProductStatus.Damaged).ToList();
-
-
-            var devieryDetailDamageByDescription = from delivery in deliveryDetailsDamages
-                                                   where delivery.Damage.HasValue
-                                                   group delivery by delivery.Damage.Value into description
-                                                   select new 
-                                                   { 
-                                                      Description=GetDamageNameByCode(description.Key)
-                                                   };
-
-            foreach (var deliveryDamage in devieryDetailDamageByDescription)
-            {
-                
-                DamageDescriptions.Add(deliveryDamage.Description);
-            }
-
-            return deliveryDetailsDamages;
-        }
-
-        private int GetFirstDamageQuantity(string code, int index, List<DeliveryDetail> deliveryDetailDamages,DataGridView grid)
-        {
-            var damageBySizeAndDescription = from delivery in deliveryDetailDamages
-                                             where delivery.Damage.HasValue &&
-                                                 delivery.Damage.Value.Equals(GetDamageNameByCode(code))
-                                             group delivery by delivery.ProductDetail.Size.Code into sizes
-                                             select new DeliveryGridModel
-                                             {
-                                                 ColorCode = "",
-                                                 Quantity = sizes.Sum(d => d.Quantity),
-                                                 SizeCode = sizes.Key,
-                                                 Status = ProductStatus.Damaged,
-                                                 StatusDescription = code
-                                             };
-
-            if (damageBySizeAndDescription.Count() > 0)
-            {
-                DamageDeliveryGridModelByDescription[code] = damageBySizeAndDescription.First<DeliveryGridModel>();
-                grid.Rows[index].Cells[DeliveryGridConstructor.ColumnTotal].Value = DamageDeliveryGridModelByDescription[code].Quantity;
-                return DamageDeliveryGridModelByDescription[code].Quantity;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        private int GetFirstGoodQuantity(string color, int index,DataGridView grid)
-        {
-            var totalQuantity = 0;
-            foreach (var size in SizeCodes)
-            {
-                var deliveryDetailsBySizeAndColor = from details in Delivery.DeliveryDetails
-                                                    where details.ProductDetail.Color.Name.Equals(color, StringComparison.InvariantCultureIgnoreCase)
-                                                    && details.ProductDetail.Size.Name.Equals(size, StringComparison.InvariantCultureIgnoreCase)
-                                                    group details by details.ProductDetail.Color.Name into newDetails
-                                                    select new DeliveryGridModel
-                                                    {
-                                                        ColorCode = newDetails.Key,
-                                                        Quantity = newDetails.Sum(d => d.Quantity),
-                                                        SizeCode = size,
-                                                        Status = ProductStatus.Goods,
-                                                        StatusDescription = ""
-                                                    };
-                if (deliveryDetailsBySizeAndColor.Count() > 0)
-                {
-                    DeliveryGridModelByHashCode[SgiHelper.GetHashCodeOfColorAndSize(color, size)] = deliveryDetailsBySizeAndColor.First<DeliveryGridModel>();
-                    grid.Rows[index].Cells[string.Format("col{0}", size)].Value = DeliveryGridModelByHashCode[SgiHelper.GetHashCodeOfColorAndSize(color, size)].Quantity;
-                    totalQuantity += DeliveryGridModelByHashCode[SgiHelper.GetHashCodeOfColorAndSize(color, size)].Quantity;
-                }
-
-            }
-            return totalQuantity;
-                            
-        }
-                                                  
+                                                                 
         public void SaveDelivery(SGInventory.Model.Delivery delivery)
         {
-            var supplierName = _deliveryPresenterView.GetSupplierName();
-            var drNumber = _deliveryPresenterView.GetOrNumber();
-            var deliveryDate = _deliveryPresenterView.GetDeliveryDate();
+            var supplierName = _viewModel.Supplier;
+            var drNumber = _viewModel.DrNumber;
+            var deliveryDate = _viewModel.DeliveryDate;
 
             var supplier = Suppliers.Where(s => s.Name == supplierName).First<Supplier>();
 
@@ -331,17 +210,9 @@ namespace SGInventory.Presenters
             var message = _deliveryBusinessModelHelper.SaveInTransaction(delivery);
 
             this.Delivery = delivery;
-
-            //if (!_deliveryPresenterView.UseScanner)
-            //{
+           
             _deliveryPresenterView.ShowMessage(message);
-            //}
-
-            if (DeliveryBusinessModel.DeliverySuccessfulMessage == message)
-            {
-                _deliveryPresenterView.ResetPreviousControlState();
-                
-            }                        
+                                        
         }
 
         public void StoreDeliveryDetailToDelivery(ref SGInventory.Model.Delivery delivery)
@@ -496,10 +367,8 @@ namespace SGInventory.Presenters
             }
 
             var message = _deliveryBusinessModelHelper.SaveDeliveryDetail(deliveryDetail);
-
-            _deliveryPresenterView.EnableSaveDeliveryDetailButton(false);
-            _deliveryPresenterView.ResetPreviousControlState();
-            _deliveryPresenterView.LoadDelivery(deliveryDetail);
+                  
+          
 
         }
         
@@ -524,11 +393,10 @@ namespace SGInventory.Presenters
             LoadAllProductDetails();
             LoadProductStatus();
             LoadDamage();
-            OnSelectBarcodeSwitch();
+            
             if (_delivery != null)
             {
-                _deliveryPresenterView.EnableProductDetailsGroup(true);
-                _deliveryPresenterView.EnableSaveDeliveryButton(true);
+             
                
             }
 
@@ -740,7 +608,9 @@ namespace SGInventory.Presenters
             if (delivery.DeliveryDetails != null && delivery.DeliveryDetails.Count > 0)
             {
                 var stockNumber = delivery.DeliveryDetails.First().ProductDetail.Product.StockNumber;
-                _deliveryPresenterView.Stocknumber = stockNumber;
+                _viewModel.SelectedStockNumber = stockNumber;
+                _deliveryPresenterView.ResetViewBindings(true);
+             
             }
         }
 

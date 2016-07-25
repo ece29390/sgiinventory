@@ -92,11 +92,7 @@ namespace SGInventory.Presenters
         {
             Colors = _colorBusinessModel.SelectAll();
             Washings = _washingBusinessModel.SelectAll();
-            Sizes = _sizeBusinessModel.SelectAll();
-
-            _viewBase.LoadColors(Colors);
-            _viewBase.LoadSizes(Sizes);
-            _viewBase.LoadWashings(Washings);
+            Sizes = _sizeBusinessModel.SelectAll();          
         }
 
         public abstract void DisableOrEnableSaveDeliveryButton();

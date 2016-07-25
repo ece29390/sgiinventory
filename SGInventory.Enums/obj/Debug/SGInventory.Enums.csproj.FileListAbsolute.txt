@@ -16,4 +16,3 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\D
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Debug\SGInventory.Enums.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Debug\SGInventory.Enums.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Debug\SGInventory.Enums.pdb
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Debug\SGInventory.Enums.csprojResolveAssemblyReference.cache

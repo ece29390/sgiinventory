@@ -34,7 +34,7 @@ namespace SGInventory.Delivery
         private int _deliveryId;
         private SupplierDeliveryViewModel _viewModel;
 
-        public SupplierDeliveryForm(BusinessModelContainer container,int deliveryId,bool useScanner)
+        public SupplierDeliveryForm(BusinessModelContainer container,int deliveryId)
         {
             InitializeComponent();
             _deliveryId = deliveryId;            
@@ -53,7 +53,7 @@ namespace SGInventory.Delivery
                 , container.SizeBusinessModel
                 , container.WashingBusinessModel
                 , container.DeliveryBusinessModel
-                ,useScanner
+               
                 , _viewModel
                 );
             ucSaveDeliveryDetail.SaveButtonClick += new EventHandler<EventArgs>(ucSaveEditForm1_SaveButtonClick);
@@ -143,17 +143,17 @@ namespace SGInventory.Delivery
 
         public void LoadColors(List<Model.Color> list)
         {                  
-            _colors = list;
+        
         }
 
         public void LoadWashings(List<Model.Washing> list)
         {            
-            _washings = list;
+           
         }
 
         public void LoadSizes(List<Model.Size> list)
         {           
-            _sizes = list;
+            
         }
 
         private void DeliveryForm_Load(object sender, EventArgs e)
@@ -194,12 +194,7 @@ namespace SGInventory.Delivery
         {
             StatusComboBox.DataSource = list;
         }
-
-        private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
-      
+            
         private void SupplierAutoComplete_Leave(object sender, EventArgs e)
         {
             _presenter.SupplierDetailChange();
@@ -209,17 +204,7 @@ namespace SGInventory.Delivery
         {
             _presenter.SupplierDetailChange();
         }
-
-        private void QuantityNumericControl_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void StatusDescriptionTextbox_TextChanged(object sender, EventArgs e)
-        {
-            _presenter.DisableOrEnableSaveDeliveryDetailButton();
-        }
-
+      
         public string GetSupplierName()
         {
             return SupplierAutoComplete.AutoCompleteValue.Trim();
@@ -297,14 +282,7 @@ namespace SGInventory.Delivery
            
         }
 
-        public void ResetPreviousControlState()
-        {
-            QuantityTextbox.Text = "1";
-            QuantityTextbox.Focus();
-            StatusDescriptionTextbox.Clear();           
-            CostNumericControl.Numeric = 0.0;
-            StatusDescriptionTextbox.Clear();
-        }
+       
 
         public Model.Size GetSelectedSize()
         {
@@ -344,11 +322,7 @@ namespace SGInventory.Delivery
           
         }
 
-        private void cboDamageStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            _presenter.SelectDamage((Damage)cboDamageStatus.SelectedItem);
-            _presenter.DisableOrEnableSaveDeliveryDetailButton();
-        }
+       
 
         public void ShouldEnableStatusDescription(bool isEnable)
         {
@@ -573,7 +547,12 @@ namespace SGInventory.Delivery
         {
             userControlSelectProduct1.LoadResult(result);
         }
-      
+
+        public void ResetViewBindings(bool resetBindings)
+        {
+            supplierDeliveryViewModelBindingSource.ResetBindings(resetBindings);
+        }
+
         public void SetWashingCode(string washing)
         {
            

@@ -183,7 +183,7 @@ namespace SGInventory.Forms
         {
             MenuItemOnClick(sender, e, (tag) => {
                 var useScanner = tag=="Scan"?true:false;
-                Form form = new SupplierDeliveryForm(_container, 0, useScanner);
+                Form form = new SupplierDeliveryForm(_container, 0);
                 return form;                
             });
         }

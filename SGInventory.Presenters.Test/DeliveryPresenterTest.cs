@@ -59,8 +59,7 @@ namespace SGInventory.Presenters.Test
                 ,_colorMock.Object
                 ,_sizeMock.Object
                 ,_washingMock.Object
-                ,_deliveryBusinessMock.Object
-                ,true
+                ,_deliveryBusinessMock.Object             
                 ,null
                 );
         }
@@ -584,7 +583,7 @@ namespace SGInventory.Presenters.Test
            // _mockPresenterView.SetupGet(v => v.UseScanner).Returns(false);
             _mockPresenterView.Setup(v => v.ShowMessage(DeliveryBusinessModel.DeliveryDetailSuccessfulMessage));
             _mockPresenterView.Setup(v => v.LoadDelivery(It.IsAny<DeliveryDetail>()));
-            _mockPresenterView.Setup(v => v.ResetPreviousControlState());
+           
             _mockPresenterView.Setup(v => v.EnableSaveDeliveryDetailButton(false));
             _presenter.SaveDeliveryDetail(deliveryDetails);
 
@@ -621,7 +620,7 @@ namespace SGInventory.Presenters.Test
             _deliveryBusinessMock.Setup(v => v.SaveDeliveryDetail(It.IsAny<DeliveryDetail>())).Returns(DeliveryBusinessModel.DeliveryDetailSuccessfulMessage);
             _mockPresenterView.Setup(v => v.ShowMessage(DeliveryBusinessModel.DeliveryDetailSuccessfulMessage));
             _mockPresenterView.Setup(v => v.LoadDelivery(It.IsAny<DeliveryDetail>()));
-            _mockPresenterView.Setup(v => v.ResetPreviousControlState());
+        
             _mockPresenterView.Setup(v => v.EnableSaveDeliveryDetailButton(false));
             _presenter.SaveDeliveryDetail(deliveryDetails);
 
@@ -658,8 +657,7 @@ namespace SGInventory.Presenters.Test
             _deliveryBusinessMock.Setup(v => v.SaveDeliveryDetail(It.IsAny<DeliveryDetail>())).Returns(DeliveryBusinessModel.DeliveryDetailSuccessfulMessage);
             _mockPresenterView.Setup(v => v.ShowMessage(DeliveryBusinessModel.DeliveryDetailSuccessfulMessage));
             _mockPresenterView.Setup(v => v.LoadDelivery(It.IsAny<DeliveryDetail>()));
-            _mockPresenterView.Setup(v => v.ResetPreviousControlState());
-            //_mockPresenterView.SetupGet(v => v.UseScanner).Returns(false);
+          
             _mockPresenterView.Setup(v => v.EnableSaveDeliveryDetailButton(false));
             _presenter.SaveDeliveryDetail(deliveryDetails);
 

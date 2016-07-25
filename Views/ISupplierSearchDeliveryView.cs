@@ -21,7 +21,7 @@ namespace SGInventory.Views
         
         Delivery GetSelectedDelivery(int selectedRow);
 
-        void OpenSupplierDeliveryEditForm(Delivery delivery,bool useScanner);
+        void OpenSupplierDeliveryEditForm(Delivery delivery);
 
         void EnableSearchButton(bool p);
         
