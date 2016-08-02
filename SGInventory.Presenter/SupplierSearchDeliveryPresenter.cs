@@ -81,7 +81,7 @@ namespace SGInventory.Presenters
             
         }
 
-        public void LoadSelectedDelivery(int selectedIndex, bool useScanner)
+        public void LoadSelectedDelivery(int selectedIndex)
         {
             var delivery = _supplierSearchDeliveryView.GetSelectedDelivery(selectedIndex);
             _supplierSearchDeliveryView.OpenSupplierDeliveryEditForm(delivery);

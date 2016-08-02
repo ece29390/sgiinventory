@@ -112,9 +112,9 @@ namespace SGInventory.Delivery
           
         public void LoadDelivery(Model.Delivery delivery)
         {
-            SupplierAutoComplete.AutoCompleteValue = delivery.Supplier.Name;
-            OrTextbox.Text = delivery.OrNumber;
-            DeliveryDateDtp.Value = delivery.DeliveryDate;
+            _viewModel.DrNumber = delivery.OrNumber;
+            _viewModel.DeliveryDate = delivery.DeliveryDate;
+            _viewModel.Supplier = delivery.Supplier.Name;
 
             _presenter.BuildDeliveryInPanel(delivery, gvDeliveryDetails);
             
@@ -162,12 +162,7 @@ namespace SGInventory.Delivery
             {
                 _delivery = _container.DeliveryBusinessModel.SelectByPrimaryId(_deliveryId);
             }
-            _presenter.InitialLoad(_delivery);
-
-            if (_delivery != null)
-            {
-                LoadDelivery(_delivery);
-            }
+            _presenter.InitialLoad(_delivery);         
         }
         
         public string GetColorCode()

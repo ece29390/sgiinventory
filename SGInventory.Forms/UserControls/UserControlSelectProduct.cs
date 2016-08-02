@@ -64,7 +64,7 @@ namespace SGInventory.UserControls
             var productDetailLookupModels = new List<ProductDetailLookupModel>();
             result.ForEach(prodDetail => productDetailLookupModels.Add(new ProductDetailLookupModel
                 {ProductCode = prodDetail.Code
-                ,Description = prodDetail.Code//string.Format("{0}(Color:{1} Washing:{2} Size:{3})",prodDetail.Product.StockNumber,prodDetail.Color.Name,prodDetail.Washing.Name,prodDetail.Size.Name)
+                ,Description = string.Format("Stock #:{0} Color:{1} Size:{2}",prodDetail.Product.StockNumber,prodDetail.Color.Name,prodDetail.Size.Name)
                 ,Cost = ((prodDetail.OverrideCost.HasValue)&&(prodDetail.OverrideCost.Value!=prodDetail.Product.Cost))?prodDetail.OverrideCost.Value:prodDetail.Product.Cost
                 }));
             listBoxProductDetails.DataSource = productDetailLookupModels;          
@@ -75,10 +75,24 @@ namespace SGInventory.UserControls
         {
             if (e.KeyChar == '\r' && OnManuallySelected != null)
             {
-                var args = new ScanCodeArgs(false,SelectedProductDetails.ProductCode);
-                OnManuallySelected(sender, args);
-                textBoxCode.Focus();
+                TriggerManuallySelected(sender);
             }
-        }        
+        }
+
+        private void listBoxProductDetails_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var index = listBoxProductDetails.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches && OnManuallySelected!=null)
+            {
+                TriggerManuallySelected(sender);
+            }
+        }
+
+        private void TriggerManuallySelected(object sender)
+        {
+            var args = new ScanCodeArgs(false, SelectedProductDetails.ProductCode);
+            OnManuallySelected(sender, args);
+            textBoxCode.Focus();
+        }
     }
 }

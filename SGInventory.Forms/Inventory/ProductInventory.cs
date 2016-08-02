@@ -122,7 +122,7 @@ namespace SGInventory.Inventory
                 if (name == ColumnViewHistoryKey)
                 {
                     var productInventoryView = (ProductInventoryView)dgvInventoryStock.Rows[e.RowIndex].DataBoundItem;
-                    var form = new ViewHistory(productInventoryView.ProductDetailCode,_container);
+                    var form = new ViewHistory(productInventoryView,_container);
                     form.OnFormClosing += new EventHandler(form_OnFormClosing);
                     form.ShowDialog();
                 }

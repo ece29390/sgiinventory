@@ -396,7 +396,7 @@ namespace SGInventory.Presenters
             
             if (_delivery != null)
             {
-             
+               _deliveryPresenterView.LoadDelivery(_delivery);
                
             }
 

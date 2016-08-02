@@ -181,8 +181,7 @@ namespace SGInventory.Forms
 
         private void DeliveryToWarehouse_Click(object sender, EventArgs e)
         {
-            MenuItemOnClick(sender, e, (tag) => {
-                var useScanner = tag=="Scan"?true:false;
+            MenuItemOnClick(sender, e, (tag) => {            
                 Form form = new SupplierDeliveryForm(_container, 0);
                 return form;                
             });

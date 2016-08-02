@@ -76,7 +76,6 @@
             this.ucAutoComplete1.Name = "ucAutoComplete1";
             this.ucAutoComplete1.Size = new System.Drawing.Size(366, 22);
             this.ucAutoComplete1.TabIndex = 1;
-            
             // 
             // label1
             // 
@@ -84,7 +83,7 @@
             this.label1.Location = new System.Drawing.Point(4, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 15);
+            this.label1.Size = new System.Drawing.Size(108, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Stock Number:";
             // 
@@ -169,7 +168,7 @@
             // 
             // ProductInventory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 550);
             this.Controls.Add(this.panel2);
@@ -179,6 +178,7 @@
             this.Name = "ProductInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product Inventory";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ProductInventory_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

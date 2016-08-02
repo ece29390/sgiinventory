@@ -72,15 +72,17 @@
             // 
             this.listBoxProductDetails.DataSource = this.productDetailLookupModelBindingSource;
             this.listBoxProductDetails.DisplayMember = "Description";
+            this.listBoxProductDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxProductDetails.FormattingEnabled = true;
-            this.listBoxProductDetails.ItemHeight = 20;
+            this.listBoxProductDetails.ItemHeight = 17;
             this.listBoxProductDetails.Location = new System.Drawing.Point(6, 25);
             this.listBoxProductDetails.Name = "listBoxProductDetails";
-            this.listBoxProductDetails.Size = new System.Drawing.Size(415, 164);
+            this.listBoxProductDetails.Size = new System.Drawing.Size(415, 157);
             this.listBoxProductDetails.TabIndex = 0;
             this.listBoxProductDetails.ValueMember = "ProductCode";
             this.listBoxProductDetails.SelectedValueChanged += new System.EventHandler(this.listBoxProductDetails_SelectedValueChanged);
             this.listBoxProductDetails.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBoxProductDetails_KeyPress);
+            this.listBoxProductDetails.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxProductDetails_MouseDoubleClick);
             // 
             // productDetailLookupModelBindingSource
             // 

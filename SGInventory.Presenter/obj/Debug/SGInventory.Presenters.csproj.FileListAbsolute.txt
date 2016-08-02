@@ -143,5 +143,3 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\o
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Debug\SGInventory.Presenters.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Debug\SGInventory.Presenters.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Debug\SGInventory.Presenters.pdb
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Debug\SGInventory.Presenters.pssym
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Debug\SGInventory.Presenters.dll.postsharp

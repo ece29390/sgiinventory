@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SGInventory.DAL;
 using SGInventory.Model;
 using SGInventory.Enums;
 
@@ -14,13 +15,13 @@ namespace SGInventory.Inventory
     public partial class ViewHistory : Form
     {
         public event EventHandler OnFormClosing;
-        private string _code;
+        private readonly ProductInventoryView _productInventoryView;
         private BusinessModelContainer _container;       
         private Adjustment _adjustmentForm;
-        public ViewHistory(string code,BusinessModelContainer container)
+        public ViewHistory(ProductInventoryView productInventoryView, BusinessModelContainer container)
         {
             InitializeComponent();
-            _code = code;
+            _productInventoryView = productInventoryView;
             _container = container;
             dgViewHistory.AutoGenerateColumns = false;
             
@@ -31,13 +32,18 @@ namespace SGInventory.Inventory
             dtpFrom.Value = DateTime.Now.AddMonths(-3);
             dtpTo.Value = DateTime.Now;
             InitializeAdjustmentProductForm();
-
+            Text = string.Format("{0} of Stock Number:[{1}] Color:[{2}] Size:[{3}]",
+                Text
+                ,_productInventoryView.StockNumber
+                , _productInventoryView.ColorName
+                , _productInventoryView.SizeName
+                );
             LoadTransactionBySearchDate(dtpFrom.Value, dtpTo.Value);
         }
 
         public void InitializeAdjustmentProductForm()
         {            
-            _adjustmentForm = new Adjustment(_code, _container);
+            _adjustmentForm = new Adjustment(_productInventoryView.ProductDetailCode, _container);
             _adjustmentForm.OnDelete += new EventHandler(_adjustmentForm_OnDelete);
             _adjustmentForm.OnSave += new EventHandler(_adjustmentForm_OnSave);
         }
@@ -71,7 +77,7 @@ namespace SGInventory.Inventory
             var finalFrom = Convert.ToDateTime(string.Concat(from.ToShortDateString(), " ", "12:00:00 AM"));
             var finalTo = Convert.ToDateTime(string.Concat(to.ToShortDateString(), " ", "11:59:59 PM"));
 
-            var deliveryFromSupplier = _container.DeliveryBusinessModel.GetDeliveryDetailBy(_code, finalFrom, finalTo, true);
+            var deliveryFromSupplier = _container.DeliveryBusinessModel.GetDeliveryDetailBy(_productInventoryView.ProductDetailCode, finalFrom, finalTo, true);
             historyReportSuppliers = deliveryFromSupplier.Select(ds =>
                 new ViewHistoryReport
                 {
@@ -84,7 +90,7 @@ namespace SGInventory.Inventory
                     ,EntityId = ds.Id
                 }).ToList();
 
-            var deliveryToOutlet = _container.DeliveryToOutletBusinessModel.GetDeliveryToOutletDetailBy(_code, finalFrom, finalTo, true);
+            var deliveryToOutlet = _container.DeliveryToOutletBusinessModel.GetDeliveryToOutletDetailBy(_productInventoryView.ProductDetailCode, finalFrom, finalTo, true);
             historyReportOutlets = deliveryToOutlet.Select(ds =>
                 new ViewHistoryReport
                 {

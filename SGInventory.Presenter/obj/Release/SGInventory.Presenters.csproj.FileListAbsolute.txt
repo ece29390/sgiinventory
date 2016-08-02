@@ -88,8 +88,6 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\b
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Release\FluentNHibernate.xml
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Release\SGInventory.CustomEventArgs.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Release\Iesi.Collections.xml
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\bin\Release\SGInventory.Presenters.pssym
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Release\SGInventory.Presenters.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Release\SGInventory.Presenters.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Release\SGInventory.Presenters.pdb
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Presenter\obj\Release\SGInventory.Presenters.dll.postsharp

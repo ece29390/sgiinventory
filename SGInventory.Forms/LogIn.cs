@@ -55,5 +55,13 @@ namespace SGInventory
         {
             this.Close();
         }
+
+        private void LogIn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginButton_Click(sender,e);
+            }
+        }
     }
 }

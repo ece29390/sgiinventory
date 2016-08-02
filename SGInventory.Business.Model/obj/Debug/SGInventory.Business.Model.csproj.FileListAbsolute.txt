@@ -98,5 +98,3 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Mo
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Debug\SGInventory.Business.Model.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Debug\SGInventory.Business.Model.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Debug\SGInventory.Business.Model.pdb
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Debug\SGInventory.Business.Model.pssym
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Debug\SGInventory.Business.Model.dll.postsharp

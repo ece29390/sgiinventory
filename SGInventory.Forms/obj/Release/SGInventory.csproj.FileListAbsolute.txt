@@ -282,3 +282,4 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\obj\R
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\obj\Release\RdlCompile.compiled
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\obj\Release\SGInventory.exe
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\obj\Release\SGInventory.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Forms\obj\Release\SGInventory.UserControls.UserControlSelectProduct.resources

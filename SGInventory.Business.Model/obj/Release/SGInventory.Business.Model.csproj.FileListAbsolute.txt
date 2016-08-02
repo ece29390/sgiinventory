@@ -70,8 +70,6 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Mo
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Release\NHibernate.xml
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Release\FluentNHibernate.xml
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Release\Iesi.Collections.xml
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\bin\Release\SGInventory.Business.Model.pssym
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Release\SGInventory.Business.Model.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Release\SGInventory.Business.Model.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Release\SGInventory.Business.Model.pdb
-C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Business.Model\obj\Release\SGInventory.Business.Model.dll.postsharp
