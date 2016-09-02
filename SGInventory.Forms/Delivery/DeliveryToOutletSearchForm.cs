@@ -117,10 +117,10 @@ namespace SGInventory.Delivery
             var retValue = (DeliveryToOutlet)gvDeliveries.Rows[selectedIndex].DataBoundItem;
             return retValue;
         }
-
-        public void OpenDeliveryToOutletEditForm(DeliveryToOutlet deliveryToOutlet,bool useScanner,ProductStatus status)
+        
+        public void OpenDeliveryToOutletEditForm(DeliveryToOutlet deliveryToOutlet)
         {
-            var form = new DeliveryToOutletForm(_container, deliveryToOutlet.PackingListNumber,useScanner,status);
+            var form = new DeliveryToOutletForm(_container, deliveryToOutlet.PackingListNumber);
             form.ShowDialog();
         }
 

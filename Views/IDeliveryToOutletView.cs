@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SGInventory.Enums;
 
 namespace SGInventory.Views
 {
@@ -36,5 +37,7 @@ namespace SGInventory.Views
         void EnableProductDetailsGroup(bool shouldEnable);
 
         string GetStoreName();
+
+        void LoadProductStatusIntoForm(List<ProductStatus> list);
     }
 }

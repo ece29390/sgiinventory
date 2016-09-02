@@ -655,6 +655,7 @@
     <None Include="Properties\DataSources\SGInventory.Model.Sales.datasource" />
     <None Include="Properties\DataSources\SGInventory.Presenters.Model.ProductDetailLookupModel.datasource" />
     <None Include="Properties\DataSources\SGInventory.Presenters.Model.SalesDisplayModel.datasource" />
+    <None Include="Properties\DataSources\SGInventory.Views.UIModel.DeliveryToOutletViewModel.datasource" />
     <None Include="Properties\DataSources\SGInventory.Views.UIModel.SupplierDeliveryViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

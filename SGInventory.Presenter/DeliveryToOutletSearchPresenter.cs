@@ -130,7 +130,7 @@ namespace SGInventory.Presenters
         {
             var deliveryToOutlet = _deliveryToOutletSearchView.GetSelectedDeliveryToOutlet(selectedIndex);
             var productStatus = (ProductStatus)Enum.ToObject(typeof(ProductStatus), deliveryToOutlet.DeliveryToOutletDetails.First().Status);
-            _deliveryToOutletSearchView.OpenDeliveryToOutletEditForm(deliveryToOutlet, useScanner, productStatus);
+            _deliveryToOutletSearchView.OpenDeliveryToOutletEditForm(deliveryToOutlet);
         }
 
         public void OnSelectedSearchModeChange(DeliveryToOutletSearchMode deliveryToOutletMode)

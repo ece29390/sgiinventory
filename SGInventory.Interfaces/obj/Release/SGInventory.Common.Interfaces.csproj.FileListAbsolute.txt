@@ -12,3 +12,4 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\bin\Release\SGInventory.Common.Interfaces.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.pdb
+C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Interfaces\obj\Release\SGInventory.Common.Interfaces.csprojResolveAssemblyReference.cache

@@ -35,12 +35,6 @@
             this.viewDeliveriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releasingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewDeliveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.goodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.damageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.goodToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.damageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDeliveriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,66 +125,11 @@
             // 
             // createNewDeliveryToolStripMenuItem
             // 
-            this.createNewDeliveryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scanToolStripMenuItem1,
-            this.manualToolStripMenuItem1});
             this.createNewDeliveryToolStripMenuItem.Name = "createNewDeliveryToolStripMenuItem";
             this.createNewDeliveryToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
             this.createNewDeliveryToolStripMenuItem.Tag = "NewDelivery";
             this.createNewDeliveryToolStripMenuItem.Text = "Create New Delivery";
             this.createNewDeliveryToolStripMenuItem.Click += new System.EventHandler(this.releasingToolStripMenuItem_Click);
-            // 
-            // scanToolStripMenuItem1
-            // 
-            this.scanToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.goodToolStripMenuItem,
-            this.damageToolStripMenuItem});
-            this.scanToolStripMenuItem1.Name = "scanToolStripMenuItem1";
-            this.scanToolStripMenuItem1.Size = new System.Drawing.Size(127, 24);
-            this.scanToolStripMenuItem1.Tag = "Scan";
-            this.scanToolStripMenuItem1.Text = "Scan";
-            // 
-            // goodToolStripMenuItem
-            // 
-            this.goodToolStripMenuItem.Name = "goodToolStripMenuItem";
-            this.goodToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
-            this.goodToolStripMenuItem.Tag = "ScanGood";
-            this.goodToolStripMenuItem.Text = "Good";
-            this.goodToolStripMenuItem.Click += new System.EventHandler(this.DeliveryToOutlet_Click);
-            // 
-            // damageToolStripMenuItem
-            // 
-            this.damageToolStripMenuItem.Name = "damageToolStripMenuItem";
-            this.damageToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
-            this.damageToolStripMenuItem.Tag = "ScanDamage";
-            this.damageToolStripMenuItem.Text = "Damage";
-            this.damageToolStripMenuItem.Click += new System.EventHandler(this.DeliveryToOutlet_Click);
-            // 
-            // manualToolStripMenuItem1
-            // 
-            this.manualToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.goodToolStripMenuItem1,
-            this.damageToolStripMenuItem1});
-            this.manualToolStripMenuItem1.Name = "manualToolStripMenuItem1";
-            this.manualToolStripMenuItem1.Size = new System.Drawing.Size(127, 24);
-            this.manualToolStripMenuItem1.Tag = "Manual";
-            this.manualToolStripMenuItem1.Text = "Manual";
-            // 
-            // goodToolStripMenuItem1
-            // 
-            this.goodToolStripMenuItem1.Name = "goodToolStripMenuItem1";
-            this.goodToolStripMenuItem1.Size = new System.Drawing.Size(135, 24);
-            this.goodToolStripMenuItem1.Tag = "ManualGood";
-            this.goodToolStripMenuItem1.Text = "Good";
-            this.goodToolStripMenuItem1.Click += new System.EventHandler(this.DeliveryToOutlet_Click);
-            // 
-            // damageToolStripMenuItem1
-            // 
-            this.damageToolStripMenuItem1.Name = "damageToolStripMenuItem1";
-            this.damageToolStripMenuItem1.Size = new System.Drawing.Size(135, 24);
-            this.damageToolStripMenuItem1.Tag = "ManualDamage";
-            this.damageToolStripMenuItem1.Text = "Damage";
-            this.damageToolStripMenuItem1.Click += new System.EventHandler(this.DeliveryToOutlet_Click);
             // 
             // viewDeliveriesToolStripMenuItem1
             // 
@@ -413,12 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem storeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createNewDeliveryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewDeliveriesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem scanToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem goodToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem damageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem goodToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem damageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;

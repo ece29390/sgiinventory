@@ -21,7 +21,7 @@ namespace SGInventory.Views
 
         DeliveryToOutlet GetSelectedDeliveryToOutlet(int selectedIndex);
 
-        void OpenDeliveryToOutletEditForm(DeliveryToOutlet deliveryToOutlet,bool useScanner,ProductStatus status);
+        void OpenDeliveryToOutletEditForm(DeliveryToOutlet deliveryToOutlet);
 
         void EnableSearchButton(bool enable);
     }

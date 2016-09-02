@@ -176,6 +176,11 @@ namespace SGInventory.Forms
                     form = new DeliveryToOutletSearchForm(_container);
                     form.ShowDialog();
                     break;
+                case "NewDelivery":
+                    form = new DeliveryToOutletForm(_container, null);
+                    form.ShowDialog();
+                    break;
+
             }
         }
 
@@ -186,35 +191,7 @@ namespace SGInventory.Forms
                 return form;                
             });
         }
-
-
-
-        private void DeliveryToOutlet_Click(object sender, EventArgs e)
-        {
-            MenuItemOnClick(sender, e, (tag) =>
-            {
-                var useScanner = false;
-                var condition = ProductStatus.Goods;
-                switch (tag)
-                {
-                    case "ScanGood":
-                        useScanner = true;
-                        break;
-                    case "ScanDamage":
-                        condition = ProductStatus.Damaged;
-                        useScanner = true;
-                        break;
-                    case "ManualDamage":
-                        condition = ProductStatus.Damaged;                                                     
-                        break;
-                }
-
-                
-                Form form = new DeliveryToOutletForm(_container, null, useScanner,condition);
-                return form;
-            });
-        }
-
+      
         private void MenuItemOnClick(object sender, EventArgs e, Func<string,Form> loadForm)
         {
             var menuItem = sender as System.Windows.Forms.ToolStripMenuItem;

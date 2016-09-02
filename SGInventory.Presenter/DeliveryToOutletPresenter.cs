@@ -30,17 +30,15 @@ namespace SGInventory.Presenters
             , IColorBusinessModel colorBusinessModel
             , ISizeBusinessModel sizeBusinessModel
             , IWashingBusinessModel washingBusinessModel
-            ,IDeliveryBusinessModelHelper deliveryBusinessModelHelper
-            , bool useScanner
-            , ProductStatus status
-            ):base(productBusinessModel,productDetailBusinessModel,colorBusinessModel,sizeBusinessModel,washingBusinessModel, iDeliveryToOutletView,useScanner)
+            ,IDeliveryBusinessModelHelper deliveryBusinessModelHelper          
+            ):base(productBusinessModel,productDetailBusinessModel,colorBusinessModel,sizeBusinessModel,washingBusinessModel, iDeliveryToOutletView,false)
         {            
             this._iDeliveryToOutletBusinessModel = iDeliveryToOutletBusinessModel;
             this._iDeliveryToOutletView = iDeliveryToOutletView;
             this._outletBusinessModel = outletBusinessModel;
             this._productDetailBusinessModel = productDetailBusinessModel;
             _deliveryBusinessModelHelper = deliveryBusinessModelHelper;
-            Status = status;
+           
         }
 
         public void SaveDeliveryToOutlet(Action doAfterSave)
@@ -380,6 +378,14 @@ namespace SGInventory.Presenters
             {
                 _iDeliveryToOutletView.EnableProductDetailsGroup(false);
             }
+        }
+
+        public void LoadProductStatus()
+        {
+            var listOfStatus = SgiHelper.ConvertEnumToList<ProductStatus>(
+                                           () => Enum.GetValues(typeof(ProductStatus)),
+                                           (enumItem) => (ProductStatus)enumItem);
+            _iDeliveryToOutletView.LoadProductStatusIntoForm(listOfStatus);
         }
     }
 }
