@@ -52,8 +52,7 @@ namespace SGInventory.Delivery
                 , container.ColorBusinessModel
                 , container.SizeBusinessModel
                 , container.WashingBusinessModel
-                , container.DeliveryBusinessModel
-               
+                , container.DeliveryBusinessModel               
                 , _viewModel
                 );
             ucSaveDeliveryDetail.SaveButtonClick += new EventHandler<EventArgs>(ucSaveEditForm1_SaveButtonClick);

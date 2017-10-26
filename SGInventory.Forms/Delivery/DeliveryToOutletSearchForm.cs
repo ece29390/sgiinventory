@@ -57,9 +57,8 @@ namespace SGInventory.Delivery
         {
             if (e.RowIndex != -1)
             {
-                var dialogResult = MessageBox.Show("Do you like to open it in scan mode?", "Edit", MessageBoxButtons.YesNo);
-                var useScanner = dialogResult == DialogResult.Yes;
-                _presenter.LoadSelectedDelivery(e.RowIndex,useScanner);
+               
+                _presenter.LoadSelectedDelivery(e.RowIndex);
             }
 
         }

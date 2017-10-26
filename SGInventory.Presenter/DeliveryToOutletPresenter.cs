@@ -9,6 +9,7 @@ using SGInventory.Presenters.Model;
 using System.Windows.Forms;
 using SGInventory.Presenters.Utilities;
 using SGInventory.Enums;
+using SGInventory.Views.UIModel;
 
 namespace SGInventory.Presenters
 {
@@ -19,6 +20,7 @@ namespace SGInventory.Presenters
         private Business.Model.IOutletBusinessModel _outletBusinessModel;
         private Business.Model.IProductDetailBusinessModel _productDetailBusinessModel;
         private IDeliveryBusinessModelHelper _deliveryBusinessModelHelper;
+        private DeliveryToOutletViewModel _viewModel;
         public ProductStatus Status { get; private set; }
 
         public DeliveryToOutletPresenter(
@@ -30,7 +32,8 @@ namespace SGInventory.Presenters
             , IColorBusinessModel colorBusinessModel
             , ISizeBusinessModel sizeBusinessModel
             , IWashingBusinessModel washingBusinessModel
-            ,IDeliveryBusinessModelHelper deliveryBusinessModelHelper          
+            ,IDeliveryBusinessModelHelper deliveryBusinessModelHelper 
+            ,DeliveryToOutletViewModel viewModel
             ):base(productBusinessModel,productDetailBusinessModel,colorBusinessModel,sizeBusinessModel,washingBusinessModel, iDeliveryToOutletView,false)
         {            
             this._iDeliveryToOutletBusinessModel = iDeliveryToOutletBusinessModel;
@@ -38,7 +41,7 @@ namespace SGInventory.Presenters
             this._outletBusinessModel = outletBusinessModel;
             this._productDetailBusinessModel = productDetailBusinessModel;
             _deliveryBusinessModelHelper = deliveryBusinessModelHelper;
-           
+            _viewModel = viewModel;
         }
 
         public void SaveDeliveryToOutlet(Action doAfterSave)
@@ -84,10 +87,7 @@ namespace SGInventory.Presenters
         {
             LoadStores();
             LoadAllProductDetails();
-            //_iDeliveryToOutletView.CheckUseScannerAsDefault();
-            _iDeliveryToOutletView.EnableEditDeliveriesToOutlet(false);
-            _iDeliveryToOutletView.EnableSaveButton(false);
-            
+           
         }
 
         private void LoadStores()
@@ -161,7 +161,8 @@ namespace SGInventory.Presenters
       
         public void AddDeliveryToOutletDetail(Action doAfterAdd)
         {
-            var quantity = _iDeliveryToOutletView.GetQuantity();
+            var quantity = _viewModel.Quantity;
+            Status = (ProductStatus)_iDeliveryToOutletView.GetProductStatus();
 
             if (quantity == 0)
             {
@@ -177,22 +178,9 @@ namespace SGInventory.Presenters
                 return;
             }
 
+                       
+            var productCode = _iDeliveryToOutletView.GetStockNumber();
             
-            var doesSelectByProductCode = _iDeliveryToOutletView.GetSelectByProductCode();
-            var productCode = string.Empty;
-            if (doesSelectByProductCode)
-            {
-                productCode = _iDeliveryToOutletView.GetStockNumber();
-            }
-            else
-            {
-                productCode = SgiHelper.GetProductDetailCode(
-                    _iDeliveryToOutletView.GetStockNumber()
-                    , _iDeliveryToOutletView.GetColorCode()
-                    , _iDeliveryToOutletView.GetWashingCode()
-                    , _iDeliveryToOutletView.GetSizeCode());
-            }
-
             var productDetail = _productDetailBusinessModel.SelectByPrimaryId(productCode);
 
             if (productDetail == null)
@@ -364,7 +352,6 @@ namespace SGInventory.Presenters
             }
         }
 
-
         public void StoreDetailChange()
         {
             var storeName = _iDeliveryToOutletView.GetStoreName();
@@ -387,5 +374,26 @@ namespace SGInventory.Presenters
                                            (enumItem) => (ProductStatus)enumItem);
             _iDeliveryToOutletView.LoadProductStatusIntoForm(listOfStatus);
         }
+
+        public void LoadResultByCode(bool isBarcode, string productCode)
+        {
+            var result = LoadProductDetails(isBarcode, productCode);
+            if (result == null || (result != null && result.Count == 0))
+            {
+                _iDeliveryToOutletView.ShowMessage(string.Format("Code {0} not exists!", productCode));
+                return;
+            }
+
+              _iDeliveryToOutletView.LoadResultToView(result);   
+
+            if (isBarcode)
+            {
+                //TODO:If the product's barcode was scanned so obviously you need to automatically add the product into the grid
+                //the parenttodeliveryoutlet must be verified first if it is not yet assigned before
+                
+            }
+         
+                    
+        }           
     }
 }

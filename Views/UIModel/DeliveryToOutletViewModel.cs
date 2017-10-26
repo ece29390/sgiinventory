@@ -13,7 +13,7 @@ namespace SGInventory.Views.UIModel
         private string _drNumber;
         private int _quantity;
         private string _productCode;
-
+        
         public DeliveryToOutletViewModel()
         {
             DeliveryDate = DateTime.Now;
@@ -58,9 +58,8 @@ namespace SGInventory.Views.UIModel
         }
 
         public DateTime DeliveryDate { get; set; }
-
-        public ProductStatus Status { get; set; }
-
+        public int SelectedStatusIndex { get; set; }
+        public ProductStatus Status { get; set; }      
         public int Quantity
         {
             get { return _quantity; }

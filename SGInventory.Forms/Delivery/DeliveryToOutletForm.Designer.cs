@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpProductDetail = new System.Windows.Forms.GroupBox();
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.deliveryToOutletBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.txtQuantity = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.ucAutoCompleteStore = new SGInventory.UserControls.ucAutoComplete();
             this.panel1.SuspendLayout();
             this.grpProductDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveryToOutletBindingSource)).BeginInit();
             this.grpStore.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
@@ -84,7 +84,7 @@
             this.grpProductDetail.Controls.Add(this.label4);
             this.grpProductDetail.Controls.Add(this.ncSrpPrice);
             this.grpProductDetail.Controls.Add(this.label3);
-            this.grpProductDetail.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource1, "ProductDetailEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.grpProductDetail.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "ProductDetailEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.grpProductDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpProductDetail.Enabled = false;
             this.grpProductDetail.Location = new System.Drawing.Point(0, 117);
@@ -98,8 +98,8 @@
             // 
             // StatusComboBox
             // 
-            this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bindingSource1, "Status", true));
-            this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Status", true));
+            this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.deliveryToOutletBindingSource, "Status", true));
+            this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deliveryToOutletBindingSource, "Status", true));
             this.StatusComboBox.FormattingEnabled = true;
             this.StatusComboBox.Location = new System.Drawing.Point(159, 30);
             this.StatusComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -107,9 +107,9 @@
             this.StatusComboBox.Size = new System.Drawing.Size(271, 24);
             this.StatusComboBox.TabIndex = 16;
             // 
-            // bindingSource1
+            // deliveryToOutletBindingSource
             // 
-            this.bindingSource1.DataSource = typeof(SGInventory.Views.UIModel.DeliveryToOutletViewModel);
+            this.deliveryToOutletBindingSource.DataSource = typeof(SGInventory.Views.UIModel.DeliveryToOutletViewModel);
             // 
             // label5
             // 
@@ -124,7 +124,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource1, "AddProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.buttonAdd.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "AddProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.buttonAdd.Enabled = false;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,7 +139,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deliveryToOutletBindingSource, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtQuantity.Location = new System.Drawing.Point(159, 59);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Name = "txtQuantity";
@@ -190,7 +190,7 @@
             // 
             // dtpDateDelivered
             // 
-            this.dtpDateDelivered.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bindingSource1, "DeliveryDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dtpDateDelivered.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.deliveryToOutletBindingSource, "DeliveryDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.dtpDateDelivered.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDelivered.Location = new System.Drawing.Point(148, 81);
             this.dtpDateDelivered.Margin = new System.Windows.Forms.Padding(4);
@@ -212,13 +212,12 @@
             // 
             // txtDrNo
             // 
-            this.txtDrNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "DrNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtDrNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deliveryToOutletBindingSource, "DrNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtDrNo.Location = new System.Drawing.Point(148, 49);
             this.txtDrNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtDrNo.Name = "txtDrNo";
             this.txtDrNo.Size = new System.Drawing.Size(281, 22);
             this.txtDrNo.TabIndex = 12;
-            this.txtDrNo.TextChanged += new System.EventHandler(this.txtDrNo_TextChanged);
             // 
             // label1
             // 
@@ -268,7 +267,9 @@
             // 
             // msDeliveryToOutletTransaction
             // 
+            this.msDeliveryToOutletTransaction.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "ProductDetailEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.msDeliveryToOutletTransaction.Enabled = false;
+            this.msDeliveryToOutletTransaction.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.msDeliveryToOutletTransaction.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem,
             this.printToolStripMenuItem});
@@ -294,7 +295,7 @@
             // 
             // userControlSelectProduct1
             // 
-            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource1, "SelectProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "SelectProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.userControlSelectProduct1.Location = new System.Drawing.Point(6, 121);
             this.userControlSelectProduct1.Name = "userControlSelectProduct1";
             this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
@@ -302,7 +303,7 @@
             // 
             // ucSaveDeliveryDetail
             // 
-            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource1, "SaveProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("SaveButtonEnabled", this.deliveryToOutletBindingSource, "SaveProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ucSaveDeliveryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucSaveDeliveryDetail.Location = new System.Drawing.Point(326, 351);
             this.ucSaveDeliveryDetail.Margin = new System.Windows.Forms.Padding(5);
@@ -313,7 +314,7 @@
             // 
             // ncSrpPrice
             // 
-            this.ncSrpPrice.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.bindingSource1, "SrpPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ncSrpPrice.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.deliveryToOutletBindingSource, "SrpPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ncSrpPrice.Enabled = false;
             this.ncSrpPrice.Location = new System.Drawing.Point(159, 90);
             this.ncSrpPrice.Margin = new System.Windows.Forms.Padding(5);
@@ -325,7 +326,7 @@
             // ucAutoCompleteStore
             // 
             this.ucAutoCompleteStore.AutoCompleteValue = "";
-            this.ucAutoCompleteStore.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.bindingSource1, "Outlet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ucAutoCompleteStore.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.deliveryToOutletBindingSource, "Outlet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ucAutoCompleteStore.Location = new System.Drawing.Point(148, 20);
             this.ucAutoCompleteStore.Margin = new System.Windows.Forms.Padding(5);
             this.ucAutoCompleteStore.Name = "ucAutoCompleteStore";
@@ -351,7 +352,7 @@
             this.panel1.ResumeLayout(false);
             this.grpProductDetail.ResumeLayout(false);
             this.grpProductDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveryToOutletBindingSource)).EndInit();
             this.grpStore.ResumeLayout(false);
             this.grpStore.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -386,7 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private UserControls.UserControlSelectProduct userControlSelectProduct1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource deliveryToOutletBindingSource;
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.Label label5;
 

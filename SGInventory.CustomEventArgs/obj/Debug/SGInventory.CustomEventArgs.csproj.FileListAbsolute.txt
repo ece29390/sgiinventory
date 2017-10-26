@@ -24,3 +24,10 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.CustomEvent
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.pdb
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\bin\Debug\SGInventory.CustomEventArgs.dll
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\bin\Debug\SGInventory.CustomEventArgs.pdb
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\bin\Debug\SGInventory.Model.dll
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\bin\Debug\SGInventory.Model.pdb
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.csprojResolveAssemblyReference.cache
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.dll
+E:\SGInvetory_0623207\SGInventory.CustomEventArgs\obj\Debug\SGInventory.CustomEventArgs.pdb

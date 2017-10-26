@@ -1,0 +1,57 @@
+CREATE DATABASE  IF NOT EXISTS `sginventory` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `sginventory`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: sginventory
+-- ------------------------------------------------------
+-- Server version	5.7.11-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `color`
+--
+
+DROP TABLE IF EXISTS `color`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `color` (
+  `Code` varchar(10) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `CreatedDate` datetime NOT NULL,
+  `CreatedBy` varchar(20) NOT NULL,
+  `ModifiedDate` datetime DEFAULT NULL,
+  `ModifiedBy` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `color`
+--
+
+LOCK TABLES `color` WRITE;
+/*!40000 ALTER TABLE `color` DISABLE KEYS */;
+INSERT INTO `color` VALUES ('000','No Color','2013-06-14 01:05:21','admin',NULL,NULL),('001','Navy Blue','2013-06-14 01:04:53','admin','2013-06-14 01:05:15','admin'),('002','KHAKI','2013-07-20 14:58:12','admin',NULL,NULL),('003','White','2013-07-20 14:58:21','admin',NULL,NULL),('004','Black','2013-07-20 14:58:30','admin',NULL,NULL),('005','CEMENT','2013-07-20 14:58:40','admin',NULL,NULL),('006','CINDER','2013-07-20 14:58:50','admin',NULL,NULL),('007','GRIFFIN','2013-07-20 14:58:58','admin',NULL,NULL),('008','TAUPE','2013-07-20 14:59:06','admin',NULL,NULL),('009','RAIN CLOUD','2013-07-20 14:59:14','admin',NULL,NULL),('010','COFFEE','2013-07-20 14:59:22','admin',NULL,NULL),('011','MUSTANG','2013-07-20 14:59:33','admin',NULL,NULL),('012','OATMEAL','2013-07-20 14:59:41','admin',NULL,NULL),('013','STONE','2013-07-20 14:59:51','admin',NULL,NULL),('014','ARMY','2013-07-20 14:59:58','admin',NULL,NULL),('015','SPUR','2013-07-20 15:00:06','admin',NULL,NULL);
+/*!40000 ALTER TABLE `color` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-06-23 15:01:07

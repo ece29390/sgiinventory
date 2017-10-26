@@ -1,0 +1,59 @@
+CREATE DATABASE  IF NOT EXISTS `sginventory` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `sginventory`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: sginventory
+-- ------------------------------------------------------
+-- Server version	5.7.11-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `delivery`
+--
+
+DROP TABLE IF EXISTS `delivery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delivery` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `OrNumber` varchar(100) NOT NULL,
+  `DeliveryDate` datetime NOT NULL,
+  `Supplier` int(11) NOT NULL,
+  `CreatedBy` varchar(20) NOT NULL,
+  `CreatedDate` datetime NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `SupplierId_idx` (`Supplier`),
+  CONSTRAINT `SupplierId` FOREIGN KEY (`Supplier`) REFERENCES `supplier` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delivery`
+--
+
+LOCK TABLES `delivery` WRITE;
+/*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
+INSERT INTO `delivery` VALUES (9,'12345','2015-02-22 20:30:20',1,'admin','2015-02-22 20:30:37'),(10,'4566','2015-02-22 20:34:23',1,'admin','2015-02-22 20:34:59'),(11,'123455','2015-02-22 20:35:39',1,'admin','2015-02-22 20:36:11'),(12,'5677','2015-02-22 20:44:23',1,'admin','2015-02-22 20:45:01'),(13,'67890','2015-02-22 20:46:39',1,'admin','2015-02-22 20:47:08'),(14,'43535','2015-03-28 22:17:30',1,'admin','2015-03-28 22:17:47'),(15,'342','2015-04-18 00:06:42',1,'admin','2015-04-18 00:10:56'),(16,'7890','2015-04-18 00:15:44',1,'admin','2015-04-18 00:16:22'),(17,'232432','2015-11-05 18:14:30',1,'admin','2015-11-05 18:15:16'),(18,'345435','2016-07-25 21:11:17',1,'admin','2016-07-25 21:12:04'),(19,'345436','2016-07-25 21:22:17',1,'admin','2016-07-25 21:23:03'),(20,'456765645654','2016-12-05 18:22:20',1,'admin','2016-12-05 18:23:52'),(21,'2342','2016-12-05 18:29:31',1,'admin','2016-12-05 18:30:00'),(22,'45435435','2017-06-19 18:16:59',1,'admin','2017-06-19 18:17:34'),(23,'2343242','2017-06-21 10:52:05',1,'admin','2017-06-21 10:52:33');
+/*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-06-23 15:01:07

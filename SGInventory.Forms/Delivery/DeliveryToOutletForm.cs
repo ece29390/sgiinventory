@@ -12,6 +12,8 @@ using SGInventory.Helpers;
 using SGInventory.Enums;
 using System.Configuration;
 using System.Threading;
+using SGInventory.Views.UIModel;
+using SGInventory.Model;
 
 namespace SGInventory.Delivery
 {
@@ -20,10 +22,12 @@ namespace SGInventory.Delivery
         private BusinessModelContainer _container;
         private string _packingNumber;
         private DeliveryToOutletPresenter _presenter;
+        private DeliveryToOutletViewModel _viewModel;
 
         public DeliveryToOutletForm(BusinessModelContainer container, string packingNumber)
         {
             InitializeComponent();
+            _viewModel = new DeliveryToOutletViewModel();
 
             _container = container;
             _packingNumber = packingNumber;
@@ -38,7 +42,7 @@ namespace SGInventory.Delivery
                 , _container.SizeBusinessModel
                 , _container.WashingBusinessModel
                 , container.DeliveryBusinessModelHelper
-                
+                ,_viewModel
                 );
             InitializeEvents();
             ucSaveDeliveryDetail.Button.Text = "Save Delivery";
@@ -50,7 +54,7 @@ namespace SGInventory.Delivery
         {
            
             InitializeObjects();
-           
+                                  
             _presenter.InitializeControlsToDefaultState();
 
             if (!string.IsNullOrEmpty(_packingNumber))
@@ -59,16 +63,38 @@ namespace SGInventory.Delivery
             }
             _presenter.LoadProductStatus();
 
+            deliveryToOutletBindingSource.DataSource = _viewModel;
         }
 
         void userControlSelectProduct1_OnEnter(object sender, CustomEventArgs.ScanCodeArgs e)
         {
-            
+            _presenter.LoadResultByCode(e.IsBarCode, e.Code);
+
+            if (e.IsBarCode)
+            {
+                buttonAdd_Click(sender, e);
+                _viewModel.SaveProductEnable = true;
+                _viewModel.AddProductEnable = true;
+                deliveryToOutletBindingSource.ResetBindings(true);
+                
+            }            
+        }
+
+        void userControlSelectProduct1_OnManuallySelected(object sender, CustomEventArgs.ScanCodeArgs e)
+        {
+            buttonAdd_Click(sender, e);
+            _viewModel.ProductCode = e.Code;
+            _viewModel.SaveProductEnable = true;
+            deliveryToOutletBindingSource.ResetBindings(true);
         }
 
         public void LoadProductStatusIntoForm(List<Enums.ProductStatus> list)
         {
             StatusComboBox.DataSource = list;
+            if (list.Count > 0)
+            {
+                _viewModel.Status = list[0];
+            }
         }
 
         private void InitializeObjects()
@@ -78,15 +104,10 @@ namespace SGInventory.Delivery
 
             this.ParentDeliveryToOutlet = new Model.DeliveryToOutlet();
             this.SelectedDeliveryToOutletDetails = new List<Model.DeliveryToOutletDetail>();
-            txtQuantity.Text = "1";
+            _viewModel.Quantity = 1;
             
         }
-
-        void userControlSelectProduct1_OnManuallySelected(object sender, CustomEventArgs.ScanCodeArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private void InitializeEvents()
         {
             ucSaveDeliveryDetail.SaveButtonClick += new EventHandler<EventArgs>(ucSaveDeliveryDetail_SaveButtonClick);
@@ -130,13 +151,8 @@ namespace SGInventory.Delivery
             txtDrNo.Enabled = shouldEnable;
         }
 
-        public void LoadDeliveryToOutlet(Model.DeliveryToOutlet deliveryToOutlet)
-        {
-            ucAutoCompleteStore.AutoCompleteValue = deliveryToOutlet.Outlet.Name;
-            txtDrNo.Text = deliveryToOutlet.PackingListNumber;
-            txtDrNo.ReadOnly = true;
-            ucAutoCompleteStore.Enabled = false;
-            dtpDateDelivered.Enabled = false;
+        public void LoadDeliveryToOutlet()
+        {          
             msDeliveryToOutletTransaction.Enabled = true;
             _presenter.BuildProductDetailIntoPanel(dgvItem);
         }
@@ -297,7 +313,7 @@ namespace SGInventory.Delivery
 
         public bool GetSelectByProductCode()
         {
-            return false;
+            return true;
         }
 
         public void DisabledProductDetail(bool disable)
@@ -333,7 +349,7 @@ namespace SGInventory.Delivery
        
         public string GetStockNumber()
         {
-            return null;
+            return userControlSelectProduct1.SelectedProductDetails.ProductCode;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -341,7 +357,7 @@ namespace SGInventory.Delivery
             _presenter.AddDeliveryToOutletDetail(() => 
                 {
                     _presenter.BuildProductDetailIntoPanel(dgvItem);
-                    EnableSaveButton(true);
+                    //EnableSaveButton(true);
                 });            
         }
 
@@ -368,12 +384,7 @@ namespace SGInventory.Delivery
                 MessageBox.Show("Access denied!");
                 return;
             }
-
-            var form = new DeliveryToOutletEditForm(_container, ParentDeliveryToOutlet.Id);
-            form.OnUpdateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
-            form.OnDeactivateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
-            form.ShowDialog();
-
+        
             if (_editForm == null)
             {
                 _editForm = new DeliveryToOutletEditForm(_container, ParentDeliveryToOutlet.Id);
@@ -413,11 +424,7 @@ namespace SGInventory.Delivery
             _presenter.StoreDetailChange();
         }
 
-        private void txtDrNo_TextChanged(object sender, EventArgs e)
-        {
-            _presenter.StoreDetailChange();
-        }
-
+        
 
         public void EnableProductDetailsGroup(bool shouldEnable)
         {
@@ -439,6 +446,27 @@ namespace SGInventory.Delivery
         public void SetWashingCode(string washing)
         {
           
+        }
+
+
+        public void LoadResultToView(List<ProductDetails> result)
+        {
+            userControlSelectProduct1.LoadResult(result);
+        }
+
+        public object GetProductStatus()
+        {
+            return (ProductStatus)StatusComboBox.SelectedItem;
+        }
+
+        public void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet)
+        {
+            _viewModel.Outlet = deliveryToOutlet.Outlet.Name;
+            _viewModel.DrNumber = deliveryToOutlet.PackingListNumber;
+            _viewModel.DeliveryDate = deliveryToOutlet.DeliveryDate;
+            _presenter.BuildProductDetailIntoPanel(dgvItem);
+            
+           
         }
     }
 }

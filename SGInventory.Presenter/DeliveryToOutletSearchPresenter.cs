@@ -126,10 +126,9 @@ namespace SGInventory.Presenters
             return message;
         }
 
-        public void LoadSelectedDelivery(int selectedIndex,bool useScanner)
+        public void LoadSelectedDelivery(int selectedIndex)
         {
-            var deliveryToOutlet = _deliveryToOutletSearchView.GetSelectedDeliveryToOutlet(selectedIndex);
-            var productStatus = (ProductStatus)Enum.ToObject(typeof(ProductStatus), deliveryToOutlet.DeliveryToOutletDetails.First().Status);
+            var deliveryToOutlet = _deliveryToOutletSearchView.GetSelectedDeliveryToOutlet(selectedIndex);            
             _deliveryToOutletSearchView.OpenDeliveryToOutletEditForm(deliveryToOutlet);
         }
 

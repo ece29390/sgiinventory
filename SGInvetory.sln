@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGInventory.DAL.Test", "SGInvetory.DAL.Test\SGInventory.DAL.Test.csproj", "{D0D710FC-DE7E-41E7-991D-FA78B7DC9D02}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{97D61672-1228-4A06-A77A-95205409D0F2}"
@@ -48,14 +50,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGInventory.Test.Data", "SG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGInventory.Common.Interfaces", "SGInventory.Interfaces\SGInventory.Common.Interfaces.csproj", "{68E2461C-AD55-43B3-917C-108CACE7D3E6}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SGinventory.Installer", "SGinventory.Installer\SGinventory.Installer.vdproj", "{FF310871-DF57-431A-BA3C-883C6327766E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGIInventory.Logger", "SGIInventory.Logger\SGIInventory.Logger.csproj", "{044D0525-95DE-4FBF-AD2F-5450E40D1CB7}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = SGInvetory.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -237,12 +234,6 @@ Global
 		{68E2461C-AD55-43B3-917C-108CACE7D3E6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{68E2461C-AD55-43B3-917C-108CACE7D3E6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{68E2461C-AD55-43B3-917C-108CACE7D3E6}.Release|x86.ActiveCfg = Release|Any CPU
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Debug|Any CPU.ActiveCfg = Debug
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Debug|x86.ActiveCfg = Debug
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Release|Any CPU.ActiveCfg = Release
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Release|Mixed Platforms.ActiveCfg = Release
-		{FF310871-DF57-431A-BA3C-883C6327766E}.Release|x86.ActiveCfg = Release
 		{044D0525-95DE-4FBF-AD2F-5450E40D1CB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{044D0525-95DE-4FBF-AD2F-5450E40D1CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{044D0525-95DE-4FBF-AD2F-5450E40D1CB7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -261,10 +252,13 @@ Global
 		{D0D710FC-DE7E-41E7-991D-FA78B7DC9D02} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
 		{87ADCC06-CD91-430C-B7EA-D88906840276} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
 		{4FF48A63-390E-4055-BB43-A9822106EF14} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
+		{12BD89F2-300B-4721-B4AC-B1B1B69CF09E} = {F386DC53-A391-40E9-8A53-8238C4842629}
 		{1A00F1CA-ADBF-4804-8DD6-73182204D04C} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
 		{E32054C6-481C-4752-8FFA-2AEBE6505E70} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
-		{EC718E9C-13F7-48A6-A02A-EEE9AB765358} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
-		{12BD89F2-300B-4721-B4AC-B1B1B69CF09E} = {F386DC53-A391-40E9-8A53-8238C4842629}
 		{0B20C7A3-CF04-4D3C-80A7-E6CD43BA2DC3} = {12BD89F2-300B-4721-B4AC-B1B1B69CF09E}
+		{EC718E9C-13F7-48A6-A02A-EEE9AB765358} = {E0D5D8A1-56FE-4E01-BE26-459C4984E7BA}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SGInvetory.vsmdi
 	EndGlobalSection
 EndGlobal

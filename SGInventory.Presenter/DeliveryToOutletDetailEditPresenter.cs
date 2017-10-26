@@ -92,6 +92,7 @@ namespace SGInventory.Presenters
             var message = _deliveryBusinessModel.SaveDeliveryToOutlet(deliveryToOutlet);
             _view.ShowMessage(message);
             _view.RefreshControls();
+            _view.LoadDisplayDeliveryDetailList(deliveryToOutlet.DeliveryToOutletDetails);
         }
     }
 }

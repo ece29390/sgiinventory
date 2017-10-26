@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SGInventory.Enums;
+using SGInventory.Model;
 
 namespace SGInventory.Views
 {
@@ -18,7 +19,7 @@ namespace SGInventory.Views
 
         void EnablePackingListNumberTextBox(bool shouldEnable);
 
-        void LoadDeliveryToOutlet(Model.DeliveryToOutlet deliveryToOutlet);
+        void LoadDeliveryToOutlet();
 
         void LoadOutletToControl(List<Model.Outlet> stores);
 
@@ -39,5 +40,9 @@ namespace SGInventory.Views
         string GetStoreName();
 
         void LoadProductStatusIntoForm(List<ProductStatus> list);
+
+        void LoadResultToView(List<ProductDetails> result);
+        object GetProductStatus();
+        void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet);
     }
 }
