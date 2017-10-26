@@ -151,6 +151,12 @@
     <Compile Include="Delivery\DeliveryToOutletSearchForm.Designer.cs">
       <DependentUpon>DeliveryToOutletSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delivery\EnterQuantityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery\EnterQuantityForm.Designer.cs">
+      <DependentUpon>EnterQuantityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delivery\ScannerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -485,6 +491,9 @@
     <EmbeddedResource Include="Delivery\DeliveryToOutletReport.rdlc" />
     <EmbeddedResource Include="Delivery\DeliveryToOutletSearchForm.resx">
       <DependentUpon>DeliveryToOutletSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery\EnterQuantityForm.resx">
+      <DependentUpon>EnterQuantityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery\ScannerForm.resx">
       <DependentUpon>ScannerForm.cs</DependentUpon>

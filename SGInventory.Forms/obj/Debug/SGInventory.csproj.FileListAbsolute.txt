@@ -419,3 +419,4 @@ E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.WashingForm.Washin
 E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.csproj.GenerateResource.Cache
 E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.exe
 E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.pdb
+E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.Delivery.EnterQuantityForm.resources

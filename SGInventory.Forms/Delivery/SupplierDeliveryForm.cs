@@ -33,7 +33,7 @@ namespace SGInventory.Delivery
         private BusinessModelContainer _container;
         private int _deliveryId;
         private SupplierDeliveryViewModel _viewModel;
-
+     
         public SupplierDeliveryForm(BusinessModelContainer container,int deliveryId)
         {
             InitializeComponent();
@@ -73,13 +73,18 @@ namespace SGInventory.Delivery
             buttonAdd_Click(sender,e);
             _viewModel.ProductCode = e.Code;
             _viewModel.SaveDeliveryEnable = true;
+            
             supplierDeliveryViewModelBindingSource.ResetBindings(true);
+            
         }
 
         void userControlSelectProduct1_OnEnter(object sender, ScanCodeArgs e)
         {                    
-            _presenter.LoadResultByCode(e.IsBarCode, e.Code);
-
+            var loadSuccessful = _presenter.LoadResultByCode(e.IsBarCode, e.Code);
+            if(!loadSuccessful)
+            {
+                return;
+            }
             if (e.IsBarCode)
             {
                 supplierDeliveryViewModelBindingSource.ResetBindings(true);
@@ -395,7 +400,13 @@ namespace SGInventory.Delivery
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             CostNumericControl.Numeric = userControlSelectProduct1.SelectedProductDetails.Cost;
-            _presenter.StoreDeliveryDetailToDelivery(ref _delivery);           
+            var enterQuantityForm = new EnterQuantityForm(userControlSelectProduct1.SelectedProductDetails.Description);
+            enterQuantityForm.ShowDialog();
+            if (enterQuantityForm.Quantity>0)
+            {
+                QuantityTextbox.Text = enterQuantityForm.Quantity.ToString();
+                _presenter.StoreDeliveryDetailToDelivery(ref _delivery);
+            }                                    
         }
 
         public void LoadToDeliveryDetailGrid(Model.Delivery delivery)
@@ -509,10 +520,7 @@ namespace SGInventory.Delivery
 
         private void QuantityTextbox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_presenter.UsingScanner && e.KeyCode == Keys.Enter)
-            {
-               
-            }
+            
         }
 
         public int GetMaximumLimit()

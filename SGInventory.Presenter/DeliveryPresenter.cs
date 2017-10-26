@@ -614,13 +614,13 @@ namespace SGInventory.Presenters
             }
         }
 
-        public void LoadResultByCode(bool isBarcode, string productCode)
+        public bool LoadResultByCode(bool isBarcode, string productCode)
         {
             var result = LoadProductDetails(isBarcode, productCode);
             if (result == null || (result != null && result.Count == 0))
             {              
                 _deliveryPresenterView.ShowMessage(string.Format("Code {0} not exists!", productCode));
-                return;
+                return false;
             }
 
             _deliveryPresenterView.LoadResultToView(result);
@@ -630,6 +630,8 @@ namespace SGInventory.Presenters
                 _viewModel.ProductCode = productCode;
                 _viewModel.SaveDeliveryEnable = true;
             }
+
+            return true;
            
         }
     }

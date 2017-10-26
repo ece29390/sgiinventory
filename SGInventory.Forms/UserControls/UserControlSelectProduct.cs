@@ -27,7 +27,7 @@ namespace SGInventory.UserControls
         {
             if (e.KeyChar == '\r')
             {
-                if (OnEnter != null)
+                if (OnEnter != null && !string.IsNullOrEmpty(textBoxCode.Text))
                 {
                     var isBarcode = textBoxCode.Text.Trim().Length == BarcodeLength;
                     var code = isBarcode ? textBoxCode.Text.Trim().Substring(2) : textBoxCode.Text.Trim();
@@ -92,7 +92,7 @@ namespace SGInventory.UserControls
         {
             var args = new ScanCodeArgs(false, SelectedProductDetails.ProductCode);
             OnManuallySelected(sender, args);
-            textBoxCode.Focus();
+            //textBoxCode.Focus();
         }
     }
 }
