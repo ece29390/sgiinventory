@@ -354,11 +354,21 @@ namespace SGInventory.Delivery
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _presenter.AddDeliveryToOutletDetail(() => 
+            var productDescription = userControlSelectProduct1.SelectedProductDetails.Description;
+            var stockNumber = GetStockNumber();
+            var enterQuantityForm = new EnterQuantityForm(productDescription, stockNumber);
+            enterQuantityForm.ShowDialog();
+            
+            if(enterQuantityForm.Quantity>0)
+            {
+                _viewModel.Quantity = enterQuantityForm.Quantity;
+                txtQuantity.Text = _viewModel.Quantity.ToString();
+                _presenter.AddDeliveryToOutletDetail(() =>
                 {
-                    _presenter.BuildProductDetailIntoPanel(dgvItem);
-                    //EnableSaveButton(true);
-                });            
+                    _presenter.BuildProductDetailIntoPanel(dgvItem);                    
+                });
+            }
+                   
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -384,19 +394,25 @@ namespace SGInventory.Delivery
                 MessageBox.Show("Access denied!");
                 return;
             }
-        
-            if (_editForm == null)
-            {
-                _editForm = new DeliveryToOutletEditForm(_container, ParentDeliveryToOutlet.Id);
-                _editForm.OnUpdateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
-                _editForm.OnDeactivateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
-                _editForm.ShowDialog();
-            }
+                
+            _editForm = new DeliveryToOutletEditForm(_container,ParentDeliveryToOutlet);
+            _editForm.OnUpdateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
+            _editForm.OnDeactivateDeliveryDetail += new EventHandler(form_OnChangesDeliveryDetail);
+            _editForm.ShowDialog();
+
         }
         
         void form_OnChangesDeliveryDetail(object sender, EventArgs e)
         {
-            _presenter.LoadDeliveryOutletToView(_packingNumber);
+            if(!string.IsNullOrEmpty(_packingNumber))
+            {
+                _presenter.LoadDeliveryOutletToView(_packingNumber);
+            }    
+            else
+            {
+                _presenter.BuildProductDetailIntoPanel(dgvItem);
+            }
+                          
         }
 
         private void DeliveryToOutletForm_FormClosing(object sender, FormClosingEventArgs e)

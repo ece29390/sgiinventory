@@ -34,25 +34,25 @@
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
             this.deliveryToOutletBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
+            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.ucSaveDeliveryDetail = new SGInventory.UserControls.ucSaveEditForm();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.ncSrpPrice = new SGInventory.UserControls.NumericControl();
             this.label3 = new System.Windows.Forms.Label();
             this.grpStore = new System.Windows.Forms.GroupBox();
             this.dtpDateDelivered = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDrNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucAutoCompleteStore = new SGInventory.UserControls.ucAutoComplete();
             this.supplierLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvItem = new System.Windows.Forms.DataGridView();
             this.msDeliveryToOutletTransaction = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
-            this.ucSaveDeliveryDetail = new SGInventory.UserControls.ucSaveEditForm();
-            this.ncSrpPrice = new SGInventory.UserControls.NumericControl();
-            this.ucAutoCompleteStore = new SGInventory.UserControls.ucAutoComplete();
             this.panel1.SuspendLayout();
             this.grpProductDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryToOutletBindingSource)).BeginInit();
@@ -122,6 +122,14 @@
             this.label5.TabIndex = 26;
             this.label5.Text = "Status:";
             // 
+            // userControlSelectProduct1
+            // 
+            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "SelectProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.userControlSelectProduct1.Location = new System.Drawing.Point(6, 121);
+            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
+            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
+            this.userControlSelectProduct1.TabIndex = 22;
+            // 
             // buttonAdd
             // 
             this.buttonAdd.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "AddProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -137,6 +145,17 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // ucSaveDeliveryDetail
+            // 
+            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("SaveButtonEnabled", this.deliveryToOutletBindingSource, "SaveProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ucSaveDeliveryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucSaveDeliveryDetail.Location = new System.Drawing.Point(326, 351);
+            this.ucSaveDeliveryDetail.Margin = new System.Windows.Forms.Padding(5);
+            this.ucSaveDeliveryDetail.Name = "ucSaveDeliveryDetail";
+            this.ucSaveDeliveryDetail.SaveButtonEnabled = false;
+            this.ucSaveDeliveryDetail.Size = new System.Drawing.Size(105, 54);
+            this.ucSaveDeliveryDetail.TabIndex = 26;
+            // 
             // txtQuantity
             // 
             this.txtQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deliveryToOutletBindingSource, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -145,6 +164,7 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(140, 22);
             this.txtQuantity.TabIndex = 18;
+            this.txtQuantity.Visible = false;
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             this.txtQuantity.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyUp);
             // 
@@ -158,6 +178,18 @@
             this.label4.Size = new System.Drawing.Size(85, 20);
             this.label4.TabIndex = 25;
             this.label4.Text = "Quantity:";
+            this.label4.Visible = false;
+            // 
+            // ncSrpPrice
+            // 
+            this.ncSrpPrice.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.deliveryToOutletBindingSource, "SrpPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ncSrpPrice.Enabled = false;
+            this.ncSrpPrice.Location = new System.Drawing.Point(159, 90);
+            this.ncSrpPrice.Margin = new System.Windows.Forms.Padding(5);
+            this.ncSrpPrice.Name = "ncSrpPrice";
+            this.ncSrpPrice.Numeric = 0D;
+            this.ncSrpPrice.Size = new System.Drawing.Size(141, 27);
+            this.ncSrpPrice.TabIndex = 20;
             // 
             // label3
             // 
@@ -231,6 +263,17 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "DR No.:";
             // 
+            // ucAutoCompleteStore
+            // 
+            this.ucAutoCompleteStore.AutoCompleteValue = "";
+            this.ucAutoCompleteStore.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.deliveryToOutletBindingSource, "Outlet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ucAutoCompleteStore.Location = new System.Drawing.Point(148, 20);
+            this.ucAutoCompleteStore.Margin = new System.Windows.Forms.Padding(5);
+            this.ucAutoCompleteStore.Name = "ucAutoCompleteStore";
+            this.ucAutoCompleteStore.Size = new System.Drawing.Size(283, 26);
+            this.ucAutoCompleteStore.TabIndex = 10;
+            this.ucAutoCompleteStore.Leave += new System.EventHandler(this.ucAutoCompleteStore_Leave);
+            // 
             // supplierLabel
             // 
             this.supplierLabel.AutoSize = true;
@@ -292,47 +335,6 @@
             this.printToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            // 
-            // userControlSelectProduct1
-            // 
-            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "SelectProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.userControlSelectProduct1.Location = new System.Drawing.Point(6, 121);
-            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
-            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
-            this.userControlSelectProduct1.TabIndex = 22;
-            // 
-            // ucSaveDeliveryDetail
-            // 
-            this.ucSaveDeliveryDetail.DataBindings.Add(new System.Windows.Forms.Binding("SaveButtonEnabled", this.deliveryToOutletBindingSource, "SaveProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ucSaveDeliveryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucSaveDeliveryDetail.Location = new System.Drawing.Point(326, 351);
-            this.ucSaveDeliveryDetail.Margin = new System.Windows.Forms.Padding(5);
-            this.ucSaveDeliveryDetail.Name = "ucSaveDeliveryDetail";
-            this.ucSaveDeliveryDetail.SaveButtonEnabled = false;
-            this.ucSaveDeliveryDetail.Size = new System.Drawing.Size(105, 54);
-            this.ucSaveDeliveryDetail.TabIndex = 26;
-            // 
-            // ncSrpPrice
-            // 
-            this.ncSrpPrice.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.deliveryToOutletBindingSource, "SrpPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ncSrpPrice.Enabled = false;
-            this.ncSrpPrice.Location = new System.Drawing.Point(159, 90);
-            this.ncSrpPrice.Margin = new System.Windows.Forms.Padding(5);
-            this.ncSrpPrice.Name = "ncSrpPrice";
-            this.ncSrpPrice.Numeric = 0D;
-            this.ncSrpPrice.Size = new System.Drawing.Size(141, 27);
-            this.ncSrpPrice.TabIndex = 20;
-            // 
-            // ucAutoCompleteStore
-            // 
-            this.ucAutoCompleteStore.AutoCompleteValue = "";
-            this.ucAutoCompleteStore.DataBindings.Add(new System.Windows.Forms.Binding("AutoCompleteValue", this.deliveryToOutletBindingSource, "Outlet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ucAutoCompleteStore.Location = new System.Drawing.Point(148, 20);
-            this.ucAutoCompleteStore.Margin = new System.Windows.Forms.Padding(5);
-            this.ucAutoCompleteStore.Name = "ucAutoCompleteStore";
-            this.ucAutoCompleteStore.Size = new System.Drawing.Size(283, 26);
-            this.ucAutoCompleteStore.TabIndex = 10;
-            this.ucAutoCompleteStore.Leave += new System.EventHandler(this.ucAutoCompleteStore_Leave);
             // 
             // DeliveryToOutletForm
             // 

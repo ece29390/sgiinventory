@@ -15,7 +15,7 @@ namespace SGInventory.Presenters
         private IDeliveryToOutletEditView _view;
         private IDeliveryToOutletBusinessModel _deliveryBusinessModel;
         private IDeliveryBusinessModelHelper _deliveryHelper;
-        
+        public bool EditMode { get; private set; }
 
         public DeliveryToOutletDetailEditPresenter(
             IDeliveryToOutletEditView view
@@ -35,11 +35,11 @@ namespace SGInventory.Presenters
             _view.DisplayDeliveryDetail(deliveryToOutletDetail);
         }
 
-        public void LoadDeliveryToOutletId(int deliveryToOutletDetailId)
+        public void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet)
         {
-            var deliveryToOutlet = _deliveryBusinessModel.SelectByPrimaryId(deliveryToOutletDetailId);
+            EditMode = deliveryToOutlet.Id > 0;       
             DeliveryToOutlet = deliveryToOutlet;
-            _view.LoadDisplayDeliveryDetailList(deliveryToOutlet.DeliveryToOutletDetails);
+            _view.LoadDisplayDeliveryDetailList(DeliveryToOutlet.DeliveryToOutletDetails);
             _view.RefreshControls();
         }
 
@@ -68,10 +68,16 @@ namespace SGInventory.Presenters
             var retValue = true;
 
             var productStatus = (ProductStatus)Enum.ToObject(typeof(ProductStatus), SelectedDeliveryToOutletDetail.Status);
-            retValue = _deliveryHelper.IsAdjustedQuantityValid(SelectedDeliveryToOutletDetail.ProductDetail.Code
-                , SelectedDeliveryToOutletDetail.Quantity
+            retValue = 
+                SelectedDeliveryToOutletDetail.Id==0?
+                _deliveryHelper.IsQuantityAvailable(SelectedDeliveryToOutletDetail.ProductDetail.Code               
                 , quantity
-                , productStatus);
+                , productStatus)
+                :_deliveryHelper.IsQuantityAvailable(SelectedDeliveryToOutletDetail.ProductDetail.Code
+                ,quantity
+                , productStatus
+                ,SelectedDeliveryToOutletDetail.DeliveryToOutlet.Id)
+                ;
 
             return retValue;
         }
@@ -82,15 +88,25 @@ namespace SGInventory.Presenters
         {
             SelectedDeliveryToOutletDetail.IsActive = 0;
 
-            ProcessDeliveryToOutletForSaving(SelectedDeliveryToOutletDetail.DeliveryToOutlet);
+            if(!EditMode)
+            {
+                SelectedDeliveryToOutletDetail.DeliveryToOutlet
+                    .DeliveryToOutletDetails = SelectedDeliveryToOutletDetail.DeliveryToOutlet
+                    .DeliveryToOutletDetails.Where(dd => dd.IsActive == 1).ToList();
+            }
 
-            LoadDeliveryToOutletId(SelectedDeliveryToOutletDetail.DeliveryToOutlet.Id);
+            ProcessDeliveryToOutletForSaving(SelectedDeliveryToOutletDetail.DeliveryToOutlet);
+           
         }
 
         private void ProcessDeliveryToOutletForSaving(DeliveryToOutlet deliveryToOutlet)
         {
-            var message = _deliveryBusinessModel.SaveDeliveryToOutlet(deliveryToOutlet);
-            _view.ShowMessage(message);
+            if(EditMode)
+            {
+                var message = _deliveryBusinessModel.SaveDeliveryToOutlet(deliveryToOutlet);
+                _view.ShowMessage(message);
+            }
+
             _view.RefreshControls();
             _view.LoadDisplayDeliveryDetailList(deliveryToOutlet.DeliveryToOutletDetails);
         }

@@ -20,10 +20,11 @@ namespace SGInventory.Delivery
                 return quantity;
             }
         }
-        public EnterQuantityForm(string productDescription)
+        public EnterQuantityForm(string productDescription,string productCode)
         {
             InitializeComponent();
             ProductDescriptionLabel.Text = productDescription;
+            Text = $"{Text} for {productCode}";
         }
 
         private void QuantityTextbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -47,6 +48,11 @@ namespace SGInventory.Delivery
         private void QuantityTextbox_TextChanged(object sender, EventArgs e)
         {
             AcceptButton.Enabled = Quantity > 0;
+        }
+
+        private void AcceptButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

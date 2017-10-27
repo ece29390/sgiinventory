@@ -198,29 +198,43 @@ namespace SGInventory.Presenters
 
             quantity += existingQuantity;
 
-            var isQuantityAvailable = _deliveryBusinessModelHelper.IsQuantityAvailable(productCode, quantity,Status);
+            var isQuantityAvailable =
+                _iDeliveryToOutletView.ParentDeliveryToOutlet.Id==0?
+                 _deliveryBusinessModelHelper.IsQuantityAvailable(productCode, quantity,Status)
+                 :_deliveryBusinessModelHelper.IsQuantityAvailable(productCode,quantity,Status, _iDeliveryToOutletView.ParentDeliveryToOutlet.Id);
 
             if (!isQuantityAvailable)
             {
-                _iDeliveryToOutletView.ShowMessage("No more stocks!");
+                _iDeliveryToOutletView.ShowMessage("Stock is not enough!");
                 return;
             }
-                        
-            var deliveryToOutletDetail = new DeliveryToOutletDetail
+
+            DeliveryToOutletDetail detail = null;
+
+            detail = _iDeliveryToOutletView.ParentDeliveryToOutlet.DeliveryToOutletDetails.Where(dd => dd.ProductDetail.Code.Equals(productCode, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+
+            if(detail==null)
             {
-                DeliveryToOutlet = _iDeliveryToOutletView.ParentDeliveryToOutlet
-                ,ProductDetail = productDetail
+                var deliveryToOutletDetail = new DeliveryToOutletDetail
+                {
+                    DeliveryToOutlet = _iDeliveryToOutletView.ParentDeliveryToOutlet
                 ,
-                Quantity = _iDeliveryToOutletView.GetQuantity()
-                ,SuggestedRetailPrice = _iDeliveryToOutletView.Srp
-            };
+                    ProductDetail = productDetail
+                ,
+                    Quantity = _iDeliveryToOutletView.GetQuantity()
+                ,
+                    SuggestedRetailPrice = _iDeliveryToOutletView.Srp
+                ,
+                    Status = (int)Status
+                };
 
-            
-
-            _iDeliveryToOutletView.ParentDeliveryToOutlet.DeliveryToOutletDetails.Add(deliveryToOutletDetail);
-
+                _iDeliveryToOutletView.ParentDeliveryToOutlet.DeliveryToOutletDetails.Add(deliveryToOutletDetail);
+            }
+            else
+            {
+                detail.Quantity = quantity;
+            }            
             doAfterAdd();
-
         }
 
         private int GetAllAddedProduct()
@@ -385,15 +399,7 @@ namespace SGInventory.Presenters
             }
 
               _iDeliveryToOutletView.LoadResultToView(result);   
-
-            if (isBarcode)
-            {
-                //TODO:If the product's barcode was scanned so obviously you need to automatically add the product into the grid
-                //the parenttodeliveryoutlet must be verified first if it is not yet assigned before
-                
-            }
-         
-                    
+                               
         }           
     }
 }

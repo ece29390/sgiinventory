@@ -17,28 +17,29 @@ namespace SGInventory.Business.Model
             _deliveryModel = deliveryModel;
             _deliveryToOutletModel = deliveryToOutletModel;
         }
-
+        public bool IsQuantityAvailable(string code, int quantity, ProductStatus status, int deliverytoOutletId)
+        {
+            var overallAvailableQuantity = GetBalanceBetweenIncomingSupplyAndOutgoingSupply(code, status);
+            var totalQuantityOfDeliveryToOutlet = _deliveryToOutletModel.GetDeliveryDetailToOutletTotalQuantityByCodeAndStatusAndDeliveryToOutletId(code, status, deliverytoOutletId);
+            var remainingQuantity = overallAvailableQuantity + totalQuantityOfDeliveryToOutlet;
+            return remainingQuantity >= quantity;
+        }
         public bool IsQuantityAvailable(string code,int quantity,ProductStatus status)
         {
-            var totalQuantityReceived = _deliveryModel.GetDeliveryDetailTotalQuantityByCode(code,status);
-            var totalQuantityDelivered = _deliveryToOutletModel.GetDeliveryDetailToOutletTotalQuantityByCode(code,status);
-
-            var availableQuantity = totalQuantityReceived - totalQuantityDelivered;
+            var availableQuantity = GetBalanceBetweenIncomingSupplyAndOutgoingSupply(code, status);
 
             return availableQuantity >= quantity;
         }
 
-        public bool IsAdjustedQuantityValid(string code, int oldQuantity, int newQuantity,ProductStatus status)
+        private int GetBalanceBetweenIncomingSupplyAndOutgoingSupply(string code,ProductStatus status)
         {
             var totalQuantityReceived = _deliveryModel.GetDeliveryDetailTotalQuantityByCode(code, status);
-            var totalQuantityDelivered = _deliveryToOutletModel.GetDeliveryDetailToOutletTotalQuantityByCode(code, status);
-
-            totalQuantityDelivered -= oldQuantity;
+            var totalQuantityDelivered = _deliveryToOutletModel.GetDeliveryDetailToOutletTotalQuantityByCodeAndStatus(code, status);
 
             var availableQuantity = totalQuantityReceived - totalQuantityDelivered;
-
-            return availableQuantity >= newQuantity;
+            return availableQuantity;
         }
+       
 
         public IDeliveryBusinessModel DeliveryBusinessModel
         {

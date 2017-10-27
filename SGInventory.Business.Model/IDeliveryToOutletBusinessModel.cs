@@ -20,8 +20,9 @@ namespace SGInventory.Business.Model
 
         List<DeliveryToOutlet> SelectByBoth(Outlet deliveryToOutlet, DateTime dateFrom, DateTime dateTo);
 
-        int GetDeliveryDetailToOutletTotalQuantityByCode(string code,ProductStatus status);
+        int GetDeliveryDetailToOutletTotalQuantityByCodeAndStatus(string code,ProductStatus status);
 
+        int GetDeliveryDetailToOutletTotalQuantityByCodeAndStatusAndDeliveryToOutletId(string code, ProductStatus status, int deliverytoOutletId);
         List<DeliveryTotalByProductDetailCode> GetTotalActiveDeliveryTotal();
 
         List<DeliveryToOutletDetail> GetDeliveryToOutletDetailBy(string code, DateTime from, DateTime to, bool isActive);

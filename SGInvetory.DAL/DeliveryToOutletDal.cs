@@ -44,14 +44,8 @@ namespace SGInventory.Dal
                         session.SaveOrUpdate(entity);
 
                         foreach (var dtod in entity.DeliveryToOutletDetails)
-                        {
-                            //var productDetails = session.Get<ProductDetails>(dtod.ProductDetail.Code);
-
-                            session.SaveOrUpdate(dtod);
-
-                            //productDetails.QuantityOnHand -= dtod.Quantity;
-
-                            //session.SaveOrUpdate(productDetails);
+                        {                            
+                            session.SaveOrUpdate(dtod);                          
                         }
 
                         transaction.Commit();

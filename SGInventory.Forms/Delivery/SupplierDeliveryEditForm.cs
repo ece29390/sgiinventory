@@ -58,9 +58,7 @@ namespace SGInventory.Delivery
         }
               
         private void SupplierDeliveryEditForm_Load(object sender, EventArgs e)
-        {
-            //deleteToolStripMenuItem.Enabled = _isEditMode;
-
+        {            
             _presenter
                 .LoadStatus()
                 .LoadDamageList()

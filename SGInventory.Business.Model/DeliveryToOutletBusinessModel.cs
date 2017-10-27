@@ -78,7 +78,7 @@ namespace SGInventory.Business.Model
             
         }
 
-        public int GetDeliveryDetailToOutletTotalQuantityByCode(string code, ProductStatus status)
+        public int GetDeliveryDetailToOutletTotalQuantityByCodeAndStatus(string code, ProductStatus status)
         {
             var result = _iDeliveryToOutletDal.SelectActiveByProductCode(code);
             result = result.Where(r => r.Status == (int)status).ToList();
@@ -122,6 +122,13 @@ namespace SGInventory.Business.Model
         public void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail)
         {
             _iDeliveryToOutletDal.DeleteDeliveryToOutletDetail(deliveryToOutletDetail);
+        }
+
+        public int GetDeliveryDetailToOutletTotalQuantityByCodeAndStatusAndDeliveryToOutletId(string code, ProductStatus status, int deliverytoOutletId)
+        {
+            var result = _iDeliveryToOutletDal.SelectActiveByProductCode(code);
+            result = result.Where(dd => dd.Status == (int)status && dd.DeliveryToOutlet.Id.Equals(deliverytoOutletId)).ToList();
+            return result.Sum(dd => dd.Quantity);
         }
     }
 }

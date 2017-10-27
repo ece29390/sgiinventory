@@ -22,6 +22,6 @@ E:\SGInvetory_0623207\SGIInventory.Logger\bin\Debug\SGIInventory.Logger.dll
 E:\SGInvetory_0623207\SGIInventory.Logger\bin\Debug\SGIInventory.Logger.pdb
 E:\SGInvetory_0623207\SGIInventory.Logger\bin\Debug\log4net.dll
 E:\SGInvetory_0623207\SGIInventory.Logger\bin\Debug\log4net.xml
+E:\SGInvetory_0623207\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.csprojResolveAssemblyReference.cache
 E:\SGInvetory_0623207\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.dll
 E:\SGInvetory_0623207\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.pdb
-E:\SGInvetory_0623207\SGIInventory.Logger\obj\Debug\SGIInventory.Logger.csprojResolveAssemblyReference.cache

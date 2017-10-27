@@ -9,11 +9,8 @@ namespace SGInventory.Business.Model
     public interface IDeliveryBusinessModelHelper
     {
         IDeliveryBusinessModel DeliveryBusinessModel { get; }
-
         IDeliveryToOutletBusinessModel DeliveryToOutletBusinessModel { get; }
-
         bool IsQuantityAvailable(string code, int quantity,ProductStatus status);
-
-        bool IsAdjustedQuantityValid(string code, int oldQuantity, int newQuantity, ProductStatus status);
+        bool IsQuantityAvailable(string code, int quantity, ProductStatus status,int deliverytoOutletId);
     }
 }

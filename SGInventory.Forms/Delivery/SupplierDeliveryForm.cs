@@ -400,7 +400,10 @@ namespace SGInventory.Delivery
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             CostNumericControl.Numeric = userControlSelectProduct1.SelectedProductDetails.Cost;
-            var enterQuantityForm = new EnterQuantityForm(userControlSelectProduct1.SelectedProductDetails.Description);
+            var enterQuantityForm = new EnterQuantityForm(
+                userControlSelectProduct1.SelectedProductDetails.Description
+                ,userControlSelectProduct1.SelectedProductDetails.ProductCode
+                );
             enterQuantityForm.ShowDialog();
             if (enterQuantityForm.Quantity>0)
             {

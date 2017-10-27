@@ -14,19 +14,24 @@ namespace SGInventory.Delivery
 {
     public partial class DeliveryToOutletEditForm : Form,IDeliveryToOutletEditView
     {
-        private int _deliveryToOutletDetailId;
+        private int _deliveryDetailToOutletId;
         private DeliveryToOutletDetailEditPresenter _presenter;
+        private DeliveryToOutlet _deliveryToOutlet;
 
         public event EventHandler OnUpdateDeliveryDetail,
                                   OnDeactivateDeliveryDetail;
 
-        public DeliveryToOutletEditForm(BusinessModelContainer container, int deliveryToOutletId)
+        public DeliveryToOutletEditForm(
+            BusinessModelContainer container           
+            , DeliveryToOutlet deliveryToOutlet
+            )
         {
             InitializeComponent();
-            _deliveryToOutletDetailId = deliveryToOutletId;
+            _deliveryDetailToOutletId = deliveryToOutlet.Id;
             dgvProductDetails.AutoGenerateColumns = false;
             _presenter = new DeliveryToOutletDetailEditPresenter(this, container.DeliveryToOutletBusinessModel,container.DeliveryBusinessModelHelper);
             InitializeEvents();
+            _deliveryToOutlet = deliveryToOutlet;
         }
 
         private void InitializeEvents()
@@ -39,7 +44,7 @@ namespace SGInventory.Delivery
         void ucItemEditMenu1_OnUpdateToolStripMenuItem(object sender, EventArgs e)
         {
             _presenter.SaveDeliveryToOutletDetail();
-
+            
             if (OnUpdateDeliveryDetail != null)
             {
                 OnUpdateDeliveryDetail(sender, e);
@@ -63,7 +68,7 @@ namespace SGInventory.Delivery
 
         private void DeliveryToOutletEditForm_Load(object sender, EventArgs e)
         {
-            _presenter.LoadDeliveryToOutletId(_deliveryToOutletDetailId);
+            _presenter.LoadDeliveryToOutlet(_deliveryToOutlet);
         }
 
         public void DisplayDeliveryDetail(Model.DeliveryToOutletDetail deliveryDetail)
@@ -119,8 +124,8 @@ namespace SGInventory.Delivery
 
         public void LoadDisplayDeliveryDetailList(IList<DeliveryToOutletDetail> list)
         {
-            dgvProductDetails.DataSource = list;
-
+            dgvProductDetails.Refresh();
+            dgvProductDetails.DataSource = list;           
         }
 
         private void dgvProductDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)

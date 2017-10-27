@@ -90,6 +90,7 @@
             this.AcceptButton.TabIndex = 38;
             this.AcceptButton.Text = "Accept";
             this.AcceptButton.UseVisualStyleBackColor = true;
+            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // EnterQuantityForm
             // 
