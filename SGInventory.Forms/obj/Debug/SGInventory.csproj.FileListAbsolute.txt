@@ -421,3 +421,7 @@ E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.csproj.GenerateRes
 E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.exe
 E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\SGInventory.pdb
 E:\SGInvetory_0623207\SGInventory.Forms\bin\Debug\SGInventory.Presenters.pdb
+E:\SGInvetory_0623207\SGInventory.Forms\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+E:\SGInvetory_0623207\SGInventory.Forms\bin\Debug\Microsoft.ReportViewer.Common.dll
+E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\RdlCompile.cache
+E:\SGInvetory_0623207\SGInventory.Forms\obj\Debug\RdlCompile.compiled
