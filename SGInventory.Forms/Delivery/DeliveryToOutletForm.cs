@@ -355,6 +355,7 @@ namespace SGInventory.Delivery
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             var productDescription = userControlSelectProduct1.SelectedProductDetails.Description;
+            ncSrpPrice.Numeric = userControlSelectProduct1.SelectedProductDetails.Cost;
             var stockNumber = GetStockNumber();
             var enterQuantityForm = new EnterQuantityForm(productDescription, stockNumber);
             enterQuantityForm.ShowDialog();
@@ -422,9 +423,8 @@ namespace SGInventory.Delivery
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new DeliveryToOutletPrintForm(_container
-                , ParentDeliveryToOutlet.Id);
-            form.ShowDialog();
+            _presenter.OnPrinting();
+          
         }
 
         private void txtQuantity_KeyUp(object sender, KeyEventArgs e)
@@ -434,47 +434,35 @@ namespace SGInventory.Delivery
                
             }
         }
-
         private void ucAutoCompleteStore_Leave(object sender, EventArgs e)
         {
             _presenter.StoreDetailChange();
-        }
-
-        
-
+        }        
         public void EnableProductDetailsGroup(bool shouldEnable)
         {
             this.grpProductDetail.Enabled = shouldEnable;
         }
-
         public string GetStoreName()
         {
             return ucAutoCompleteStore.AutoCompleteValue.Trim();
         }
-
         public int GetMaximumLimit()
         {
             var limit = ConfigurationManager.AppSettings["ItemLimit"];
             return Convert.ToInt32(limit);
         }
-
-
         public void SetWashingCode(string washing)
         {
           
         }
-
-
         public void LoadResultToView(List<ProductDetails> result)
         {
-            userControlSelectProduct1.LoadResult(result);
+            userControlSelectProduct1.LoadResult(result,(prodDetail)=>prodDetail.Product.MarkdownPrice>0?prodDetail.Product.MarkdownPrice:prodDetail.Product.RegularPrice);
         }
-
         public object GetProductStatus()
         {
             return (ProductStatus)StatusComboBox.SelectedItem;
         }
-
         public void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet)
         {
             _viewModel.Outlet = deliveryToOutlet.Outlet.Name;
@@ -483,6 +471,20 @@ namespace SGInventory.Delivery
             _presenter.BuildProductDetailIntoPanel(dgvItem);
             
            
+        }
+        public DialogResult ShowYesNoMessage(string message, string caption)
+        {
+            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
+        }
+        public void OnSave()
+        {
+            ucSaveDeliveryDetail_SaveButtonClick(null, null);
+        }
+        public void PopupPrintForm()
+        {
+            var form = new DeliveryToOutletPrintForm(_container
+              , ParentDeliveryToOutlet.Id);
+            form.ShowDialog();
         }
     }
 }

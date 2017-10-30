@@ -211,7 +211,12 @@ namespace SGInventory.Presenters
 
             DeliveryToOutletDetail detail = null;
 
-            detail = _iDeliveryToOutletView.ParentDeliveryToOutlet.DeliveryToOutletDetails.Where(dd => dd.ProductDetail.Code.Equals(productCode, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            detail = 
+                _iDeliveryToOutletView.ParentDeliveryToOutlet.DeliveryToOutletDetails
+                .Where(dd => dd.ProductDetail.Code.Equals(productCode
+                , StringComparison.InvariantCultureIgnoreCase)
+                && dd.Status == (int)Status
+                ).FirstOrDefault();
 
             if(detail==null)
             {
@@ -319,6 +324,23 @@ namespace SGInventory.Presenters
             return supplierDeliveriesByStockNumber;
         }
 
+        public void OnPrinting()
+        {
+            if(_iDeliveryToOutletView.ParentDeliveryToOutlet.Id==0)
+            {
+                var dialogResult = _iDeliveryToOutletView.ShowYesNoMessage("Saving the changes is required before printing, would you like to save your changes?", "Save first before printing");
+                if (dialogResult == DialogResult.Yes)
+                {
+                    _iDeliveryToOutletView.OnSave();
+                    _iDeliveryToOutletView.PopupPrintForm();                  
+                }
+            }
+            else
+            {
+                _iDeliveryToOutletView.PopupPrintForm();
+            }
+        }
+
         private string ConcatColorNameDashSizeName(ProductDetails productDetail)
         {
             var retValue = string.Concat(productDetail.Color.Name, "-", productDetail.Size.Name);
@@ -342,7 +364,7 @@ namespace SGInventory.Presenters
 
         public void OnProductDetailChanges()
         {
-            base.LoadProductDetailOnChangesInSizeOrWashingOrColor((productDetail) => this._iDeliveryToOutletView.Srp=productDetail.Product.RegularPrice);
+            base.LoadProductDetailOnChangesInSizeOrWashingOrColor((productDetail) => this._iDeliveryToOutletView.Srp= productDetail.Product.MarkdownPrice>0? productDetail.Product.MarkdownPrice: productDetail.Product.RegularPrice);
         }
 
         public bool VerifyInputs()
