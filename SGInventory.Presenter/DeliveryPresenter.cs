@@ -298,13 +298,13 @@ namespace SGInventory.Presenters
                 
             }
 
-            bool isDeliveryAlreadyExists = _deliveryPresenterView.DeliveryAlreadyExists(stocknumberOrBarcode, deliveryDetail.Status,deliveryDetail.Damage);
+            //bool isDeliveryAlreadyExists = _deliveryPresenterView.DeliveryAlreadyExists(stocknumberOrBarcode, deliveryDetail.Status,deliveryDetail.Damage);
 
-            if (isDeliveryAlreadyExists)
-            {
-                _deliveryPresenterView.ShowMessage("Delivery already exists in the panel, you may change it by clicking the \"Edit Deliveries\" button");
-                return;
-            }
+            //if (isDeliveryAlreadyExists)
+            //{
+            //    _deliveryPresenterView.ShowMessage("Delivery already exists in the panel, you may change it by clicking the \"Edit Deliveries\" button");
+            //    return;
+            //}
 
             if (delivery.DeliveryDetails != null && delivery.DeliveryDetails.Count > 0)
             {
@@ -318,7 +318,24 @@ namespace SGInventory.Presenters
             }
 
             deliveryDetail.Delivery = delivery;
-            delivery.DeliveryDetails.Add(deliveryDetail);
+                        
+            var storedDeliveryDetail = productStatus == ProductStatus.Goods?                
+                delivery.DeliveryDetails
+                .FirstOrDefault(dd => dd.ProductDetail.Code.Equals(stocknumberOrBarcode, StringComparison.InvariantCultureIgnoreCase)
+                  ):
+                delivery.DeliveryDetails
+                .FirstOrDefault(dd => dd.ProductDetail.Code.Equals(stocknumberOrBarcode, StringComparison.InvariantCultureIgnoreCase)
+                  && (dd.Damage.HasValue && dd.Damage.Value == deliveryDetail.Damage.Value));
+            
+
+            if(storedDeliveryDetail==null)
+            {
+                delivery.DeliveryDetails.Add(deliveryDetail);
+            }
+            else
+            {
+                storedDeliveryDetail.Quantity += deliveryDetail.Quantity;
+            }
             
             _deliveryPresenterView.LoadToDeliveryDetailGrid(delivery);
 

@@ -550,7 +550,7 @@ namespace SGInventory.Delivery
 
         public void LoadResultToView(List<ProductDetails> result)
         {
-            userControlSelectProduct1.LoadResult(result);
+            userControlSelectProduct1.LoadResult(result,(productDetail)=>productDetail.Product.Cost);
         }
 
         public void ResetViewBindings(bool resetBindings)

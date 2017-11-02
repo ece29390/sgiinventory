@@ -103,6 +103,54 @@
       <Name>SGInventory.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectCategoryByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectSalesByStockNumber.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectColorByCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectColorByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectOutletByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectProductInterview.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectProductInterviewBy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectSizeByCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectSizeByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectStoreByCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectStoreByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectSupplierByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectUserByUserName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectWashingByCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectWashingByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\UserLogin.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

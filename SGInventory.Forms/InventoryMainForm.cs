@@ -220,20 +220,8 @@ namespace SGInventory.Forms
         private void CreateNewSales_Click(object sender, EventArgs e)
         {
             MenuItemOnClick(sender, e, ((tag) =>
-            {
-                var useScanner = false;
-
-                switch (tag)
-                {
-                    case "Scan":
-                        useScanner = true;
-                        break;
-                    case "Manual":
-                        useScanner = false;
-                        break;
-                }
-
-                var form = new SalesEditForm(_container, useScanner);
+            {               
+                var form = new SalesEditForm(_container);
                 return form;
             }));
         }             

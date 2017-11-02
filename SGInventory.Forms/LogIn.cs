@@ -56,12 +56,28 @@ namespace SGInventory
             this.Close();
         }
 
-        private void LogIn_KeyUp(object sender, KeyEventArgs e)
+        private void LogIn_Load(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                loginButton_Click(sender,e);
-            }
+            ucUserNamePassword1.OnUserNameTextChanged += OnUsernameOrPassword_TextChanged;
+            ucUserNamePassword1.OnPasswordTextChanged += OnUsernameOrPassword_TextChanged;
+            ucUserNamePassword1.OnTextPressEnter += UcUserNamePassword1_OnTextPressEnter;
+        }
+
+        private void UcUserNamePassword1_OnTextPressEnter(object sender, KeyEventArgs e)
+        {
+            _presenter.OnTextPressEnter(ucUserNamePassword1.UserName, ucUserNamePassword1.Password);
+        }
+
+        private void OnUsernameOrPassword_TextChanged(object sender, EventArgs e)
+        {
+            loginButton.Enabled =
+                 !string.IsNullOrEmpty(ucUserNamePassword1.UserName)
+                 && !string.IsNullOrEmpty(ucUserNamePassword1.Password);
+        }
+
+        public bool IsButtonEnable()
+        {
+            return loginButton.Enabled;
         }
     }
 }

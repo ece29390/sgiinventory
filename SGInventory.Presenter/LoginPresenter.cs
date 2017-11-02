@@ -33,5 +33,13 @@ namespace SGInventory.Presenters
                 this._loginView.ShowMessage("Invalid Username or password");
             }
         }
+
+        public void OnTextPressEnter(string userName, string password)
+        {
+            if(!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password) && _loginView.IsButtonEnable())
+            {
+                LogIn(userName, password);
+            }
+        }
     }
 }

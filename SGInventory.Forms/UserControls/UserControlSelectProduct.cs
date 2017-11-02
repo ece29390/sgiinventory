@@ -58,14 +58,14 @@ namespace SGInventory.UserControls
             
         }
 
-        internal void LoadResult(List<Model.ProductDetails> result)
+        internal void LoadResult(List<Model.ProductDetails> result,Func<ProductDetails,double> getCost)
         {
             
             var productDetailLookupModels = new List<ProductDetailLookupModel>();
             result.ForEach(prodDetail => productDetailLookupModels.Add(new ProductDetailLookupModel
-                {ProductCode = prodDetail.Code
-                ,Description = string.Format("Stock #:{0} Color:{1} Size:{2}",prodDetail.Product.StockNumber,prodDetail.Color.Name,prodDetail.Size.Name)
-                ,Cost = ((prodDetail.OverrideCost.HasValue)&&(prodDetail.OverrideCost.Value!=prodDetail.Product.Cost))?prodDetail.OverrideCost.Value:prodDetail.Product.Cost
+            { ProductCode = prodDetail.Code
+                , Description = string.Format("Stock #:{0} Color:{1} Size:{2}", prodDetail.Product.StockNumber, prodDetail.Color.Name, prodDetail.Size.Name)
+                , Cost = getCost(prodDetail) //((prodDetail.OverrideCost.HasValue)&&(prodDetail.OverrideCost.Value!=prodDetail.Product.Cost))?prodDetail.OverrideCost.Value:prodDetail.Product.Cost
                 }));
             listBoxProductDetails.DataSource = productDetailLookupModels;          
             listBoxProductDetails.Focus();           

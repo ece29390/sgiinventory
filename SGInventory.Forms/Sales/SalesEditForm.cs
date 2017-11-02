@@ -23,8 +23,7 @@ namespace SGInventory.Sales
         private SalesEditPresenter _presenter;
 
         public SalesEditForm(
-            BusinessModelContainer container
-            ,bool usescanner
+            BusinessModelContainer container         
             ,int? salesid = null
             )
         {
@@ -41,19 +40,12 @@ namespace SGInventory.Sales
                 , _container.ColorBusinessModel
                 ,_container.SizeBusinessModel
                 ,_container.WashingBusinessModel
-                ,usescanner
+                ,_container.DeliveryToOutletBusinessModel
                 );
 
             _presenter.DisplayListOfSalesOnAdd += new EventHandler<DisplaySalesArg>(_presenter_DisplayListOfSalesOnAdd);
 
-            ucManualEntryDisplay1.InitializeControls(usescanner);
-            ucManualEntryDisplay1.OnCheckProductCodeOrScanner += new EventHandler(ucManualEntryDisplay1_OnCheckProductCodeOrScanner);
-            ucManualEntryDisplay1.OnChkBoxUseScanner += new EventHandler(ucManualEntryDisplay1_OnChkBoxUseScanner);
-            ucManualEntryDisplay1.OnStockNumberComboBoxKeyPress += new EventHandler<KeyPressEventArgs>(ucManualEntryDisplay1_OnStockNumberComboBoxKeyPress);
-            ucManualEntryDisplay1.OnStockNumberComboBoxSelectedIndex += new EventHandler(ucManualEntryDisplay1_OnStockNumberComboBoxSelectedIndex);
-            ucManualEntryDisplay1.OnColorAutoCompleteLeave += new EventHandler(ucManualEntryDisplay1_OnColorAutoCompleteLeave);
-            ucManualEntryDisplay1.OnWashingAutoCompleteLeave += new EventHandler(ucManualEntryDisplay1_OnWashingAutoCompleteLeave);
-            ucManualEntryDisplay1.OnSizeAutoCompleteLeave += new EventHandler(ucManualEntryDisplay1_OnSizeAutoCompleteLeave);
+            
         }
 
         void _presenter_DisplayListOfSalesOnAdd(object sender, DisplaySalesArg e)
@@ -87,30 +79,26 @@ namespace SGInventory.Sales
             if (e.KeyChar == '\r')
             {
                 _presenter.LoadProducts();
-                buttonAddSales.Focus();
-                //if (_presenter.ShouldUseScanner)
-                //{
-                //    Presenter_OnScanAction(sender, new ScannerResponse { ItemCode = GetStockNumber() });
-                //    ucManualEntryDisplay1.ClearInputText();
-                //}
-                                               
+                buttonAddSales.Focus();                                                               
             }
         }
-
-        void ucManualEntryDisplay1_OnChkBoxUseScanner(object sender, EventArgs e)
-        {
-            _presenter.UseScanner(ucManualEntryDisplay1.ChkBarcodeOrStockNumberControl.Checked);
-        }
-
-        void ucManualEntryDisplay1_OnCheckProductCodeOrScanner(object sender, EventArgs e)
-        {
-            _presenter.OnSelectBarcodeSwitch();
-        }
-
+                
         private void SalesEditForm_Load(object sender, EventArgs e)
         {
             dataGridViewListOfSales.AllowUserToAddRows = false;
+            userControlSelectProduct1.OnEnter += UserControlSelectProduct1_OnEnter;
+            userControlSelectProduct1.OnManuallySelected += UserControlSelectProduct1_OnManuallySelected;
             _presenter.InitializeControl(_salesId);
+        }
+
+        private void UserControlSelectProduct1_OnManuallySelected(object sender, CustomEventArgs.ScanCodeArgs e)
+        {
+            
+        }
+
+        private void UserControlSelectProduct1_OnEnter(object sender, CustomEventArgs.ScanCodeArgs e)
+        {
+            _presenter.OnRetrievingProduct(e.Code, e.IsBarCode);
         }
 
         private void buttonAddSales_Click(object sender, EventArgs e)
@@ -121,7 +109,7 @@ namespace SGInventory.Sales
                 return;
             }
             _presenter.AddSales();
-            ucManualEntryDisplay1.FocusOnInputText();
+            
         }
 
         public void LoadOutlets(List<Outlet> outlets)
@@ -146,91 +134,88 @@ namespace SGInventory.Sales
                 ucACOutlet.AutoCompleteValue = sales.Outlet.Name;
             }
            
-            if (sales.ProductDetail != null)
-            {
-                ucManualEntryDisplay1.LoadProductDetail(sales.ProductDetail);  
-            }
+          
                    
         }
 
         public void LoadProducts(List<Product> list)
         {
-            ucManualEntryDisplay1.LoadProducts(list);
+            
         }
 
         public Product GetSelectedProduct()
         {
-            return ucManualEntryDisplay1.GetSelectedProduct();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public void LoadColors(List<Model.Color> list)
         {
-            ucManualEntryDisplay1.LoadColors(list);  
+           
         }
 
         public void LoadWashings(List<Washing> list)
         {
-            ucManualEntryDisplay1.LoadWashings(list);
+           
         }
 
         public void LoadSizes(List<Model.Size> list)
         {
-            ucManualEntryDisplay1.LoadSizes(list);
+            
         }
 
         public bool GetSelectByProductCode()
         {
-            return ucManualEntryDisplay1.GetSelectByProductCode();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public void DisabledProductDetail(bool disable)
         {
-            ucManualEntryDisplay1.DisabledProductDetail(disable);
+           
         }
 
         public void RenameStockOrCodeLabel(string label)
         {
-            ucManualEntryDisplay1.RenameStockOrCodeLabel(label);
+           
         }
 
         public void LoadProducts(List<ProductDetails> list)
         {
-            ucManualEntryDisplay1.LoadProducts(list);
+           
         }
 
         public ProductDetails GetSelectedProductDetails()
         {
-            return ucManualEntryDisplay1.GetSelectedProductDetails();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public void ClearProductDetailControls()
         {
-            ucManualEntryDisplay1.ClearProductDetailControls();
+            
         }
 
         public void SetSelectByBarcodeTo(bool selectByBarcode)
         {
-            ucManualEntryDisplay1.SetSelectByBarcodeTo(selectByBarcode);
+           
         }
 
         public string GetStockNumber()
         {
-            return ucManualEntryDisplay1.GetStockNumber();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public string GetColorCode()
         {
-            return ucManualEntryDisplay1.GetColorCode();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public string GetWashingCode()
         {
-            return ucManualEntryDisplay1.GetWashingCode();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public string GetSizeCode()
         {
-            return ucManualEntryDisplay1.GetSizeCode();
+            throw new NotImplementedException("Method has not been implemented");
         }
 
         public void ShowScannerWindow(bool shouldusescanner)
@@ -246,25 +231,12 @@ namespace SGInventory.Sales
 
         void window_OnScannerFormClosing(object sender, EventArgs e)
         {
-            ucManualEntryDisplay1.ChkBarcodeOrStockNumberControl.Checked = false;
+            
         }
 
         void Presenter_OnScanAction(object sender, ScannerResponse e)
         {
-            if (!ucManualEntryDisplay1.ChkBarcodeOrStockNumberControl.Checked)
-            {
-                return;
-            }
-            var isValid = _presenter.ValidateItemCodeAfterScanning(e.ItemCode);
-
-            if (isValid)
-            {
-                buttonAddSales_Click(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Scanned barcode not exists!");
-            }
+          
         }
 
         public void EnableAddButton(bool enable)
@@ -276,13 +248,13 @@ namespace SGInventory.Sales
         public void SetBarcodeAs(ProductDetails productDetail)
         {
             LoadProducts(new List<ProductDetails> { productDetail });
-            ucManualEntryDisplay1.StockNumberComboBoxControl.SelectedIndex = 0;
+          
         }
 
 
         public void SetWashingCode(string washing)
         {
-            ucManualEntryDisplay1.WashingAutoCompleteControl.AutoCompleteValue = washing;
+           
         }
 
         public void ShowMessage(string message)
@@ -329,7 +301,7 @@ namespace SGInventory.Sales
         {
             var sales = new Model.Sales { DateOfSales = dtpDateOfSales.Value };
             LoadSales(sales);            
-            ucManualEntryDisplay1.ClearInputText();
+           
 
         }
 
@@ -343,17 +315,17 @@ namespace SGInventory.Sales
 
         public void LoadColor(Model.Color color)
         {
-            ucManualEntryDisplay1.ColorAutoCompleteControl.AutoCompleteValue = color.Name;
+            
         }
 
         public void LoadSizes(Model.Size size)
         {
-            ucManualEntryDisplay1.SizeAutoCompleteControl.AutoCompleteValue = size.Name;
+            
         }
 
         public void LoadWashings(Washing washing)
         {
-            ucManualEntryDisplay1.WashingAutoCompleteControl.AutoCompleteValue = washing.Name;
+           
         }
     }
 }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxSalesDetail = new System.Windows.Forms.GroupBox();
-            this.ucManualEntryDisplay1 = new SGInventory.UserControls.ucManualEntryDisplay();
             this.buttonAddSales = new System.Windows.Forms.Button();
             this.ncQuantity = new SGInventory.UserControls.NumericControl();
             this.bindingSourceSales = new System.Windows.Forms.BindingSource(this.components);
@@ -49,6 +48,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteDescription = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceListOfSales = new System.Windows.Forms.BindingSource(this.components);
+            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.groupBoxSalesDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -58,7 +58,7 @@
             // 
             // groupBoxSalesDetail
             // 
-            this.groupBoxSalesDetail.Controls.Add(this.ucManualEntryDisplay1);
+            this.groupBoxSalesDetail.Controls.Add(this.userControlSelectProduct1);
             this.groupBoxSalesDetail.Controls.Add(this.buttonAddSales);
             this.groupBoxSalesDetail.Controls.Add(this.ncQuantity);
             this.groupBoxSalesDetail.Controls.Add(this.label3);
@@ -68,25 +68,21 @@
             this.groupBoxSalesDetail.Controls.Add(this.label2);
             this.groupBoxSalesDetail.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxSalesDetail.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxSalesDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxSalesDetail.Name = "groupBoxSalesDetail";
-            this.groupBoxSalesDetail.Size = new System.Drawing.Size(479, 375);
+            this.groupBoxSalesDetail.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSalesDetail.Size = new System.Drawing.Size(639, 462);
             this.groupBoxSalesDetail.TabIndex = 23;
             this.groupBoxSalesDetail.TabStop = false;
             this.groupBoxSalesDetail.Text = "Sales Details";
             // 
-            // ucManualEntryDisplay1
-            // 
-            this.ucManualEntryDisplay1.Location = new System.Drawing.Point(6, 107);
-            this.ucManualEntryDisplay1.Name = "ucManualEntryDisplay1";
-            this.ucManualEntryDisplay1.Size = new System.Drawing.Size(326, 185);
-            this.ucManualEntryDisplay1.TabIndex = 31;
-            // 
             // buttonAddSales
             // 
             this.buttonAddSales.Enabled = false;
-            this.buttonAddSales.Location = new System.Drawing.Point(6, 313);
+            this.buttonAddSales.Location = new System.Drawing.Point(8, 385);
+            this.buttonAddSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddSales.Name = "buttonAddSales";
-            this.buttonAddSales.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddSales.Size = new System.Drawing.Size(100, 28);
             this.buttonAddSales.TabIndex = 30;
             this.buttonAddSales.Text = "Add";
             this.buttonAddSales.UseVisualStyleBackColor = true;
@@ -95,10 +91,11 @@
             // ncQuantity
             // 
             this.ncQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.bindingSourceSales, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "1"));
-            this.ncQuantity.Location = new System.Drawing.Point(135, 79);
+            this.ncQuantity.Location = new System.Drawing.Point(180, 97);
+            this.ncQuantity.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ncQuantity.Name = "ncQuantity";
             this.ncQuantity.Numeric = 1D;
-            this.ncQuantity.Size = new System.Drawing.Size(106, 22);
+            this.ncQuantity.Size = new System.Drawing.Size(141, 27);
             this.ncQuantity.TabIndex = 28;
             // 
             // bindingSourceSales
@@ -109,45 +106,50 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 79);
+            this.label3.Location = new System.Drawing.Point(69, 97);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.Size = new System.Drawing.Size(85, 20);
             this.label3.TabIndex = 27;
             this.label3.Text = "Quantity:";
             // 
             // ucACOutlet
             // 
             this.ucACOutlet.AutoCompleteValue = "";
-            this.ucACOutlet.Location = new System.Drawing.Point(135, 52);
+            this.ucACOutlet.Location = new System.Drawing.Point(180, 64);
+            this.ucACOutlet.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ucACOutlet.Name = "ucACOutlet";
-            this.ucACOutlet.Size = new System.Drawing.Size(313, 21);
+            this.ucACOutlet.Size = new System.Drawing.Size(417, 26);
             this.ucACOutlet.TabIndex = 26;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 56);
+            this.label1.Location = new System.Drawing.Point(92, 69);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.Size = new System.Drawing.Size(66, 20);
             this.label1.TabIndex = 25;
             this.label1.Text = "Outlet:";
             // 
             // dtpDateOfSales
             // 
             this.dtpDateOfSales.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bindingSourceSales, "DateOfSales", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dtpDateOfSales.Location = new System.Drawing.Point(135, 26);
+            this.dtpDateOfSales.Location = new System.Drawing.Point(180, 32);
+            this.dtpDateOfSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDateOfSales.Name = "dtpDateOfSales";
-            this.dtpDateOfSales.Size = new System.Drawing.Size(313, 20);
+            this.dtpDateOfSales.Size = new System.Drawing.Size(416, 22);
             this.dtpDateOfSales.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 28);
+            this.label2.Location = new System.Drawing.Point(20, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 17);
+            this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 23;
             this.label2.Text = "Date of Sales:";
             // 
@@ -155,9 +157,11 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridViewListOfSales);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(479, 0);
+            this.groupBox1.Location = new System.Drawing.Point(639, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(533, 375);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(710, 462);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List of Sales";
@@ -176,10 +180,11 @@
             this.DeleteDescription});
             this.dataGridViewListOfSales.DataSource = this.bindingSourceListOfSales;
             this.dataGridViewListOfSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewListOfSales.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewListOfSales.Location = new System.Drawing.Point(4, 19);
+            this.dataGridViewListOfSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewListOfSales.Name = "dataGridViewListOfSales";
             this.dataGridViewListOfSales.RowHeadersVisible = false;
-            this.dataGridViewListOfSales.Size = new System.Drawing.Size(527, 356);
+            this.dataGridViewListOfSales.Size = new System.Drawing.Size(702, 439);
             this.dataGridViewListOfSales.TabIndex = 0;
             this.dataGridViewListOfSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListOfSales_CellContentClick);
             // 
@@ -236,13 +241,21 @@
             // 
             this.bindingSourceListOfSales.DataSource = typeof(SGInventory.Presenters.Model.SalesDisplayModel);
             // 
+            // userControlSelectProduct1
+            // 
+            this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 150);
+            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
+            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
+            this.userControlSelectProduct1.TabIndex = 31;
+            // 
             // SalesEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 375);
+            this.ClientSize = new System.Drawing.Size(1349, 462);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxSalesDetail);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SalesEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Edit";
@@ -271,7 +284,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewListOfSales;
         private System.Windows.Forms.BindingSource bindingSourceSales;
-        private UserControls.ucManualEntryDisplay ucManualEntryDisplay1;
         private System.Windows.Forms.BindingSource bindingSourceListOfSales;
         private System.Windows.Forms.DataGridViewLinkColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -280,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn washingDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteDescription;
+        private UserControls.UserControlSelectProduct userControlSelectProduct1;
     }
 }

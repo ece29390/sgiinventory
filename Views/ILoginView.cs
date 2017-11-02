@@ -10,6 +10,6 @@ namespace SGInventory.Views
        void  SetUserProfile(Model.User user);
 
        void  SetUserSettings(Model.User user);
-              
+        bool IsButtonEnable();
     }
 }

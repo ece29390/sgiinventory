@@ -84,20 +84,10 @@ namespace SGInventory.Sales
                 {
                     var dialogResult = MessageBox.Show("Would like to open your sales in Scan entry mode?", "Opening Sales", MessageBoxButtons.YesNoCancel);
                     var salesDisplayModel = (SalesDisplayModel)dataGridViewListOfSales.Rows[e.RowIndex].DataBoundItem;
-                    SalesEditForm editForm;
-                    switch (dialogResult)
-                    {
-                        case DialogResult.Yes:
-                            editForm = new SalesEditForm(_container,true,salesDisplayModel.Id);
-                            editForm._OnFormClosingEventArgs += new EventHandler<FormClosingEventArgs>(editForm__OnFormClosingEventArgs);
-                            editForm.ShowDialog();
-                            break;
-                        case DialogResult.No:
-                            editForm = new SalesEditForm(_container,false,salesDisplayModel.Id);
-                            editForm._OnFormClosingEventArgs+=new EventHandler<FormClosingEventArgs>(editForm__OnFormClosingEventArgs);
-                            editForm.ShowDialog();
-                            break;
-                    }
+                    SalesEditForm editForm= new SalesEditForm(_container, salesDisplayModel.Id);
+                    editForm._OnFormClosingEventArgs += new EventHandler<FormClosingEventArgs>(editForm__OnFormClosingEventArgs);
+                    editForm.ShowDialog();
+                   
                 }
             }
         }

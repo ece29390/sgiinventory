@@ -13,6 +13,7 @@ namespace SGInventory.UserControls
     {
         public event EventHandler<EventArgs> OnUserNameTextChanged;
         public event EventHandler<EventArgs> OnPasswordTextChanged;
+        public event EventHandler<KeyEventArgs> OnTextPressEnter;
         public ucUserNamePassword()
         {
             InitializeComponent();
@@ -46,6 +47,21 @@ namespace SGInventory.UserControls
             set { passwordTextbox.Text = value; }
         }
 
-       
+        private void userNameTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            OnKeyupEnter(sender, e);
+        }
+
+        private void passwordTextbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            OnKeyupEnter(sender, e);
+        }
+        private void OnKeyupEnter(object sender, KeyEventArgs e)
+        {
+            if (OnTextPressEnter != null && e.KeyCode == Keys.Enter)
+            {
+                OnTextPressEnter(sender, e);
+            }
+        }
     }
 }

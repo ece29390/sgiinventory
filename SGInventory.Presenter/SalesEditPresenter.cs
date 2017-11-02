@@ -16,14 +16,15 @@ namespace SGInventory.Presenters
 
         public bool ShouldUseScanner { get; private set; }
 
-        private ISalesBusinessModel _salesBusinessModel;
-        private ISalesEditView _view;
-        private IOutletBusinessModel _outletBusinessModel;
-        private IProductBusinessModel _productBusinessModel;
-        private IProductDetailBusinessModel _productDetailBusinessModel;
-        private IColorBusinessModel _colorBusinessModel;
-        private ISizeBusinessModel _sizeBusinessModel;
-        private IWashingBusinessModel _washingBusinessModel;
+        private readonly ISalesBusinessModel _salesBusinessModel;
+        private readonly ISalesEditView _view;
+        private readonly IOutletBusinessModel _outletBusinessModel;
+        private readonly IProductBusinessModel _productBusinessModel;
+        private readonly IProductDetailBusinessModel _productDetailBusinessModel;
+        private readonly IColorBusinessModel _colorBusinessModel;
+        private readonly ISizeBusinessModel _sizeBusinessModel;
+        private readonly IWashingBusinessModel _washingBusinessModel;
+        private readonly IDeliveryToOutletBusinessModel _deliveryToOutletBusinessModel;
 
         public SalesEditPresenter(
             ISalesEditView view
@@ -34,7 +35,7 @@ namespace SGInventory.Presenters
             , IColorBusinessModel colorbusinessmodel
             , ISizeBusinessModel sizebusinessmodel
             , IWashingBusinessModel washingbusinessmodel
-            , bool usescanner
+            , IDeliveryToOutletBusinessModel deliveryToOutletBusinessModel
             )
         {
             _salesBusinessModel = salesbusinessmodel;
@@ -44,10 +45,9 @@ namespace SGInventory.Presenters
             _colorBusinessModel = colorbusinessmodel;
             _sizeBusinessModel = sizebusinessmodel;
             _washingBusinessModel = washingbusinessmodel;
+            _deliveryToOutletBusinessModel = deliveryToOutletBusinessModel;
 
-            _view = view;
-
-            ShouldUseScanner = usescanner;
+            _view = view;           
         }
 
 
@@ -71,22 +71,7 @@ namespace SGInventory.Presenters
 
             }
 
-            _view.LoadSales(sales);
-            var colors = _colorBusinessModel.SelectAll();
-            var sizes = _sizeBusinessModel.SelectAll();
-
-            _view.LoadColors(colors);
-            _view.LoadSizes(sizes);
-
-            if (salesid.HasValue)
-            {
-                if (!ShouldUseScanner)
-                {
-                    _view.LoadColor(sales.ProductDetail.Color);
-                    _view.LoadSizes(sales.ProductDetail.Size);
-                    _view.LoadWashings(sales.ProductDetail.Washing);
-                }               
-            }
+            _view.LoadSales(sales);        
         }
 
         public void OnSelectBarcodeSwitch()
@@ -120,6 +105,14 @@ namespace SGInventory.Presenters
             }
         }
 
+        public void OnRetrievingProduct(string code, bool isBarCode)
+        {
+            throw new NotImplementedException();
+        }
+        public bool ValidateIfCodeExistsInTheOutlet(string code,bool isBarCode)
+        {
+            throw new NotImplementedException();
+        }
         public void LoadProductDetail()
         {
             var stockNumber = _view.GetStockNumber();

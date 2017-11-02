@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using SGInventory.Enums;
 using SGInventory.Model;
 
@@ -44,5 +45,8 @@ namespace SGInventory.Views
         void LoadResultToView(List<ProductDetails> result);
         object GetProductStatus();
         void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet);
+        DialogResult ShowYesNoMessage(string message, string caption);
+        void OnSave();
+        void PopupPrintForm();
     }
 }
