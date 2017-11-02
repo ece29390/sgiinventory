@@ -7,6 +7,7 @@ using SGInventory.Views;
 using SGInventory.Helpers;
 using SGInventory.Model;
 using SGInventory.Presenters.Model;
+using SGInventory.Enums;
 
 namespace SGInventory.Presenters
 {
@@ -111,7 +112,20 @@ namespace SGInventory.Presenters
         }
         public bool ValidateIfCodeExistsInTheOutlet(string code,bool isBarCode)
         {
-            throw new NotImplementedException();
+            int outletId = _view.GetOutletId();
+            List<DeliveryToOutletDetail> deliveryToOutletDetail =
+                isBarCode ? _deliveryToOutletBusinessModel.GetActiveDeliveryToOutletDetailBy(
+                    ProductStatus.Goods
+                    , code
+                    , outletId
+                    ) :
+                    _deliveryToOutletBusinessModel.GetActiveDeliveryToOutletDetailByStockNumberAnd(
+                        ProductStatus.Goods
+                        ,code
+                        ,outletId
+                        );
+
+            return deliveryToOutletDetail.Count > 0;
         }
         public void LoadProductDetail()
         {

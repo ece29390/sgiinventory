@@ -30,7 +30,14 @@ namespace SGInventory.Dal
 
         public List<Model.DeliveryToOutlet> SelectBySpQuery(string spName, Dictionary<string, object> parameters)
         {
-            throw new NotImplementedException();
+            if (parameters != null)
+            {
+                return _sgiHelper.DataHelper.SelectSp<Model.DeliveryToOutlet>(spName, parameters);
+            }
+            else
+            {
+                return _sgiHelper.DataHelper.SelectSp<Model.DeliveryToOutlet>(spName);
+            }
         }
 
         public void SaveOrUpdate(Model.DeliveryToOutlet entity)
@@ -202,6 +209,11 @@ namespace SGInventory.Dal
         public void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail)
         {
             _sgiHelper.DataHelper.Delete<DeliveryToOutletDetail>(deliveryToOutletDetail);
+        }
+
+        public List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBySpQuery(string spQuery, Dictionary<string, object> parameters)
+        {
+            return _sgiHelper.DataHelper.SelectSp<DeliveryToOutletDetail>(spQuery, parameters);
         }
     }
 }

@@ -327,5 +327,10 @@ namespace SGInventory.Sales
         {
            
         }
+
+        public int GetOutletId()
+        {
+            return ucACOutlet.AutoCompleteId.Value;
+        }
     }
 }

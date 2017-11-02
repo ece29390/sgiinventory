@@ -16,5 +16,6 @@ namespace SGInventory.Dal
         DeliveryToOutletDetail SelectDeliveryDetailBy(int deliveryDetailId);
         void SaveDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail);
         void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail);
+        List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBySpQuery(string spQuery, Dictionary<string, object> parameters);
     }
 }

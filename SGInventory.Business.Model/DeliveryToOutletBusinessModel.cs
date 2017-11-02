@@ -130,5 +130,58 @@ namespace SGInventory.Business.Model
             result = result.Where(dd => dd.Status == (int)status && dd.DeliveryToOutlet.Id.Equals(deliverytoOutletId)).ToList();
             return result.Sum(dd => dd.Quantity);
         }
+
+        public List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailBy(ProductStatus goods, string code, int outletId)
+        {
+            var productCodeParamterName = "productCode";
+            var outletIdParameterName = "outledId";
+            var productStatusParameterName = "productStatus";
+                       
+            var returnList = GetActiveDeliveryToOutletDetail(() => string.Format("CALL SelectDeliveryToOutletDetailByCodeOutletProductStatus(:{0},:{1},:{2})", productCodeParamterName, outletIdParameterName, productStatusParameterName)
+            , () => {
+                var parameters = new Dictionary<string, object> {
+                {productCodeParamterName,code},
+                {outletIdParameterName,outletId}
+                , { productCodeParamterName,(int)goods}
+                };
+                return parameters;
+            }
+            );
+
+            return returnList;
+        }
+
+        public List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailByStockNumberAnd(ProductStatus goods, string code, int outletId)
+        {
+            var stockNumberParamterName = "stockNumber";
+            var outletParameterName = "outlet";
+            var productStatusParameterName = "productStatus";
+                       
+            var returnList = GetActiveDeliveryToOutletDetail(() => string.Format("CALL SelectDeliveryToOutletDetailByStockNumberAndOutletId(:{0},:{1},:{2})", stockNumberParamterName, outletParameterName, productStatusParameterName)
+           , () => {
+                       var parameters = new Dictionary<string, object> {
+                        {stockNumberParamterName,code},
+                        {outletParameterName,outletId}
+                        , { stockNumberParamterName,(int)goods}
+                        };
+                        return parameters;
+                }
+           );
+
+            return returnList;
+        }
+        private List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetail(
+            Func<string> getSpQuery,
+            Func<Dictionary<string,object>> getParameter
+            )
+        {
+            var queryName = getSpQuery();
+            var parameters = getParameter();
+
+            List<DeliveryToOutletDetail> deliveryToOutletDetails =
+                _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBySpQuery(queryName, parameters);
+
+            return deliveryToOutletDetails.Where(dd => dd.IsActive == 1).ToList();
+        }
     }
 }

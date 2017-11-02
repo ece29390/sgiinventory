@@ -107,9 +107,6 @@
     <None Include="StoredProcedures\SelectCategoryByName.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="StoredProcedures\SelectSalesByStockNumber.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="StoredProcedures\SelectColorByCode.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedures\UserLogin.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectDeliveryToOutletDetailByStockNumberAndOutletId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedures\SelectDeliveryToOutletDetailByCodeOutletProductStatus.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,5 +32,7 @@ namespace SGInventory.Business.Model
         string SaveAdjustment(DeliveryToOutletDetail deliveryToOutletDetail);
 
         void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail);
+        List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailBy(ProductStatus goods, string code, int outletId);
+        List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailByStockNumberAnd(ProductStatus goods, string code, int outletId);
     }
 }

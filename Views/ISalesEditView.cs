@@ -29,5 +29,6 @@ namespace SGInventory.Views
         void LoadSizes(Size size);
 
         void LoadWashings(Washing washing);
+        int GetOutletId();
     }
 }
