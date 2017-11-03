@@ -6,6 +6,7 @@ using SGInventory.Model;
 using SGInventory.Dal;
 using SGInventory.Common.Interfaces;
 using SGInventory.DAL;
+using SGInventory.Enums;
 
 namespace SGInventory.Business.Model
 {
@@ -22,5 +23,6 @@ namespace SGInventory.Business.Model
         List<ProductInventoryView> SelectProductInterviewBy(string stock);
 
         ProductDetails SelectByStockNumberAndColorAndSize(string stockNumber, string color, string size);
+        List<ProductDetails> GetActiveAvailableProductForSales(string code, int outletId, ProductStatus goods, bool isBarcode);
     }
 }

@@ -99,5 +99,16 @@ namespace SGInventory.Dal
             sales = ReturnDistinctSales(sales);
             return sales;
         }
+        public List<Sales> SelectBy(int outletId)
+        {
+            var sales = new List<Sales>();
+            using (var session = _helper.DataHelper.SessionFactory.OpenSession())
+            {
+                sales = session.CreateCriteria<Sales>()
+                    .Add(Expression.Eq("Outlet", outletId))
+                    .List<Sales>().ToList();
+            }
+            return sales;
+        }
     }
 }

@@ -10,7 +10,7 @@ using NHibernate;
 
 namespace SGInventory.Dal
 {
-    public class ProductDetailDal:DalBase<ProductDetailDal>, IProductDetailDal
+    public class ProductDetailDal:DalBase<ProductDetails>, IProductDetailDal
     {       
         public ProductDetailDal(Helpers.ISgiHelper sgiHelper):base(sgiHelper)
         {          
@@ -197,6 +197,46 @@ namespace SGInventory.Dal
             }
             ret = ReturnDistinctProductDetails(ret);
             return ret.First();
+        }
+
+        public List<ProductDetails> SelectAvailableActiveProductForSaleUsingProductCode(string code, int outletId, int goods)
+        {
+            var productCodeParameterName = "productCode";
+            var outletIdParameterName = "outletId";
+            var productStatusParameterName = "productStatus";
+
+            var returnList = ExecuteSpQuery(() => string.Format("CALL SelectActiveProductForSalesByCodeOutletStatus(:{0},:{1},:{2})", productCodeParameterName, outletIdParameterName, productStatusParameterName)
+            , () =>
+            {
+                var parameters = new Dictionary<string, object>
+                {
+                    { productCodeParameterName,code}
+                    , { outletIdParameterName,outletId}
+                    , { productStatusParameterName,goods}
+                };
+                return parameters;
+            });
+            return returnList;
+        }
+
+        public List<ProductDetails> SelectAvailableActiveProductForSaleUsingStockNumber(string stockNumber, int outletId, int goods)
+        {
+            var stockNumberParameterName = "stockNumber";
+            var outletIdParameterName = "outletId";
+            var productStatusParameterName = "productStatus";
+
+            var returnList = ExecuteSpQuery(() => string.Format("CALL SelectActiveProductForSalesByStockNumberOutletStatus(:{0},:{1},:{2})", stockNumberParameterName, outletIdParameterName, productStatusParameterName)
+            , () =>
+            {
+                var parameters = new Dictionary<string, object>
+                {
+                    { stockNumberParameterName,stockNumber}
+                    , { outletIdParameterName,outletId}
+                    , { productStatusParameterName,goods}
+                };
+                return parameters;
+            });
+            return returnList;
         }
     }
 }

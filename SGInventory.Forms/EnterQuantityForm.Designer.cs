@@ -1,4 +1,4 @@
-﻿namespace SGInventory.Delivery
+﻿namespace SGInventory
 {
     partial class EnterQuantityForm
     {

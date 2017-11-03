@@ -30,5 +30,7 @@ namespace SGInventory.Views
 
         void LoadWashings(Washing washing);
         int GetOutletId();
+        string GetSelectedOutlet();
+        void TriggerAddSales();
     }
 }

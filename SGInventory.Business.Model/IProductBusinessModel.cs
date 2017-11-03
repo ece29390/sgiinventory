@@ -5,6 +5,7 @@ using System.Text;
 using SGInventory.Dal;
 using SGInventory.Model;
 using SGInventory.Business.Model.Response;
+using SGInventory.Enums;
 
 namespace SGInventory.Business.Model
 {
@@ -23,5 +24,6 @@ namespace SGInventory.Business.Model
         Product SelectBy(string stockNumber, string colorCode, string washingCode);
 
         string SaveUsingTransaction(string modelName,Product model, Product dbModel, Color selectedColor, Washing selectedWashing);
+        
     }
 }

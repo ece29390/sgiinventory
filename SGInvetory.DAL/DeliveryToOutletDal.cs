@@ -215,5 +215,20 @@ namespace SGInventory.Dal
         {
             return _sgiHelper.DataHelper.SelectSp<DeliveryToOutletDetail>(spQuery, parameters);
         }
+
+        public List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBy(int outletId, int isActive)
+        {
+            var returnList = new List<DeliveryToOutletDetail>();
+            using (var session = _sgiHelper.DataHelper.SessionFactory.OpenSession())
+            {
+                returnList = session.CreateCriteria<DeliveryToOutletDetail>()
+                    .CreateAlias("DeliveryToOutlet", "dto")
+                    .Add(Expression.Eq("dto.Outlet", outletId))
+                    .Add(Expression.Eq("IsActive", isActive))
+                    .List<DeliveryToOutletDetail>()
+                    .ToList();
+            }
+            return returnList;
+        }
     }
 }

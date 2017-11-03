@@ -108,8 +108,32 @@ namespace SGInventory.Presenters
 
         public void OnRetrievingProduct(string code, bool isBarCode)
         {
-            throw new NotImplementedException();
+            var outletId = _view.GetOutletId();
+            var productDetailList = GetDistinctProductDetailsBySales(code, isBarCode, outletId);
+            if(productDetailList!=null && productDetailList.Count>0)
+            {
+                _view.LoadProducts(productDetailList);
+                if(isBarCode)
+                {
+                    _view.TriggerAddSales();                    
+                }
+            }
+            else
+            {
+                var outlet = _view.GetSelectedOutlet();
+                _view.ShowMessage($"{code} doesn't exists in {outlet}");
+            }            
         }
+
+        public bool VerifyIfQuantityIsEnough(int quantity)
+        {
+            var outletId = _view.GetOutletId();
+            int totalQuantityInOutlet = _deliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(outletId);
+            int totalQuantityMadeInSales = _salesBusinessModel.GetTotalQuantityPerOutlet(outletId);
+            int remainingQuantity = totalQuantityInOutlet - totalQuantityMadeInSales;
+            return remainingQuantity >= quantity;
+        }
+
         public bool ValidateIfCodeExistsInTheOutlet(string code,bool isBarCode)
         {
             int outletId = _view.GetOutletId();
@@ -126,6 +150,20 @@ namespace SGInventory.Presenters
                         );
 
             return deliveryToOutletDetail.Count > 0;
+        }
+        private List<ProductDetails> GetDistinctProductDetailsBySales(string code,bool isBarcode,int outletId)
+        {
+            var productDetailList = _productDetailBusinessModel.GetActiveAvailableProductForSales(code, outletId, ProductStatus.Goods,isBarcode);
+
+            productDetailList.ForEach(pd => 
+            {
+                pd.Color = _colorBusinessModel.SelectByPrimaryId(pd.Color.Code);
+                pd.Size = _sizeBusinessModel.SelectByPrimaryId(pd.Size.Code);
+                pd.Washing = _washingBusinessModel.SelectByPrimaryId(pd.Washing.Code);
+                pd.Product = _productBusinessModel.SelectByPrimaryId(pd.Product.StockNumber);
+            });
+        
+            return productDetailList;
         }
         public void LoadProductDetail()
         {

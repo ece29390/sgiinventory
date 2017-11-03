@@ -34,5 +34,6 @@ namespace SGInventory.Business.Model
         void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail);
         List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailBy(ProductStatus goods, string code, int outletId);
         List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailByStockNumberAnd(ProductStatus goods, string code, int outletId);
+        int GetOverallQuantityPerOutlet(int outletId);
     }
 }

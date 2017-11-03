@@ -103,13 +103,28 @@ namespace SGInventory.Sales
 
         private void buttonAddSales_Click(object sender, EventArgs e)
         {
-            if (ncQuantity.Numeric == 0)
+            var enterQuantityForm =
+                new EnterQuantityForm(
+                    userControlSelectProduct1.SelectedProductDetails.Description,
+                    userControlSelectProduct1.SelectedProductDetails.ProductCode
+                    );
+            enterQuantityForm.ShowDialog();
+            if(enterQuantityForm.Quantity==0)
             {
                 ShowMessage("Invalid Quantity");
                 return;
             }
-            _presenter.AddSales();
+            ncQuantity.Numeric = enterQuantityForm.Quantity;
             
+            if(_presenter.VerifyIfQuantityIsEnough(enterQuantityForm.Quantity))
+            {
+                _presenter.AddSales();
+            }
+            else
+            {
+                ShowMessage($"Insufficient Quantity for {GetSelectedOutlet()}");
+            }      
+                   
         }
 
         public void LoadOutlets(List<Outlet> outlets)
@@ -132,10 +147,7 @@ namespace SGInventory.Sales
             if (sales.Outlet != null)
             {
                 ucACOutlet.AutoCompleteValue = sales.Outlet.Name;
-            }
-           
-          
-                   
+            }                                        
         }
 
         public void LoadProducts(List<Product> list)
@@ -180,7 +192,10 @@ namespace SGInventory.Sales
 
         public void LoadProducts(List<ProductDetails> list)
         {
-           
+            userControlSelectProduct1.LoadResult(list
+                , (pd) => pd.Product.MarkdownPrice > 0 
+                ? pd.Product.MarkdownPrice 
+                : pd.Product.RegularPrice);
         }
 
         public ProductDetails GetSelectedProductDetails()
@@ -331,6 +346,16 @@ namespace SGInventory.Sales
         public int GetOutletId()
         {
             return ucACOutlet.AutoCompleteId.Value;
+        }
+
+        public string GetSelectedOutlet()
+        {
+            return ucACOutlet.AutoCompleteValue;
+        }
+
+        public void TriggerAddSales()
+        {
+            buttonAddSales_Click(null, null);
         }
     }
 }

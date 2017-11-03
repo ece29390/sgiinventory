@@ -49,5 +49,11 @@ namespace SGInventory.Business.Model
         {
            return _salesDal.SelectBy(sales.DateOfSales);
         }
+        public int GetTotalQuantityPerOutlet(int outletId)
+        {
+            var listOfSales = _salesDal.SelectBy(outletId);
+            var totalQuantity = listOfSales.Sum(s => s.Quantity);
+            return totalQuantity;
+        }
     }
 }

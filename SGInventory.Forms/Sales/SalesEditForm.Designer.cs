@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxSalesDetail = new System.Windows.Forms.GroupBox();
+            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.buttonAddSales = new System.Windows.Forms.Button();
             this.ncQuantity = new SGInventory.UserControls.NumericControl();
             this.bindingSourceSales = new System.Windows.Forms.BindingSource(this.components);
@@ -48,7 +49,6 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteDescription = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceListOfSales = new System.Windows.Forms.BindingSource(this.components);
-            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.groupBoxSalesDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -68,19 +68,26 @@
             this.groupBoxSalesDetail.Controls.Add(this.label2);
             this.groupBoxSalesDetail.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxSalesDetail.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxSalesDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSalesDetail.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxSalesDetail.Name = "groupBoxSalesDetail";
-            this.groupBoxSalesDetail.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSalesDetail.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxSalesDetail.Size = new System.Drawing.Size(639, 462);
             this.groupBoxSalesDetail.TabIndex = 23;
             this.groupBoxSalesDetail.TabStop = false;
             this.groupBoxSalesDetail.Text = "Sales Details";
             // 
+            // userControlSelectProduct1
+            // 
+            this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 150);
+            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
+            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
+            this.userControlSelectProduct1.TabIndex = 31;
+            // 
             // buttonAddSales
             // 
             this.buttonAddSales.Enabled = false;
             this.buttonAddSales.Location = new System.Drawing.Point(8, 385);
-            this.buttonAddSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddSales.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddSales.Name = "buttonAddSales";
             this.buttonAddSales.Size = new System.Drawing.Size(100, 28);
             this.buttonAddSales.TabIndex = 30;
@@ -92,11 +99,12 @@
             // 
             this.ncQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.bindingSourceSales, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "1"));
             this.ncQuantity.Location = new System.Drawing.Point(180, 97);
-            this.ncQuantity.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ncQuantity.Margin = new System.Windows.Forms.Padding(5);
             this.ncQuantity.Name = "ncQuantity";
             this.ncQuantity.Numeric = 1D;
             this.ncQuantity.Size = new System.Drawing.Size(141, 27);
             this.ncQuantity.TabIndex = 28;
+            this.ncQuantity.Visible = false;
             // 
             // bindingSourceSales
             // 
@@ -112,12 +120,13 @@
             this.label3.Size = new System.Drawing.Size(85, 20);
             this.label3.TabIndex = 27;
             this.label3.Text = "Quantity:";
+            this.label3.Visible = false;
             // 
             // ucACOutlet
             // 
             this.ucACOutlet.AutoCompleteValue = "";
             this.ucACOutlet.Location = new System.Drawing.Point(180, 64);
-            this.ucACOutlet.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ucACOutlet.Margin = new System.Windows.Forms.Padding(5);
             this.ucACOutlet.Name = "ucACOutlet";
             this.ucACOutlet.Size = new System.Drawing.Size(417, 26);
             this.ucACOutlet.TabIndex = 26;
@@ -137,7 +146,7 @@
             // 
             this.dtpDateOfSales.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bindingSourceSales, "DateOfSales", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.dtpDateOfSales.Location = new System.Drawing.Point(180, 32);
-            this.dtpDateOfSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDateOfSales.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDateOfSales.Name = "dtpDateOfSales";
             this.dtpDateOfSales.Size = new System.Drawing.Size(416, 22);
             this.dtpDateOfSales.TabIndex = 24;
@@ -158,9 +167,9 @@
             this.groupBox1.Controls.Add(this.dataGridViewListOfSales);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(639, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(710, 462);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
@@ -181,7 +190,7 @@
             this.dataGridViewListOfSales.DataSource = this.bindingSourceListOfSales;
             this.dataGridViewListOfSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewListOfSales.Location = new System.Drawing.Point(4, 19);
-            this.dataGridViewListOfSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewListOfSales.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewListOfSales.Name = "dataGridViewListOfSales";
             this.dataGridViewListOfSales.RowHeadersVisible = false;
             this.dataGridViewListOfSales.Size = new System.Drawing.Size(702, 439);
@@ -241,13 +250,6 @@
             // 
             this.bindingSourceListOfSales.DataSource = typeof(SGInventory.Presenters.Model.SalesDisplayModel);
             // 
-            // userControlSelectProduct1
-            // 
-            this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 150);
-            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
-            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
-            this.userControlSelectProduct1.TabIndex = 31;
-            // 
             // SalesEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -255,7 +257,7 @@
             this.ClientSize = new System.Drawing.Size(1349, 462);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxSalesDetail);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SalesEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Edit";

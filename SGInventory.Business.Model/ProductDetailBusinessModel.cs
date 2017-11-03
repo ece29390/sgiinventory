@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SGInventory.Model;
 using SGInventory.DAL;
+using SGInventory.Enums;
 
 namespace SGInventory.Business.Model
 {
@@ -102,6 +103,14 @@ namespace SGInventory.Business.Model
         public ProductDetails SelectByStockNumberAndColorAndSize(string stockNumber, string color, string size)
         {
             return _productDetailDal.SelectByStockNumberAndColorAndSizeAndStatus(stockNumber, color, size, true);
+        }
+
+        public List<ProductDetails> GetActiveAvailableProductForSales(string code, int outletId, ProductStatus goods, bool isBarcode)
+        {
+            List<ProductDetails> result =
+                isBarcode ? _productDetailDal.SelectAvailableActiveProductForSaleUsingProductCode(code, outletId, (int)goods)
+                : _productDetailDal.SelectAvailableActiveProductForSaleUsingStockNumber(code, outletId, (int)goods);
+            return result;
         }
     }
 }

@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SelectDeliveryToOutletDetailByCodeOutletProductStatus`(IN productCode varchar(50),IN outledId int,IN productStatus int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SelectDeliveryToOutletDetailByCodeOutletProductStatus`(IN productCode varchar(50),IN outletId int,IN productStatus int)
 BEGIN
    SELECT			deliverytooutletdetail.*
    FROM				deliverytooutletdetail

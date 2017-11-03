@@ -20,7 +20,6 @@ namespace SGInventory.Business.Model
             this._iDeliveryToOutletDal = iDeliveryToOutletDal;
         }
 
-
         public string SaveDeliveryToOutlet(SGInventory.Model.DeliveryToOutlet deliveryToOutlet)
         {
             var message = deliveryToOutlet.Id == 0 ? SuccessfulMessageOnCreate : SuccessfulMessageOnUpdate;
@@ -134,7 +133,7 @@ namespace SGInventory.Business.Model
         public List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailBy(ProductStatus goods, string code, int outletId)
         {
             var productCodeParamterName = "productCode";
-            var outletIdParameterName = "outledId";
+            var outletIdParameterName = "outletId";
             var productStatusParameterName = "productStatus";
                        
             var returnList = GetActiveDeliveryToOutletDetail(() => string.Format("CALL SelectDeliveryToOutletDetailByCodeOutletProductStatus(:{0},:{1},:{2})", productCodeParamterName, outletIdParameterName, productStatusParameterName)
@@ -142,7 +141,7 @@ namespace SGInventory.Business.Model
                 var parameters = new Dictionary<string, object> {
                 {productCodeParamterName,code},
                 {outletIdParameterName,outletId}
-                , { productCodeParamterName,(int)goods}
+                , { productStatusParameterName,(int)goods}
                 };
                 return parameters;
             }
@@ -162,7 +161,7 @@ namespace SGInventory.Business.Model
                        var parameters = new Dictionary<string, object> {
                         {stockNumberParamterName,code},
                         {outletParameterName,outletId}
-                        , { stockNumberParamterName,(int)goods}
+                        , { productStatusParameterName,(int)goods}
                         };
                         return parameters;
                 }
@@ -182,6 +181,13 @@ namespace SGInventory.Business.Model
                 _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBySpQuery(queryName, parameters);
 
             return deliveryToOutletDetails.Where(dd => dd.IsActive == 1).ToList();
+        }
+
+        public int GetOverallQuantityPerOutlet(int outletId)
+        {
+            List<DeliveryToOutletDetail> deliveryToOutletDetails = _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBy(outletId,1);
+            var totalQuantity = deliveryToOutletDetails.Sum(dtod => dtod.Quantity);
+            return totalQuantity;
         }
     }
 }

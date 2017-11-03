@@ -19,5 +19,7 @@ namespace SGInventory.Dal
         List<ProductInventoryView> SelectProductInterviewBy(string spName,Dictionary<string, object> parameters);
 
         ProductDetails SelectByStockNumberAndColorAndSizeAndStatus(string stockNumber, string color, string size, bool p);
+        List<ProductDetails> SelectAvailableActiveProductForSaleUsingProductCode(string code, int outletId, int goods);
+        List<ProductDetails> SelectAvailableActiveProductForSaleUsingStockNumber(string stockNumber, int outletId, int goods);
     }
 }
