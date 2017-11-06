@@ -13,6 +13,6 @@ namespace SGInventory.Dal
         Sales SelectBy(DateTime dateofsales, Outlet outlet, ProductDetails productDetails);
 
         List<Sales> SelectBy(DateTime dateofsales);
-        List<Sales> SelectBy(int outletId);
+        List<Sales> SelectBy(int outletId,string productCode);
     }
 }

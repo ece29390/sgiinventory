@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NHibernate.Criterion;
 using SGInventory.Model;
+using NHibernate.Transform;
 
 namespace SGInventory.Dal
 {
@@ -216,17 +217,25 @@ namespace SGInventory.Dal
             return _sgiHelper.DataHelper.SelectSp<DeliveryToOutletDetail>(spQuery, parameters);
         }
 
-        public List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBy(int outletId, int isActive)
+        public List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBy(int outletId, string productCode, int isActive)
         {
             var returnList = new List<DeliveryToOutletDetail>();
             using (var session = _sgiHelper.DataHelper.SessionFactory.OpenSession())
-            {
-                returnList = session.CreateCriteria<DeliveryToOutletDetail>()
-                    .CreateAlias("DeliveryToOutlet", "dto")
-                    .Add(Expression.Eq("dto.Outlet", outletId))
-                    .Add(Expression.Eq("IsActive", isActive))
-                    .List<DeliveryToOutletDetail>()
-                    .ToList();
+            {                
+                DeliveryToOutletDetail deliveryToOutletDetail = null;
+                DeliveryToOutlet deliveryToOutlet = null;
+                ProductDetails productDetails = null;
+                Outlet outlet = null;
+                returnList = session.QueryOver<DeliveryToOutletDetail>(() => deliveryToOutletDetail)
+                    .JoinAlias(() => deliveryToOutletDetail.DeliveryToOutlet, () => deliveryToOutlet)
+                    .JoinAlias(() => deliveryToOutletDetail.ProductDetail, () => productDetails)
+                    .JoinAlias(() => deliveryToOutlet.Outlet, () => outlet)
+                    .Where(() => deliveryToOutletDetail.IsActive == isActive)
+                    .And(() => outlet.Id == outletId)
+                    .And(() => productDetails.Code== productCode)
+                    .TransformUsing(Transformers.DistinctRootEntity)
+                    .List<DeliveryToOutletDetail>().ToList();
+                    
             }
             return returnList;
         }

@@ -21,6 +21,7 @@ namespace SGInventory.Sales
         private BusinessModelContainer _container;
         private int? _salesId;
         private SalesEditPresenter _presenter;
+        private bool _isEdit;
 
         public SalesEditForm(
             BusinessModelContainer container         
@@ -88,12 +89,28 @@ namespace SGInventory.Sales
             dataGridViewListOfSales.AllowUserToAddRows = false;
             userControlSelectProduct1.OnEnter += UserControlSelectProduct1_OnEnter;
             userControlSelectProduct1.OnManuallySelected += UserControlSelectProduct1_OnManuallySelected;
+            ucACOutlet.AfterSelecting += UcACOutlet_OnChanges;
+          
             _presenter.InitializeControl(_salesId);
+        }
+
+        private void UcACOutlet_OnChanges(object sender, EventArgs e)
+        {
+            if(_isEdit)
+            {
+                return;
+            }
+            var outlet = GetSelectedOutlet();
+            userControlSelectProduct1.Enabled = !string.IsNullOrEmpty(outlet);
+            if(userControlSelectProduct1.Enabled)
+            {
+                userControlSelectProduct1.Focus();
+            }
         }
 
         private void UserControlSelectProduct1_OnManuallySelected(object sender, CustomEventArgs.ScanCodeArgs e)
         {
-            
+            buttonAddSales_Click(null, null);
         }
 
         private void UserControlSelectProduct1_OnEnter(object sender, CustomEventArgs.ScanCodeArgs e)
@@ -122,7 +139,7 @@ namespace SGInventory.Sales
             }
             else
             {
-                ShowMessage($"Insufficient Quantity for {GetSelectedOutlet()}");
+                ShowMessage(string.Format(SalesEditPresenter.InsufficientQuantityErrorFormat, GetSelectedOutlet()));
             }      
                    
         }
@@ -182,7 +199,7 @@ namespace SGInventory.Sales
 
         public void DisabledProductDetail(bool disable)
         {
-           
+            userControlSelectProduct1.Enabled = !disable;
         }
 
         public void RenameStockOrCodeLabel(string label)
@@ -282,16 +299,8 @@ namespace SGInventory.Sales
         {
             var sales = (Model.Sales)bindingSourceSales.DataSource;
             sales.Outlet = new Outlet { Id = ucACOutlet.AutoCompleteId.Value };
-            if (_presenter.ShouldUseScanner)
-            {
-                sales.ProductDetail = GetSelectedProductDetails();
-            }
-            else
-            {
-                sales.ProductDetail = _presenter.BuildProductDetail();
-                
-            }
-            
+            sales.ProductDetail = _presenter.BuildProductDetail();
+            sales.Quantity = (int)ncQuantity.Numeric;
             return sales;
         }
 
@@ -356,6 +365,28 @@ namespace SGInventory.Sales
         public void TriggerAddSales()
         {
             buttonAddSales_Click(null, null);
+        }
+
+        public string GetSelectedProductCode()
+        {
+            return userControlSelectProduct1.SelectedProductDetails.ProductCode;
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            _presenter.UpdateSales();
+        }
+
+        public void ShowEditControls(bool shouldShow)
+        {
+            label3.Visible = shouldShow;
+            ncQuantity.Visible = shouldShow;
+            buttonUpdate.Visible = shouldShow;
+        }
+
+        public void SetEditMode(bool setToEditMode)
+        {
+            _isEdit = setToEditMode;
         }
     }
 }

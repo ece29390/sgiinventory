@@ -14,7 +14,7 @@ namespace SGInventory.Presenters
     public class SalesEditPresenter
     {
         public event EventHandler<DisplaySalesArg> DisplayListOfSalesOnAdd;
-
+        public const string InsufficientQuantityErrorFormat = "Insufficient Quantity for {0}";
         public bool ShouldUseScanner { get; private set; }
 
         private readonly ISalesBusinessModel _salesBusinessModel;
@@ -106,6 +106,7 @@ namespace SGInventory.Presenters
             }
         }
 
+        private const string CodeNotExistsInStoreFormat = "{0} doesn't exists in {1}";
         public void OnRetrievingProduct(string code, bool isBarCode)
         {
             var outletId = _view.GetOutletId();
@@ -121,15 +122,16 @@ namespace SGInventory.Presenters
             else
             {
                 var outlet = _view.GetSelectedOutlet();
-                _view.ShowMessage($"{code} doesn't exists in {outlet}");
+                _view.ShowMessage(string.Format(CodeNotExistsInStoreFormat,code,outlet));
             }            
         }
 
         public bool VerifyIfQuantityIsEnough(int quantity)
         {
             var outletId = _view.GetOutletId();
-            int totalQuantityInOutlet = _deliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(outletId);
-            int totalQuantityMadeInSales = _salesBusinessModel.GetTotalQuantityPerOutlet(outletId);
+            var productDetail = _view.GetSelectedProductCode();
+            int totalQuantityInOutlet = _deliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(outletId, productDetail);
+            int totalQuantityMadeInSales = _salesBusinessModel.GetTotalQuantityPerOutlet(outletId, productDetail);
             int remainingQuantity = totalQuantityInOutlet - totalQuantityMadeInSales;
             return remainingQuantity >= quantity;
         }
@@ -296,23 +298,45 @@ namespace SGInventory.Presenters
             }
         }
 
+        public void UpdateSales()
+        {
+            var sales = _view.GetSalesObject();
+            var outlet = _view.GetSelectedOutlet();
+
+            if (!ValidateIfCodeExistsInTheOutlet(sales.ProductDetail.Code,true))
+            {
+                
+                _view.ShowMessage(string.Format(CodeNotExistsInStoreFormat, sales.ProductDetail.Code, outlet));
+                return;
+            }
+
+            if(!VerifyIfQuantityIsEnough(sales.Quantity))
+            {
+                _view.ShowMessage(string.Format(InsufficientQuantityErrorFormat, outlet));
+                return; 
+            }
+
+            _salesBusinessModel.Update(sales);
+            _view.ShowMessage("Sales has been successfully updated");
+            
+            _view.ResetControls();
+            _view.ShowEditControls(false);
+            _view.DisabledProductDetail(false);
+            _view.EnableAddButton(true);
+        }
+
         public void LoadExistingSales(int salesId)
         {
             var sales = _salesBusinessModel.SelectBy(salesId);
-           
-            if (ShouldUseScanner)
-            {
-                 var productDetails = new List<ProductDetails>{sales.ProductDetail};
-                _view.LoadProducts(productDetails);
-            }
-            else
-            {
-                var products = new List<Product>{sales.ProductDetail.Product};
-                _view.LoadProducts(products);
-            }
-                       
+
+            var productDetails = new List<ProductDetails> { sales.ProductDetail };
+            _view.LoadProducts(productDetails);
+
             _view.LoadSales(sales);
-            
+            _view.ShowEditControls(true);
+            _view.DisabledProductDetail(true);
+            _view.EnableAddButton(false);
+            _view.SetEditMode(true);
         }
 
         public void DeleteExistingSales(int salesid)
@@ -331,11 +355,9 @@ namespace SGInventory.Presenters
 
         public ProductDetails BuildProductDetail()
         {
-            var stockNumber = _view.GetStockNumber();
-            var color = _view.GetColorCode();
-            var size = _view.GetSizeCode();
+            var productCode = _view.GetSelectedProductCode();
 
-            ProductDetails productDetail = _productDetailBusinessModel.SelectByStockNumberAndColorAndSize(stockNumber, color, size);
+            ProductDetails productDetail = _productDetailBusinessModel.SelectByPrimaryId(productCode);
             return productDetail;
         }
     }

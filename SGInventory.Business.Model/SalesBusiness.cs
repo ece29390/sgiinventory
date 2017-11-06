@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SGInventory.Model;
 using SGInventory.Dal;
+using SGInventory.Helpers;
 
 namespace SGInventory.Business.Model
 {
@@ -49,11 +50,18 @@ namespace SGInventory.Business.Model
         {
            return _salesDal.SelectBy(sales.DateOfSales);
         }
-        public int GetTotalQuantityPerOutlet(int outletId)
+        public int GetTotalQuantityPerOutlet(int outletId, string productCode)
         {
-            var listOfSales = _salesDal.SelectBy(outletId);
+            var listOfSales = _salesDal.SelectBy(outletId,productCode);
             var totalQuantity = listOfSales.Sum(s => s.Quantity);
             return totalQuantity;
+        }
+
+        public void Update(Sales sales)
+        {
+            sales.ModifiedDate = DateTime.Now;
+            sales.ModifiedBy = SgiHelper.GetIdentityUserName();
+            _salesDal.SaveOrUpdate(sales);
         }
     }
 }

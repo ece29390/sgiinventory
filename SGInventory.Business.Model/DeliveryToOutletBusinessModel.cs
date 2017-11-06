@@ -183,9 +183,9 @@ namespace SGInventory.Business.Model
             return deliveryToOutletDetails.Where(dd => dd.IsActive == 1).ToList();
         }
 
-        public int GetOverallQuantityPerOutlet(int outletId)
+        public int GetOverallQuantityPerOutlet(int outletId, string productCode)
         {
-            List<DeliveryToOutletDetail> deliveryToOutletDetails = _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBy(outletId,1);
+            List<DeliveryToOutletDetail> deliveryToOutletDetails = _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBy(outletId,productCode, 1);
             var totalQuantity = deliveryToOutletDetails.Sum(dtod => dtod.Quantity);
             return totalQuantity;
         }

@@ -32,5 +32,8 @@ namespace SGInventory.Views
         int GetOutletId();
         string GetSelectedOutlet();
         void TriggerAddSales();
+        string GetSelectedProductCode();
+        void ShowEditControls(bool shouldShow);
+        void SetEditMode(bool setToEditMode);
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using SGInventory.Model;
 using SGInventory.Helpers;
 using NHibernate.Criterion;
+using NHibernate.Transform;
 
 namespace SGInventory.Dal
 {
@@ -99,14 +100,22 @@ namespace SGInventory.Dal
             sales = ReturnDistinctSales(sales);
             return sales;
         }
-        public List<Sales> SelectBy(int outletId)
+        public List<Sales> SelectBy(int outletId,string productCode)
         {
             var sales = new List<Sales>();
             using (var session = _helper.DataHelper.SessionFactory.OpenSession())
             {
-                sales = session.CreateCriteria<Sales>()
-                    .Add(Expression.Eq("Outlet", outletId))
-                    .List<Sales>().ToList();
+                Outlet outlet=null;
+                ProductDetails productDetails=null;
+                Sales sale=null;
+
+                sales = session.QueryOver<Sales>(() => sale)
+                    .JoinAlias(() => sale.Outlet,()=>outlet)
+                    .JoinAlias(() => sale.ProductDetail,()=>productDetails)
+                    .Where(() => outlet.Id == outletId)
+                    .And(() => productDetails.Code == productCode)
+                    .TransformUsing(Transformers.DistinctRootEntity)
+                    .List<Sales>().ToList();               
             }
             return sales;
         }

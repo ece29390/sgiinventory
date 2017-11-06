@@ -19,6 +19,7 @@ namespace SGInventory.Business.Model
         void Delete(Sales sales);
 
         List<Sales> SelectByDateOfSales(Sales sales);
-        int GetTotalQuantityPerOutlet(int outletId);
+        int GetTotalQuantityPerOutlet(int outletId,string productCode);
+        void Update(Sales sales);
     }
 }

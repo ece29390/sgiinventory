@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxSalesDetail = new System.Windows.Forms.GroupBox();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.buttonAddSales = new System.Windows.Forms.Button();
             this.ncQuantity = new SGInventory.UserControls.NumericControl();
@@ -58,6 +59,7 @@
             // 
             // groupBoxSalesDetail
             // 
+            this.groupBoxSalesDetail.Controls.Add(this.buttonUpdate);
             this.groupBoxSalesDetail.Controls.Add(this.userControlSelectProduct1);
             this.groupBoxSalesDetail.Controls.Add(this.buttonAddSales);
             this.groupBoxSalesDetail.Controls.Add(this.ncQuantity);
@@ -76,12 +78,25 @@
             this.groupBoxSalesDetail.TabStop = false;
             this.groupBoxSalesDetail.Text = "Sales Details";
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(116, 385);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(100, 28);
+            this.buttonUpdate.TabIndex = 31;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Visible = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // userControlSelectProduct1
             // 
+            this.userControlSelectProduct1.Enabled = false;
             this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 150);
             this.userControlSelectProduct1.Name = "userControlSelectProduct1";
             this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
-            this.userControlSelectProduct1.TabIndex = 31;
+            this.userControlSelectProduct1.TabIndex = 30;
             // 
             // buttonAddSales
             // 
@@ -295,5 +310,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteDescription;
         private UserControls.UserControlSelectProduct userControlSelectProduct1;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }
