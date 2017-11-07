@@ -30,35 +30,39 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxSalesDetail = new System.Windows.Forms.GroupBox();
+            this.labelTransactionNumber = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
             this.buttonAddSales = new System.Windows.Forms.Button();
-            this.ncQuantity = new SGInventory.UserControls.NumericControl();
-            this.bindingSourceSales = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.ucACOutlet = new SGInventory.UserControls.ucAutoComplete();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDateOfSales = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewListOfSales = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DeleteDescription = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.washingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteDescription = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceListOfSales = new System.Windows.Forms.BindingSource(this.components);
+            this.userControlSelectProduct1 = new SGInventory.UserControls.UserControlSelectProduct();
+            this.ncQuantity = new SGInventory.UserControls.NumericControl();
+            this.bindingSourceSales = new System.Windows.Forms.BindingSource(this.components);
+            this.ucACOutlet = new SGInventory.UserControls.ucAutoComplete();
             this.groupBoxSalesDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListOfSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceListOfSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxSalesDetail
             // 
+            this.groupBoxSalesDetail.Controls.Add(this.labelTransactionNumber);
+            this.groupBoxSalesDetail.Controls.Add(this.label4);
             this.groupBoxSalesDetail.Controls.Add(this.buttonUpdate);
             this.groupBoxSalesDetail.Controls.Add(this.userControlSelectProduct1);
             this.groupBoxSalesDetail.Controls.Add(this.buttonAddSales);
@@ -78,9 +82,31 @@
             this.groupBoxSalesDetail.TabStop = false;
             this.groupBoxSalesDetail.Text = "Sales Details";
             // 
+            // labelTransactionNumber
+            // 
+            this.labelTransactionNumber.AutoSize = true;
+            this.labelTransactionNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceSales, "TransactionNumber", true));
+            this.labelTransactionNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTransactionNumber.Location = new System.Drawing.Point(175, 28);
+            this.labelTransactionNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTransactionNumber.Name = "labelTransactionNumber";
+            this.labelTransactionNumber.Size = new System.Drawing.Size(0, 20);
+            this.labelTransactionNumber.TabIndex = 33;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 28);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 20);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Transaction #:";
+            // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(116, 385);
+            this.buttonUpdate.Location = new System.Drawing.Point(113, 410);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(100, 28);
@@ -90,18 +116,10 @@
             this.buttonUpdate.Visible = false;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
-            // userControlSelectProduct1
-            // 
-            this.userControlSelectProduct1.Enabled = false;
-            this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 150);
-            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
-            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
-            this.userControlSelectProduct1.TabIndex = 30;
-            // 
             // buttonAddSales
             // 
             this.buttonAddSales.Enabled = false;
-            this.buttonAddSales.Location = new System.Drawing.Point(8, 385);
+            this.buttonAddSales.Location = new System.Drawing.Point(5, 410);
             this.buttonAddSales.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddSales.Name = "buttonAddSales";
             this.buttonAddSales.Size = new System.Drawing.Size(100, 28);
@@ -110,26 +128,11 @@
             this.buttonAddSales.UseVisualStyleBackColor = true;
             this.buttonAddSales.Click += new System.EventHandler(this.buttonAddSales_Click);
             // 
-            // ncQuantity
-            // 
-            this.ncQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.bindingSourceSales, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "1"));
-            this.ncQuantity.Location = new System.Drawing.Point(180, 97);
-            this.ncQuantity.Margin = new System.Windows.Forms.Padding(5);
-            this.ncQuantity.Name = "ncQuantity";
-            this.ncQuantity.Numeric = 1D;
-            this.ncQuantity.Size = new System.Drawing.Size(141, 27);
-            this.ncQuantity.TabIndex = 28;
-            this.ncQuantity.Visible = false;
-            // 
-            // bindingSourceSales
-            // 
-            this.bindingSourceSales.DataSource = typeof(SGInventory.Model.Sales);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 97);
+            this.label3.Location = new System.Drawing.Point(68, 127);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 20);
@@ -137,20 +140,11 @@
             this.label3.Text = "Quantity:";
             this.label3.Visible = false;
             // 
-            // ucACOutlet
-            // 
-            this.ucACOutlet.AutoCompleteValue = "";
-            this.ucACOutlet.Location = new System.Drawing.Point(180, 64);
-            this.ucACOutlet.Margin = new System.Windows.Forms.Padding(5);
-            this.ucACOutlet.Name = "ucACOutlet";
-            this.ucACOutlet.Size = new System.Drawing.Size(417, 26);
-            this.ucACOutlet.TabIndex = 26;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(92, 69);
+            this.label1.Location = new System.Drawing.Point(91, 99);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 20);
@@ -160,7 +154,7 @@
             // dtpDateOfSales
             // 
             this.dtpDateOfSales.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bindingSourceSales, "DateOfSales", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dtpDateOfSales.Location = new System.Drawing.Point(180, 32);
+            this.dtpDateOfSales.Location = new System.Drawing.Point(179, 62);
             this.dtpDateOfSales.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDateOfSales.Name = "dtpDateOfSales";
             this.dtpDateOfSales.Size = new System.Drawing.Size(416, 22);
@@ -170,7 +164,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 34);
+            this.label2.Location = new System.Drawing.Point(19, 64);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 20);
@@ -219,6 +213,16 @@
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             // 
+            // DeleteDescription
+            // 
+            this.DeleteDescription.DataPropertyName = "DeleteDescription";
+            this.DeleteDescription.HeaderText = "";
+            this.DeleteDescription.Name = "DeleteDescription";
+            this.DeleteDescription.ReadOnly = true;
+            this.DeleteDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteDescription.Text = "Delete";
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Code";
@@ -251,19 +255,41 @@
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             // 
-            // DeleteDescription
-            // 
-            this.DeleteDescription.DataPropertyName = "DeleteDescription";
-            this.DeleteDescription.HeaderText = "";
-            this.DeleteDescription.Name = "DeleteDescription";
-            this.DeleteDescription.ReadOnly = true;
-            this.DeleteDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteDescription.Text = "Delete";
-            // 
             // bindingSourceListOfSales
             // 
             this.bindingSourceListOfSales.DataSource = typeof(SGInventory.Presenters.Model.SalesDisplayModel);
+            // 
+            // userControlSelectProduct1
+            // 
+            this.userControlSelectProduct1.Enabled = false;
+            this.userControlSelectProduct1.Location = new System.Drawing.Point(7, 175);
+            this.userControlSelectProduct1.Name = "userControlSelectProduct1";
+            this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);
+            this.userControlSelectProduct1.TabIndex = 30;
+            // 
+            // ncQuantity
+            // 
+            this.ncQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Numeric", this.bindingSourceSales, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "1"));
+            this.ncQuantity.Location = new System.Drawing.Point(179, 127);
+            this.ncQuantity.Margin = new System.Windows.Forms.Padding(5);
+            this.ncQuantity.Name = "ncQuantity";
+            this.ncQuantity.Numeric = 1D;
+            this.ncQuantity.Size = new System.Drawing.Size(141, 27);
+            this.ncQuantity.TabIndex = 28;
+            this.ncQuantity.Visible = false;
+            // 
+            // bindingSourceSales
+            // 
+            this.bindingSourceSales.DataSource = typeof(SGInventory.Model.Sales);
+            // 
+            // ucACOutlet
+            // 
+            this.ucACOutlet.AutoCompleteValue = "";
+            this.ucACOutlet.Location = new System.Drawing.Point(179, 94);
+            this.ucACOutlet.Margin = new System.Windows.Forms.Padding(5);
+            this.ucACOutlet.Name = "ucACOutlet";
+            this.ucACOutlet.Size = new System.Drawing.Size(417, 26);
+            this.ucACOutlet.TabIndex = 26;
             // 
             // SalesEditForm
             // 
@@ -280,10 +306,10 @@
             this.Load += new System.EventHandler(this.SalesEditForm_Load);
             this.groupBoxSalesDetail.ResumeLayout(false);
             this.groupBoxSalesDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListOfSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceListOfSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,5 +337,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn DeleteDescription;
         private UserControls.UserControlSelectProduct userControlSelectProduct1;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Label labelTransactionNumber;
+        private System.Windows.Forms.Label label4;
     }
 }

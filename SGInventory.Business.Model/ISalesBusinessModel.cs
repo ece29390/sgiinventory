@@ -21,5 +21,7 @@ namespace SGInventory.Business.Model
         List<Sales> SelectByDateOfSales(Sales sales);
         int GetTotalQuantityPerOutlet(int outletId,string productCode);
         void Update(Sales sales);
+        List<Sales> SelectBy(string transactionNumber);
+        int GetTotalQuantityAsideFromGivenSalesId(int outletId, string productDetail, int salesId);
     }
 }

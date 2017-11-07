@@ -81,8 +81,7 @@ namespace SGInventory.Sales
                 var dataPropertyName = dataGridViewListOfSales.Columns[e.ColumnIndex].DataPropertyName;
 
                 if (dataPropertyName == "Id")
-                {
-                    var dialogResult = MessageBox.Show("Would like to open your sales in Scan entry mode?", "Opening Sales", MessageBoxButtons.YesNoCancel);
+                {                    
                     var salesDisplayModel = (SalesDisplayModel)dataGridViewListOfSales.Rows[e.RowIndex].DataBoundItem;
                     SalesEditForm editForm= new SalesEditForm(_container, salesDisplayModel.Id);
                     editForm._OnFormClosingEventArgs += new EventHandler<FormClosingEventArgs>(editForm__OnFormClosingEventArgs);

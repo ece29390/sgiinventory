@@ -8,16 +8,26 @@ BEGIN
             FROM 		DeliveryToOutletDetail
             INNER JOIN	DeliveryToOutlet
             ON			DeliveryToOutletDetail.DeliveryToOutlet = DeliveryToOutlet.Id
+            INNER JOIN	productdetails 
+            ON			productdetails.Code = DeliveryToOutletDetail.ProductDetail
+            INNER JOIN	product
+            ON			product.StockNumber = productdetails.Product
             WHERE		DeliveryToOutlet.Outlet = outletId
             AND			DeliveryToOutletDetail.Status = productStatus
             AND			DeliveryToOutletDetail.IsActive = 1
+            AND			product.StockNumber = stockNumber
     )		AS			DTOD
     ON		PD.Code = DTOD.DTOD_ProductDetail
     LEFT JOIN
     (
 			SELECT		SUM(Quantity) AS Sales_Quantity, ProductDetail AS Sales_ProductDetail
-            FROM		Sales
-            WHERE		Outlet = outletId           
+            FROM		sales
+		    INNER JOIN	productdetails
+            ON			sales.ProductDetail = productdetails.Code
+            INNER JOIN	product
+            ON			productdetails.Product = product.StockNumber
+            WHERE		sales.Outlet = outletId   
+            AND			product.StockNumber = stockNumber
     )		AS		Sales
     ON		PD.Code = Sales.Sales_ProductDetail
     WHERE	

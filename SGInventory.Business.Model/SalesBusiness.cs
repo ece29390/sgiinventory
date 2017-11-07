@@ -63,5 +63,19 @@ namespace SGInventory.Business.Model
             sales.ModifiedBy = SgiHelper.GetIdentityUserName();
             _salesDal.SaveOrUpdate(sales);
         }
+
+        public List<Sales> SelectBy(string transactionNumber)
+        {
+            var listOfSales = _salesDal.SelectBy(transactionNumber);
+            return listOfSales;
+        }
+
+        public int GetTotalQuantityAsideFromGivenSalesId(int outletId
+            , string productDetail
+            , int salesId)
+        {
+            var listOfSales = _salesDal.SelectSalesDoNotBelongToSalesId(salesId, productDetail, outletId);
+            return listOfSales.Sum(s => s.Quantity);
+        }
     }
 }

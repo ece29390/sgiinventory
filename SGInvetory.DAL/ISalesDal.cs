@@ -14,5 +14,7 @@ namespace SGInventory.Dal
 
         List<Sales> SelectBy(DateTime dateofsales);
         List<Sales> SelectBy(int outletId,string productCode);
+        List<Sales> SelectBy(string transactionNumber);
+        List<Sales> SelectSalesDoNotBelongToSalesId(int salesId, string productDetail, int outletId);
     }
 }

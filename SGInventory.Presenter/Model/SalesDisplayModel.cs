@@ -22,8 +22,7 @@ namespace SGInventory.Presenters.Model
 
         public string Washing { get; set; }
 
-        public int Quantity { get; set; }
-
+        public int Quantity { get; set; }        
         public string DeleteDescription { get; private set; }
     }
 }

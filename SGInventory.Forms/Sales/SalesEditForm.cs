@@ -23,6 +23,19 @@ namespace SGInventory.Sales
         private SalesEditPresenter _presenter;
         private bool _isEdit;
 
+        public string TransactionNumber
+        {
+            get
+            {
+                return labelTransactionNumber.Text;
+            }
+
+            set
+            {
+                labelTransactionNumber.Text = value;
+            }
+        }
+
         public SalesEditForm(
             BusinessModelContainer container         
             ,int? salesid = null
@@ -150,21 +163,20 @@ namespace SGInventory.Sales
         }
 
         public void LoadSales(Model.Sales sales)
-        {
+        {           
             if (sales.Id == 0)
             {
-                sales.DateOfSales = dtpDateOfSales.Value;
+                sales.DateOfSales = dtpDateOfSales.Value;               
             }
             else
             {
-                buttonAddSales.Enabled = true;  
+                _presenter.LoadOtherSalesWithSameTransaction(sales);
             }
-            
             bindingSourceSales.DataSource = sales;
             if (sales.Outlet != null)
             {
                 ucACOutlet.AutoCompleteValue = sales.Outlet.Name;
-            }                                        
+            }
         }
 
         public void LoadProducts(List<Product> list)
@@ -298,9 +310,11 @@ namespace SGInventory.Sales
         public Model.Sales GetSalesObject()
         {
             var sales = (Model.Sales)bindingSourceSales.DataSource;
+            sales.DateOfSales = sales.DateOfSales.Date;
             sales.Outlet = new Outlet { Id = ucACOutlet.AutoCompleteId.Value };
             sales.ProductDetail = _presenter.BuildProductDetail();
             sales.Quantity = (int)ncQuantity.Numeric;
+            sales.TransactionNumber = labelTransactionNumber.Text.Trim();
             return sales;
         }
 
@@ -324,9 +338,8 @@ namespace SGInventory.Sales
         public void ResetControls()
         {
             var sales = new Model.Sales { DateOfSales = dtpDateOfSales.Value };
-            LoadSales(sales);            
-           
-
+            sales.TransactionNumber = labelTransactionNumber.Text;
+            LoadSales(sales);                      
         }
 
         private void SalesEditForm_FormClosing(object sender, FormClosingEventArgs e)

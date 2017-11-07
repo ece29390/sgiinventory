@@ -119,5 +119,39 @@ namespace SGInventory.Dal
             }
             return sales;
         }
+
+        public List<Sales> SelectBy(string transactionNumber)
+        {
+            var listOfSales = new List<Sales>();
+            using (var session = _helper.DataHelper.SessionFactory.OpenSession())
+            {
+                listOfSales = session.CreateCriteria<Sales>()
+                                .Add(Expression.Eq("TransactionNumber", transactionNumber))
+                                .SetResultTransformer(Transformers.DistinctRootEntity)
+                                .List<Sales>().ToList();
+            }
+            return listOfSales;
+        }
+
+        public List<Sales> SelectSalesDoNotBelongToSalesId(int salesId, string productDetail, int outletId)
+        {
+            var sales = new List<Sales>();
+            using (var session = _helper.DataHelper.SessionFactory.OpenSession())
+            {
+                Outlet outlet = null;
+                ProductDetails productDetails = null;
+                Sales sale = null;
+
+                sales = session.QueryOver<Sales>(() => sale)
+                    .JoinAlias(() => sale.Outlet, () => outlet)
+                    .JoinAlias(() => sale.ProductDetail, () => productDetails)
+                    .Where(() => outlet.Id == outletId)
+                    .And(() => productDetails.Code == productDetail)
+                    .AndNot(()=>sale.Id==salesId)
+                    .TransformUsing(Transformers.DistinctRootEntity)
+                    .List<Sales>().ToList();
+            }
+            return sales;
+        }
     }
 }

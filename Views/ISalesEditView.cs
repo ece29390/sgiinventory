@@ -8,6 +8,8 @@ namespace SGInventory.Views
 {
     public interface ISalesEditView : IScanBarcodeDisplay,IShowMessage
     {
+        string TransactionNumber { get; set; }
+
         void LoadOutlets(List<Outlet> outlets);
 
         void LoadSales(Sales sales);

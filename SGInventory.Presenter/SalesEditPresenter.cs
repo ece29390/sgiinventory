@@ -59,22 +59,21 @@ namespace SGInventory.Presenters
             Sales sales = new Sales();
             if (salesid.HasValue)
             {
-                 sales = _salesBusinessModel.SelectBy(salesid.Value);
-                 //ToListOfSalesAndLoad(sales);
-                 if (ShouldUseScanner)
-                 {
-                     _view.LoadProducts(new List<ProductDetails> { sales.ProductDetail });
-                 }
-                 else
-                 {
-                     _view.LoadProducts(new List<Product> { sales.ProductDetail.Product });
-                 }
-
+                 sales = _salesBusinessModel.SelectBy(salesid.Value);                                          
             }
-
-            _view.LoadSales(sales);        
+            else
+            {
+                sales.TransactionNumber = GenerateTransactionNumber();
+               
+            }
+            _view.LoadSales(sales);
         }
-
+        public string GenerateTransactionNumber()
+        {
+            var date = DateTime.Now;
+            var salesNumber = date.ToString("yyyyMMddhhmmss");
+            return salesNumber;
+        }
         public void OnSelectBarcodeSwitch()
         {
             var getSelectedByBarcode = _view.GetSelectByProductCode();
@@ -135,7 +134,16 @@ namespace SGInventory.Presenters
             int remainingQuantity = totalQuantityInOutlet - totalQuantityMadeInSales;
             return remainingQuantity >= quantity;
         }
-
+        public bool VerifyIfQuantityIsEnoughOnEdit(int quantity,int salesId)
+        {
+            var outletId = _view.GetOutletId();
+            var productDetail = _view.GetSelectedProductCode();
+            int totalQuantityInOutlet = _deliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(outletId, productDetail);
+            int totalQuantityMadeInSales = _salesBusinessModel.GetTotalQuantityAsideFromGivenSalesId(outletId, productDetail, salesId);
+           
+            int remainingQuantity = totalQuantityInOutlet - totalQuantityMadeInSales;
+            return remainingQuantity >= quantity;
+        }
         public bool ValidateIfCodeExistsInTheOutlet(string code,bool isBarCode)
         {
             int outletId = _view.GetOutletId();
@@ -153,6 +161,16 @@ namespace SGInventory.Presenters
 
             return deliveryToOutletDetail.Count > 0;
         }
+
+        public void LoadOtherSalesWithSameTransaction(Sales sales)
+        {          
+            var listOfSales = _salesBusinessModel.SelectBy(sales.TransactionNumber);
+            LoadListOfSales(listOfSales);
+            _view.ShowEditControls(true);
+            _view.EnableAddButton(false);
+            _view.LoadProducts(new List<ProductDetails> { sales.ProductDetail });
+        }
+
         private List<ProductDetails> GetDistinctProductDetailsBySales(string code,bool isBarcode,int outletId)
         {
             var productDetailList = _productDetailBusinessModel.GetActiveAvailableProductForSales(code, outletId, ProductStatus.Goods,isBarcode);
@@ -277,6 +295,11 @@ namespace SGInventory.Presenters
         private void ToListOfSalesAndLoad(Sales sales)
         {
             List<Sales> listOfSales = _salesBusinessModel.SelectByOutletAndDateOfSales(sales);
+            LoadListOfSales(listOfSales);
+        }
+
+        private void LoadListOfSales(List<Sales> listOfSales)
+        {
             var retValue = (from l in listOfSales
                             select new SalesDisplayModel
                             {
@@ -310,7 +333,7 @@ namespace SGInventory.Presenters
                 return;
             }
 
-            if(!VerifyIfQuantityIsEnough(sales.Quantity))
+            if(!VerifyIfQuantityIsEnoughOnEdit(sales.Quantity,sales.Id))
             {
                 _view.ShowMessage(string.Format(InsufficientQuantityErrorFormat, outlet));
                 return; 
@@ -318,11 +341,12 @@ namespace SGInventory.Presenters
 
             _salesBusinessModel.Update(sales);
             _view.ShowMessage("Sales has been successfully updated");
-            
+            ToListOfSalesAndLoad(sales);
             _view.ResetControls();
             _view.ShowEditControls(false);
             _view.DisabledProductDetail(false);
             _view.EnableAddButton(true);
+            _view.SetEditMode(false);
         }
 
         public void LoadExistingSales(int salesId)

@@ -46,6 +46,8 @@ namespace SGInventory.Model
         {
             get;
             set;  
-        }        
+        }       
+        
+        public virtual string TransactionNumber { get; set; } 
     }
 }
