@@ -163,9 +163,8 @@ namespace SGInventory.Presenters
         }
 
         public void LoadOtherSalesWithSameTransaction(Sales sales)
-        {          
-            var listOfSales = _salesBusinessModel.SelectBy(sales.TransactionNumber);
-            LoadListOfSales(listOfSales);
+        {
+            ToListOfSalesAndLoad(sales);
             _view.ShowEditControls(true);
             _view.EnableAddButton(false);
             _view.LoadProducts(new List<ProductDetails> { sales.ProductDetail });
@@ -259,7 +258,7 @@ namespace SGInventory.Presenters
 
             if (sales.Id == 0)
             {
-                Sales existingSales = _salesBusinessModel.SelectByOutletDateOfSalesProductDetail(sales);
+                Sales existingSales = _salesBusinessModel.SelectByTransactionNumberOutletAndProductDetail(sales);
 
                 if (existingSales != null)
                 {
@@ -294,7 +293,7 @@ namespace SGInventory.Presenters
 
         private void ToListOfSalesAndLoad(Sales sales)
         {
-            List<Sales> listOfSales = _salesBusinessModel.SelectByOutletAndDateOfSales(sales);
+            List<Sales> listOfSales = _salesBusinessModel.SelectBy(sales.TransactionNumber);
             LoadListOfSales(listOfSales);
         }
 

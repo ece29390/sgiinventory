@@ -16,6 +16,7 @@ BEGIN
             AND			DeliveryToOutletDetail.Status = productStatus
             AND			DeliveryToOutletDetail.IsActive = 1
             AND			product.StockNumber = stockNumber
+			GROUP BY	DeliveryToOutletDetail.ProductDetail
     )		AS			DTOD
     ON		PD.Code = DTOD.DTOD_ProductDetail
     LEFT JOIN
@@ -28,6 +29,7 @@ BEGIN
             ON			productdetails.Product = product.StockNumber
             WHERE		sales.Outlet = outletId   
             AND			product.StockNumber = stockNumber
+			GROUP BY	ProductDetail
     )		AS		Sales
     ON		PD.Code = Sales.Sales_ProductDetail
     WHERE	

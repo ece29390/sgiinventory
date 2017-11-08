@@ -23,5 +23,6 @@ namespace SGInventory.Business.Model
         void Update(Sales sales);
         List<Sales> SelectBy(string transactionNumber);
         int GetTotalQuantityAsideFromGivenSalesId(int outletId, string productDetail, int salesId);
+        Sales SelectByTransactionNumberOutletAndProductDetail(Sales sales);
     }
 }

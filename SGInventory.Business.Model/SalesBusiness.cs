@@ -77,5 +77,11 @@ namespace SGInventory.Business.Model
             var listOfSales = _salesDal.SelectSalesDoNotBelongToSalesId(salesId, productDetail, outletId);
             return listOfSales.Sum(s => s.Quantity);
         }
+
+        public Sales SelectByTransactionNumberOutletAndProductDetail(Sales sales)
+        {
+            Sales returnSales = _salesDal.SelectBy(sales.TransactionNumber, sales.Outlet, sales.ProductDetail);
+            return returnSales;
+        }
     }
 }

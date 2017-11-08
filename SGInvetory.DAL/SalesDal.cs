@@ -54,9 +54,10 @@ namespace SGInventory.Dal
                 sales = session.CreateCriteria<Sales>()
                     .Add(Expression.Eq("Outlet", outlet))
                     .Add(Expression.Eq("DateOfSales", Convert.ToDateTime(salesofdate.ToShortDateString())))
+                    .SetResultTransformer(Transformers.DistinctRootEntity)
                     .List<Sales>().ToList();
             }
-            sales = ReturnDistinctSales(sales);
+            
             return sales;
         }
 
@@ -95,9 +96,10 @@ namespace SGInventory.Dal
             {
                 sales = session.CreateCriteria<Sales>()
                     .Add(Expression.Eq("DateOfSales", Convert.ToDateTime(dateofsales.ToShortDateString())))
+                    .SetResultTransformer(Transformers.DistinctRootEntity)
                     .List<Sales>().ToList();
             }
-            sales = ReturnDistinctSales(sales);
+            //sales = ReturnDistinctSales(sales);
             return sales;
         }
         public List<Sales> SelectBy(int outletId,string productCode)
@@ -151,6 +153,27 @@ namespace SGInventory.Dal
                     .TransformUsing(Transformers.DistinctRootEntity)
                     .List<Sales>().ToList();
             }
+            return sales;
+        }
+
+        public Sales SelectBy(string transactionNumber, Outlet outlet, ProductDetails productDetails)
+        {
+            Sales sales = null;
+
+            using (var session = _helper.DataHelper.SessionFactory.OpenSession())
+            {
+                var retSales = session.CreateCriteria<Sales>()
+                    .Add(Expression.Eq("Outlet", outlet))
+                    .Add(Expression.Eq("TransactionNumber", transactionNumber))
+                    .Add(Expression.Eq("ProductDetail", productDetails))
+                    .List<Sales>().ToList();
+
+                if (retSales.Any())
+                {
+                    sales = retSales.First();
+                }
+            }
+
             return sales;
         }
     }
