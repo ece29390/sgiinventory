@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SGInventory.Model;
 using SGInventory.Common.Interfaces;
-using SGInventory.DAL;
+
 
 namespace SGInventory.Dal
 {

@@ -105,7 +105,7 @@ namespace SGInventory.Presenters
             }
         }
 
-        private const string CodeNotExistsInStoreFormat = "{0} doesn't exists in {1}";
+        private const string CodeNotExistsInStoreFormat = "{0} doesn't exists/has no stocks in {1}";
         public void OnRetrievingProduct(string code, bool isBarCode)
         {
             var outletId = _view.GetOutletId();

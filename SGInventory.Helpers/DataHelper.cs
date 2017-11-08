@@ -24,6 +24,7 @@ namespace SGInventory.Helpers
                     m.AutoMappings.Add(AutoMap.AssemblyOf<Category>()
                         .Override<Size>(e=>e.Id(s=>s.Code))
                         .Override<Washing>(e=>e.Id(s=>s.Code))
+                        .Override<ProductInventoryView>(e=>e.Id(s=>s.ProductDetailCode))
                         .Override<Color>(e=>{
                             e.Id(s=>s.Code);                            
                         })                        

@@ -10,6 +10,8 @@ using SGInventory.Presenters;
 using SGInventory.Dal;
 using SGInventory.Model;
 using SGIInventory.Logger;
+using SGInventory.Presenters.Mapping;
+
 namespace SGInventory.Forms
 {
     static class Program
@@ -59,6 +61,9 @@ namespace SGInventory.Forms
                 kernel.Bind<BusinessModelContainer>().ToSelf();
 
                 log4net.Config.XmlConfigurator.Configure();
+
+                AutoMapperConfiguration.RegisterMappings();
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new SGInventory.Forms.InventoryMainForm(kernel.Get<BusinessModelContainer>()));

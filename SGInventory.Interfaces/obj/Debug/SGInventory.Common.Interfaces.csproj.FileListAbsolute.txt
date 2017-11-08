@@ -21,4 +21,3 @@ E:\SGInvetory_0623207\SGInventory.Interfaces\bin\Debug\SGInventory.Common.Interf
 E:\SGInvetory_0623207\SGInventory.Interfaces\bin\Debug\SGInventory.Common.Interfaces.pdb
 E:\SGInvetory_0623207\SGInventory.Interfaces\obj\Debug\SGInventory.Common.Interfaces.dll
 E:\SGInvetory_0623207\SGInventory.Interfaces\obj\Debug\SGInventory.Common.Interfaces.pdb
-E:\SGInvetory_0623207\SGInventory.Interfaces\obj\Debug\SGInventory.Common.Interfaces.csprojResolveAssemblyReference.cache

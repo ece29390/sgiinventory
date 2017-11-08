@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SGInventory.DAL;
+using SGInventory.Model;
 
 namespace SGInventory.Inventory
 {

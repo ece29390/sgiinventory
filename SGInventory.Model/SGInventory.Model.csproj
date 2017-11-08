@@ -78,6 +78,7 @@
     <Compile Include="Outlet.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductDetail.cs" />
+    <Compile Include="ProductInventoryView.cs" />
     <Compile Include="ProductPricesHistory.cs" />
     <Compile Include="ProductDetailQuantityHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

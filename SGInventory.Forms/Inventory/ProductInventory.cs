@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SGInventory.Model;
 using SGInventory.Dal;
-using SGInventory.DAL;
+using SGInventory.Presenters;
 
 namespace SGInventory.Inventory
 {
@@ -59,60 +59,17 @@ namespace SGInventory.Inventory
                 MessageBox.Show("Stock Number is empty");
                 return;
             }
+          
+            var listOfProductInventoryView = _container.ProductDetailBusinessModel.SelectProductInterviewBy(stockNumber);
+            listOfProductInventoryView.Sort(new ProductInventoryViewComparer());
 
-            var productDetails =
-                _container.ProductDetailBusinessModel.SelectAllActiveByParent(new Product { StockNumber = stockNumber });
+            var listOfProductInventoryViewModel = AutoMapper.Mapper.Map<List<ProductInventoryViewModel>>(listOfProductInventoryView);
+            
 
-            var groupProductDetail = (from productDetail in productDetails
-                                      orderby productDetail.Color.Name
-                                      group productDetail by productDetail.Color.Code into pGroup
-                                      select new { ColorCode = pGroup.Key}).ToList();
-
-            var listOfProductInventoryView = new List<ProductInventoryView>();
-
-            groupProductDetail.ForEach(code => {
-                var result = (from productDetail in productDetails
-                              where productDetail.Color.Code.Equals(code.ColorCode)
-                              //orderby productDetail.Size.Name
-                              select new ProductInventoryView
-                              {
-                                  ColorName = productDetail.Color.Name
-                                  ,
-                                  ProductDetailCode = productDetail.Code
-                                  ,
-                                  SizeName = productDetail.Size.Name
-                                  ,
-                                  StockNumber = productDetail.Product.StockNumber
-                                  ,
-                                  WashingName = productDetail.Washing.Name
-                                  ,
-                                  Quantity = GetAvailableQuantity(productDetail)
-                              }
-                              ).ToList();
-
-                result.Sort(new ProductInventoryViewComparer());
-                listOfProductInventoryView.AddRange(result);
-            });
-                        
-            dgvInventoryStock.DataSource = listOfProductInventoryView;
+            dgvInventoryStock.DataSource = listOfProductInventoryViewModel;
             
         }
-
-        private int GetAvailableQuantity(ProductDetails productDetail)
-        {
-            var supplierDeliveryQuantity = productDetail.DeliveryDetails != null && productDetail.DeliveryDetails.Count > 0
-                ? productDetail.DeliveryDetails.
-                Where(dd=>dd.IsActive==1).GroupBy(dd=>dd.Id).Select(dd=>dd.First()).Sum(dd=>dd.Quantity) : 0;
-
-            var deliveryToOutletQuantity =
-                productDetail.DeliveryToOutletDetails != null && productDetail.DeliveryToOutletDetails.Count > 0
-                ? productDetail.DeliveryToOutletDetails.Where(dd => dd.IsActive == 1).GroupBy(dd => dd.Id).Select(dd => dd.First()).Sum(dd => dd.Quantity) : 0;
-
-            var availableQuantity = supplierDeliveryQuantity - deliveryToOutletQuantity;
-            return availableQuantity;
-        }
-
-        
+                
         private void dgvInventoryStock_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex>-1)

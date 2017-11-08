@@ -5,7 +5,7 @@ using System.Text;
 using SGInventory.Model;
 using SGInventory.Dal;
 using SGInventory.Common.Interfaces;
-using SGInventory.DAL;
+
 using SGInventory.Enums;
 
 namespace SGInventory.Business.Model

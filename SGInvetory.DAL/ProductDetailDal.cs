@@ -5,7 +5,7 @@ using System.Text;
 using SGInventory.Model;
 using NHibernate.Criterion;
 using NHibernate.Criterion.Lambda;
-using SGInventory.DAL;
+
 using NHibernate;
 
 namespace SGInventory.Dal
@@ -175,8 +175,7 @@ namespace SGInventory.Dal
                         query.SetParameter(parameterName, parameters[parameterName]);
                     }
                 }
-
-                retValue = query.List<ProductInventoryView>().ToList<ProductInventoryView>();                
+                retValue = query.List<ProductInventoryView>().ToList<ProductInventoryView>();
             }
             return retValue;
         }

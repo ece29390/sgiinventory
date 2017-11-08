@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SGInventory.Model;
-using SGInventory.DAL;
+
 using SGInventory.Enums;
 
 namespace SGInventory.Business.Model
@@ -85,7 +85,7 @@ namespace SGInventory.Business.Model
         }
 
 
-        public List<DAL.ProductInventoryView> SelectProductInterviewBy(string stock)
+        public List<ProductInventoryView> SelectProductInterviewBy(string stock)
         {
             var parameters = new Dictionary<string, object>();
           
