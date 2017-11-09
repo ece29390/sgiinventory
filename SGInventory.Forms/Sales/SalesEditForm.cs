@@ -139,7 +139,7 @@ namespace SGInventory.Sales
                     userControlSelectProduct1.SelectedProductDetails.ProductCode
                     );
             enterQuantityForm.ShowDialog();
-            if(enterQuantityForm.Quantity==0)
+            if(enterQuantityForm.Quantity<=0)
             {
                 ShowMessage("Invalid Quantity");
                 return;

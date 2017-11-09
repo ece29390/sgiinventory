@@ -90,6 +90,10 @@ namespace SGInventory.UserControls
 
         private void TriggerManuallySelected(object sender)
         {
+            if(SelectedProductDetails==null)
+            {
+                return;
+            }
             var args = new ScanCodeArgs(false, SelectedProductDetails.ProductCode);
             OnManuallySelected(sender, args);
             //textBoxCode.Focus();

@@ -17,12 +17,16 @@ namespace SGInventory.Inventory
         public event EventHandler OnSave;
         public event EventHandler OnDelete;
 
-        private string _productDetailCode;
-        private BusinessModelContainer _container;
+        private readonly string _productDetailCode;
+        private readonly BusinessModelContainer _container;
         private DeliveryDetail _deliveryDetail;
         private DeliveryToOutletDetail _deliveryToOutletDetail;
 
         private bool _isDeliveryComing;
+        private List<Outlet> _outlets;
+        private List<Supplier> _suppliers;
+        private int? _selectedOutletOrSupplier;
+        
 
         public Adjustment(string productDetailCode
             , BusinessModelContainer container)
@@ -55,7 +59,14 @@ namespace SGInventory.Inventory
             var damageList = SgiHelper.ConvertEnumToList<Damage>(() => Enum.GetValues(typeof(Damage)), (enumItem) => (Damage)enumItem);
             cboDamageStatus.DataSource = damageList;
         }
-
+        private void GetOutlets()
+        {
+            _outlets = _container.OutletBusinessModel.SelectAll();
+        }
+        private void GetSuppliers()
+        {
+            _suppliers = _container.SupplierBusinessModel.SelectAll();
+        }
         private void LoadAdjustmentModeList()
         {
             var adjustmentModeList = SgiHelper.ConvertEnumToList<AdjustmentMode>(() => Enum.GetValues(typeof(AdjustmentMode)), (enumItem) => (AdjustmentMode)enumItem);
@@ -71,10 +82,13 @@ namespace SGInventory.Inventory
 
         private void Adjustment_Load(object sender, EventArgs e)
         {
+            GetSuppliers();
+            GetOutlets();
+            InitializeAutoCompleteControl();
             LoadStatusList();
             LoadDamageList();
             LoadAdjustmentModeList();
-
+           
             baseDeliveryUserControl1.ProductDetailCode = _productDetailCode;
 
             if (EntityId > 0)
@@ -88,7 +102,7 @@ namespace SGInventory.Inventory
                     baseDeliveryUserControl1.LoadDelivery(_deliveryDetail);
                     adjusmentModeValue = _deliveryDetail.AdjustmentMode.Value;
                     adjustmentRemarks = _deliveryDetail.AdjustmentRemarks;
-                    status = _deliveryDetail.Status;                    
+                    status = _deliveryDetail.Status;
                     StatusDescriptionTextbox.Text = _deliveryDetail.StatusDescription;
                     SetDamageInCombobox(_deliveryDetail.Damage.Value);
                 }
@@ -103,9 +117,31 @@ namespace SGInventory.Inventory
                 SetAdjustmentMode(adjusmentModeValue);
                 SetStatusInCombobox(status);
                 txtAdjustmentRemarks.Text = adjustmentRemarks;
-                
+
                 btnDelete.Enabled = true;
-            }     
+            }
+        }
+
+        private void InitializeAutoCompleteControl()
+        {
+            ucAutoCompleteOutletOrSupplier.AfterSelecting += UcAutoCompleteOutletOrSupplier_AfterSelecting;
+            ucAutoCompleteOutletOrSupplier.InsideTextChange += UcAutoCompleteOutletOrSupplier_InsideTextChange;
+            ucAutoCompleteOutletOrSupplier.AutoCompleteKeyup += UcAutoCompleteOutletOrSupplier_AutoCompleteKeyup;
+        }
+
+        private void UcAutoCompleteOutletOrSupplier_AutoCompleteKeyup(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void UcAutoCompleteOutletOrSupplier_InsideTextChange(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void UcAutoCompleteOutletOrSupplier_AfterSelecting(object sender, EventArgs e)
+        {
+            _selectedOutletOrSupplier = ucAutoCompleteOutletOrSupplier.AutoCompleteId;
         }
 
         public void SetAdjustmentMode(int adjustmentModeValue)
@@ -186,17 +222,32 @@ namespace SGInventory.Inventory
                     break;
             }
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private bool Validate(AdjustmentMode mode)
         {
-            if (baseDeliveryUserControl1.Quantity == 0)
+            if (baseDeliveryUserControl1.Quantity <= 0)
             {
                 MessageBox.Show("Quantity should be greater than 0");
-                return;
+                return false;
             }
 
-            var adjustmentMode = (AdjustmentMode)cboMode.SelectedItem;
+            if(!_selectedOutletOrSupplier.HasValue&&mode!=AdjustmentMode.Deduct_from_Warehouse)
+            {
+                var outletOrSupplier = (mode == AdjustmentMode.Add_to_Outlet || mode == AdjustmentMode.Deduct_from_Outlet) ? "Outlet" : "Supplier";
+                var message = $"Select a {outletOrSupplier}";
+                MessageBox.Show(message);
+                return false;
+            }
 
+            return true;
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var adjustmentMode = (AdjustmentMode)cboMode.SelectedItem;
+            if (!Validate(adjustmentMode))
+            {
+                return;
+            }
+            
             var status = (ProductStatus)cboStatus.SelectedItem;
             var damage = (Damage)cboDamageStatus.SelectedItem;
             var message = string.Empty;
@@ -212,13 +263,13 @@ namespace SGInventory.Inventory
 
                         _deliveryDetail = new DeliveryDetail
                         {
-                                      
+
                             Price = productDetail.Product.RegularPrice
                             ,
-                            ProductDetail = productDetail                                    
+                            ProductDetail = productDetail
                         };
                     }
-                    
+
                     _deliveryDetail.AdjustmentDate = baseDeliveryUserControl1.AdjustmentDate;
                     if (status == ProductStatus.Damaged)
                     {
@@ -229,17 +280,6 @@ namespace SGInventory.Inventory
                     {
                         signOne = -1;
                     }
-
-                    //var availableQuantityInWarehouse = _container.DeliveryBusinessModelHelper.IsQuantityAvailable(
-                    //    _deliveryDetail.ProductDetail.Code
-                    //    , baseDeliveryUserControl1.Quantity * signOne
-                    //    , status);
-
-                    //if (!availableQuantityInWarehouse)
-                    //{
-                    //    MessageBox.Show("Quantity is invalid");
-                    //    return;
-                    //}
 
                     _deliveryDetail.Quantity = baseDeliveryUserControl1.Quantity * signOne;
                     _deliveryDetail.Status = (int)status;
@@ -260,67 +300,114 @@ namespace SGInventory.Inventory
                     break;
                 case AdjustmentMode.Add_to_Outlet:
                 case AdjustmentMode.Deduct_from_Outlet:
-                    //var availableQuantity = 
-                    //        _container.DeliveryBusinessModelHelper.IsQuantityAvailable(
-                    //                        _productDetailCode
-                    //                        ,baseDeliveryUserControl1.Quantity
-                    //                        , status);
+                    if (adjustmentMode == AdjustmentMode.Deduct_from_Outlet)
+                    {
+                        signOne = -1;
+                    }
+                    var quantity = baseDeliveryUserControl1.Quantity * signOne;
 
-                    //    if(!availableQuantity && EntityId==0)
-                    //    {
-                    //        MessageBox.Show("The quantity is more than the quantity on hand");
-                    //        return;
-                    //    }
+                    if(!IsQuantityValid(adjustmentMode,()=>_container.DeliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(_selectedOutletOrSupplier.Value,_productDetailCode)))
+                    {
+                        MessageBox.Show($"The suggested quantity is more than the total quantity in the record for product {_productDetailCode}");
+                        return;
+                    }
 
-
-                        if (_deliveryToOutletDetail == null)
-                        {
-                            var productDetail = _container.ProductDetailBusinessModel.SelectByPrimaryId(_productDetailCode);
-
-                            _deliveryToOutletDetail = new DeliveryToOutletDetail
-                            {
-                                SuggestedRetailPrice = productDetail.Product.RegularPrice                   
-                                ,
-                                ProductDetail = productDetail
-                            };
-                        }
-
-                        if (adjustmentMode == AdjustmentMode.Deduct_from_Outlet)
-                        {
-                            signOne = -1;
-                        }
-
-                        //var availableQuantityInOutlet = _container.DeliveryBusinessModelHelper.IsQuantityAvailable(
-                        //    _deliveryToOutletDetail.ProductDetail.Code
-                        //    , baseDeliveryUserControl1.Quantity * signOne
-                        //    , status);
-
-                        //if (!availableQuantityInOutlet)
-                        //{
-                        //    MessageBox.Show("Quantity is invalid");
-                        //    return;
-                        //}
-
-                        _deliveryToOutletDetail.AdjustmentDate = baseDeliveryUserControl1.AdjustmentDate;
-                        _deliveryToOutletDetail.AdjustmentRemarks = txtAdjustmentRemarks.Text;
-                        _deliveryToOutletDetail.Quantity = baseDeliveryUserControl1.Quantity*signOne;
-                        _deliveryToOutletDetail.Status = (int)cboStatus.SelectedValue;
-                        _deliveryToOutletDetail.AdjustmentMode = (int)cboMode.SelectedValue;
-
-                        message = _container.DeliveryToOutletBusinessModel.SaveAdjustment(_deliveryToOutletDetail);
-                        MessageBox.Show(message);
-
-                        if (OnSave != null)
-                        {
-                            OnSave(sender, e);
-                        }
-                        _deliveryToOutletDetail = null;
-                        EntityId = 0;
-                        Close();
+                    SaveAdjustmentForOutlet(sender, e, adjustmentMode, quantity);                    
                     break;
             }
+
+            
+        }
+        private bool IsQuantityValid(AdjustmentMode mode,Func<int> getAvailableQuantity)
+        {
+            if(mode == AdjustmentMode.Add_to_Outlet || mode == AdjustmentMode.Add_to_Warehouse)
+            {
+                return true;
+            }
+            var quantity = baseDeliveryUserControl1.Quantity;
+            var availableQuantity = getAvailableQuantity();
+            return availableQuantity >= quantity;
         }
 
+        private DeliveryToOutlet GenerateParentDeliveryToOutlet()
+        {
+            string packingListNumber = _container.DeliveryToOutletBusinessModel
+                        .GenerateAdjustmentNumberBy(baseDeliveryUserControl1.AdjustmentDate);
+            var parentDeliveryToOutlet = new DeliveryToOutlet
+            {
+                CreatedBy = SgiHelper.GetIdentityUserName()
+                       ,
+                CreatedDate = DateTime.Now
+                       ,
+                DeliveryDate = baseDeliveryUserControl1.AdjustmentDate
+                       ,
+                Outlet = new Outlet { Id = _selectedOutletOrSupplier.Value }
+                       ,
+                IsActive = 1
+                       ,
+                PackingListNumber = packingListNumber
+            };
+            return parentDeliveryToOutlet;
+        }
+        private void SaveAdjustmentForOutlet(object sender, EventArgs e, AdjustmentMode adjustmentMode,  int quantity)
+        {
+            var message = string.Empty;
+            if (_deliveryToOutletDetail == null)
+            {
+                var productDetail = _container.ProductDetailBusinessModel.SelectByPrimaryId(_productDetailCode);
+
+                _deliveryToOutletDetail = new DeliveryToOutletDetail
+                {
+                    SuggestedRetailPrice = productDetail.Product.RegularPrice
+                    ,
+                    ProductDetail = productDetail
+                    ,
+                    DeliveryToOutlet = GenerateParentDeliveryToOutlet()
+                };
+                
+                
+            }
+            else
+            {               
+                if (_deliveryToOutletDetail.DeliveryToOutlet == null)
+                {
+                    _deliveryToOutletDetail.DeliveryToOutlet = GenerateParentDeliveryToOutlet();
+                }               
+            }
+
+            AssignValuesToOtherPropertiesOfDeliveryToOutletDetail(quantity);
+            _deliveryToOutletDetail.DeliveryToOutlet.DeliveryToOutletDetails = new List<DeliveryToOutletDetail> { _deliveryToOutletDetail };
+            message = _container.DeliveryToOutletBusinessModel.SaveDeliveryToOutlet(_deliveryToOutletDetail.DeliveryToOutlet);
+            MessageBox.Show(message);
+
+            if (OnSave != null)
+            {
+                OnSave(sender, e);
+            }
+            _deliveryToOutletDetail = null;
+            EntityId = 0;
+            Close();
+
+        }
+
+        private void AssignValuesToOtherPropertiesOfDeliveryToOutletDetail(int quantity)
+        {
+            _deliveryToOutletDetail.AdjustmentDate = baseDeliveryUserControl1.AdjustmentDate;
+            _deliveryToOutletDetail.AdjustmentRemarks = txtAdjustmentRemarks.Text;
+            _deliveryToOutletDetail.Quantity = quantity;
+            _deliveryToOutletDetail.Status = (int)cboStatus.SelectedValue;
+            _deliveryToOutletDetail.AdjustmentMode = (int)cboMode.SelectedValue;
+        }
+
+        private void SetSelectedOutletAndSupplierToNull()
+        {
+            _selectedOutletOrSupplier = null;            
+        }
+        private AdjustmentMode GetSelectedMode()
+        {
+            var mode = (AdjustmentMode)cboMode.SelectedValue;
+            return mode;
+        }
         private void cboStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             var productStatus = (ProductStatus)cboStatus.SelectedItem;
@@ -335,6 +422,25 @@ namespace SGInventory.Inventory
             baseDeliveryUserControl1.Quantity = 0;
             txtAdjustmentRemarks.Text = "";
             StatusDescriptionTextbox.Text = "";
+        }
+
+        private void cboMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetSelectedOutletAndSupplierToNull();
+            var mode = GetSelectedMode();
+            switch (mode)
+            {
+                case AdjustmentMode.Add_to_Outlet:
+                case AdjustmentMode.Deduct_from_Outlet:
+                    ucAutoCompleteOutletOrSupplier.LoadAutoCompleteIdNameSource(_outlets);
+                    break;
+                case AdjustmentMode.Add_to_Warehouse:
+                case AdjustmentMode.Deduct_from_Warehouse:
+                    ucAutoCompleteOutletOrSupplier.LoadAutoCompleteIdNameSource(_suppliers);                    
+                    break;
+            }
+            ucAutoCompleteOutletOrSupplier.Enabled = !(mode == AdjustmentMode.Deduct_from_Warehouse);
+            labelSupplierOrOutlet.Text = (mode == AdjustmentMode.Add_to_Outlet || mode == AdjustmentMode.Deduct_from_Outlet) ? "Outlets" : "Suppliers";
         }
     }
 }

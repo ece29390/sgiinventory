@@ -35,5 +35,6 @@ namespace SGInventory.Business.Model
         List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailBy(ProductStatus goods, string code, int outletId);
         List<DeliveryToOutletDetail> GetActiveDeliveryToOutletDetailByStockNumberAnd(ProductStatus goods, string code, int outletId);
         int GetOverallQuantityPerOutlet(int outletId,string productCode);
+        string GenerateAdjustmentNumberBy(DateTime adjustmentDate);
     }
 }

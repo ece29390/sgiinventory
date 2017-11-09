@@ -96,7 +96,7 @@ namespace SGInventory.Inventory
                 {
                     DeliveryDescription = ds.Quantity<0? ds.AdjustmentRemarks:"Delivery Sent"
                     ,
-                    Entity = !ds.AdjustmentDate.HasValue ? ds.DeliveryToOutlet.Outlet.Name : ds.AdjustmentRemarks
+                    Entity = ds.DeliveryToOutlet!=null?ds.DeliveryToOutlet.Outlet.Name:ds.AdjustmentRemarks
                     ,Quantity = ds.Quantity
                     ,
                     TransactionDate = !ds.AdjustmentDate.HasValue?ds.DeliveryToOutlet.DeliveryDate:ds.AdjustmentDate.Value

@@ -10,13 +10,16 @@ using System.IO.IsolatedStorage;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text.RegularExpressions;
+
 namespace SGInventory.Helpers
 {
     public class SgiHelper:ISgiHelper
     {
         public const string PRODUCT_SEARCH_STOCKNUMBER = "StockNumber",
                             PRODUCT_SEARCH_CATEGORYNAME = "CategoryName",
-                            SEARCH_ALL = "All";
+                            SEARCH_ALL = "All",
+                            ADJUSTMENT_PREFIX ="Adj";
 
         public IDataHelper DataHelper
         {
@@ -181,8 +184,30 @@ namespace SGInventory.Helpers
             var retValue = Path.GetPathRoot(folderPathOfSystem);
             return retValue;
         }
-        
-
-            
+        public static string GenerateInitialAdjustmentNumber(DateTime adjustmentDate)
+        {
+            var retValue = $"{adjustmentDate.ToString("MMddyyyy")}01";
+            return retValue;
+        }
+       
+        public static string IncrementAdjustmentNumber(DateTime deliveryDate
+            , DateTime adjustmentDate
+            , string adjustmentNumber)
+        {
+            var retValue = string.Empty;
+            var pattern = @"\d+";
+            if (deliveryDate.Date == adjustmentDate.Date)
+            {
+                var numericalPart = Regex.Match(adjustmentNumber, pattern).Value;
+                var numeric = int.Parse(numericalPart);
+                numeric += 1;
+                retValue = numeric.ToString();
+            }
+            else
+            {
+                retValue = GenerateInitialAdjustmentNumber(adjustmentDate);
+            }
+            return retValue;
+        }
     }
 }

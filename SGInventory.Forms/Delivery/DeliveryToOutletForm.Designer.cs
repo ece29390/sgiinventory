@@ -100,6 +100,7 @@
             // 
             this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.deliveryToOutletBindingSource, "Status", true));
             this.StatusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deliveryToOutletBindingSource, "Status", true));
+            this.StatusComboBox.Enabled = false;
             this.StatusComboBox.FormattingEnabled = true;
             this.StatusComboBox.Location = new System.Drawing.Point(159, 30);
             this.StatusComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -124,7 +125,7 @@
             // 
             // userControlSelectProduct1
             // 
-            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "SelectProductEnable", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.userControlSelectProduct1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.deliveryToOutletBindingSource, "ProductDetailEnable", true));
             this.userControlSelectProduct1.Location = new System.Drawing.Point(6, 121);
             this.userControlSelectProduct1.Name = "userControlSelectProduct1";
             this.userControlSelectProduct1.Size = new System.Drawing.Size(433, 228);

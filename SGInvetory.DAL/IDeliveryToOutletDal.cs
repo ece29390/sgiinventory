@@ -18,5 +18,6 @@ namespace SGInventory.Dal
         void DeleteDeliveryToOutletDetail(DeliveryToOutletDetail deliveryToOutletDetail);
         List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBySpQuery(string spQuery, Dictionary<string, object> parameters);
         List<DeliveryToOutletDetail> SelectDeliveryToOutletDetailBy(int outletId,string productCode, int isActive);
+        DeliveryToOutlet SelectTheLatestManuallyAdjustedDeliveryToOutlet(DateTime adjustmentDate);
     }
 }

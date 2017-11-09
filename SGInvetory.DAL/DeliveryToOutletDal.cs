@@ -239,5 +239,28 @@ namespace SGInventory.Dal
             }
             return returnList;
         }
+
+        public DeliveryToOutlet SelectTheLatestManuallyAdjustedDeliveryToOutlet(DateTime adjustmentDate)
+        {
+            DeliveryToOutlet deliveryToOutlet = null;
+            var format = "yyyy-MM-dd";
+            var highDate = $"{adjustmentDate.ToString(format)} 23:59:59";
+            var lowDate = $"{adjustmentDate.ToString(format)} 00:00:00";
+            using (var session = _sgiHelper.DataHelper.SessionFactory.OpenSession())
+            {
+                var result = session.CreateCriteria<DeliveryToOutlet>()
+                            .Add(Expression.Between("DeliveryDate"
+                            ,Convert.ToDateTime(lowDate)
+                            ,Convert.ToDateTime(highDate)))
+                            .AddOrder(Order.Desc("PackingListNumber"))
+                            .SetResultTransformer(Transformers.DistinctRootEntity)                           
+                            .List<DeliveryToOutlet>();
+                if(result.Any())
+                {
+                    deliveryToOutlet = result.FirstOrDefault();
+                }
+            }
+            return deliveryToOutlet;
+        }
     }
 }

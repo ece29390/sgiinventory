@@ -5,6 +5,7 @@ using System.Text;
 using SGInventory.Dal;
 using SGInventory.Model;
 using SGInventory.Enums;
+using SGInventory.Helpers;
 
 namespace SGInventory.Business.Model
 {
@@ -188,6 +189,27 @@ namespace SGInventory.Business.Model
             List<DeliveryToOutletDetail> deliveryToOutletDetails = _iDeliveryToOutletDal.SelectDeliveryToOutletDetailBy(outletId,productCode, 1);
             var totalQuantity = deliveryToOutletDetails.Sum(dtod => dtod.Quantity);
             return totalQuantity;
+        }
+
+        public string GenerateAdjustmentNumberBy(DateTime adjustmentDate)
+        {
+            var adjustmentNumber = string.Empty;
+            DeliveryToOutlet latestAdjustedDeliveryToOutlet = _iDeliveryToOutletDal.
+                SelectTheLatestManuallyAdjustedDeliveryToOutlet(adjustmentDate);
+
+            if(latestAdjustedDeliveryToOutlet==null)
+            {
+                adjustmentNumber = SgiHelper.GenerateInitialAdjustmentNumber(adjustmentDate);
+            }
+            else
+            {
+                adjustmentNumber = SgiHelper.IncrementAdjustmentNumber(
+                    latestAdjustedDeliveryToOutlet.DeliveryDate
+                    , adjustmentDate
+                    ,latestAdjustedDeliveryToOutlet.PackingListNumber
+                    );
+            }
+            return $"Adj_{adjustmentNumber}";
         }
     }
 }
