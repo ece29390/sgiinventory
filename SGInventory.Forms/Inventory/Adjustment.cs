@@ -107,6 +107,10 @@ namespace SGInventory.Inventory
                     if(_deliveryDetail.Damage.HasValue)
                     {
                         SetDamageInCombobox(_deliveryDetail.Damage.Value);
+                    }   
+                    if(_deliveryDetail.Delivery!=null)
+                    {
+                        ucAutoCompleteOutletOrSupplier.AutoCompleteValue = _deliveryDetail.Delivery.Supplier.Name;
                     }                    
                 }
                 else
@@ -116,6 +120,11 @@ namespace SGInventory.Inventory
                     adjusmentModeValue = _deliveryToOutletDetail.AdjustmentMode.Value;
                     adjustmentRemarks = _deliveryToOutletDetail.AdjustmentRemarks;
                     status = _deliveryToOutletDetail.Status;
+
+                    if(_deliveryToOutletDetail.DeliveryToOutlet!=null)
+                    {
+                        ucAutoCompleteOutletOrSupplier.AutoCompleteValue = _deliveryToOutletDetail.DeliveryToOutlet.Outlet.Name;
+                    }
                 }
                 SetAdjustmentMode(adjusmentModeValue);
                 SetStatusInCombobox(status);
@@ -277,7 +286,7 @@ namespace SGInventory.Inventory
 
                 _deliveryDetail = new DeliveryDetail
                 {
-                    Price = productDetail.Product.MarkdownPrice > 0 ? productDetail.Product.MarkdownPrice : productDetail.Product.RegularPrice
+                    Price = productDetail.Product.Cost
                     ,
                     ProductDetail = productDetail
                 };

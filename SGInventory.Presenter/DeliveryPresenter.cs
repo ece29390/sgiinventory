@@ -27,15 +27,7 @@ namespace SGInventory.Presenters
         private ISizeBusinessModel _sizeBusinessModel;
         private IWashingBusinessModel _washingBusinessModel;
         private IDeliveryBusinessModel _deliveryBusinessModelHelper;
-        
-        private ISupplierBusinessModel supplierBusinessModel;
-        private IProductBusinessModel productBusinessModel;
-        private IProductDetailBusinessModel productDetailBusinessModel;
-        private IColorBusinessModel colorBusinessModel;
-        private ISizeBusinessModel sizeBusinessModel;
-        private IWashingBusinessModel washingBusinessModel;
-        private IDeliveryBusinessModel deliveryBusinessModel;
-        private bool useScanner;
+            
         private Views.UIModel.SupplierDeliveryViewModel _viewModel;
         
         public List<Supplier> Suppliers { get;  set; }
@@ -226,8 +218,7 @@ namespace SGInventory.Presenters
             }
 
             var deliveryDetail = new DeliveryDetail();
-
-            deliveryDetail.Price = _deliveryPresenterView.GetPrice();
+          
             deliveryDetail.Quantity = _deliveryPresenterView.GetQuantity();
             deliveryDetail.Status = (int)_deliveryPresenterView.GetProductStatus();
 
@@ -284,9 +275,9 @@ namespace SGInventory.Presenters
                     return;
                 }
             }
-
+           
             deliveryDetail.Delivery = delivery;
-                        
+            deliveryDetail.Price = _deliveryPresenterView.GetPrice();
             var storedDeliveryDetail = productStatus == ProductStatus.Goods?                
                 delivery.DeliveryDetails
                 .FirstOrDefault(dd => dd.ProductDetail.Code.Equals(stocknumberOrBarcode, StringComparison.InvariantCultureIgnoreCase)
