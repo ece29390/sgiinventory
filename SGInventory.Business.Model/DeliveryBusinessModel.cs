@@ -6,6 +6,7 @@ using SGInventory.Business.Model.Exception;
 using SGInventory.Model;
 using SGInventory.Dal;
 using SGInventory.Enums;
+using SGInventory.Helpers;
 
 namespace SGInventory.Business.Model
 {
@@ -186,6 +187,25 @@ namespace SGInventory.Business.Model
         public void DeleteDeliveryDetail(DeliveryDetail deliveryDetail)
         {
             _deliveryDal.DeleteDeliveryDetail(deliveryDetail);
+        }
+
+        public string GetAdjustmentNumberBy(DateTime adjustmentDate)
+        {
+            var adjustmentNumber = string.Empty;
+            var latestAdjustedDelivery = _deliveryDal.SelectLatestAdjustedDelivery(adjustmentDate);
+            if(latestAdjustedDelivery==null)
+            {
+                adjustmentNumber = SgiHelper.GenerateInitialAdjustmentNumber(adjustmentDate);
+            }
+            else
+            {
+                adjustmentNumber = SgiHelper.IncrementAdjustmentNumber(
+                    latestAdjustedDelivery.DeliveryDate
+                    , adjustmentDate
+                    , latestAdjustedDelivery.OrNumber
+                    );
+            }
+            return $"Adj_{adjustmentNumber}";
         }
     }
 }

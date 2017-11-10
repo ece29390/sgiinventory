@@ -82,7 +82,7 @@ namespace SGInventory.Inventory
                 new ViewHistoryReport
                 {
                     DeliveryDescription = ds.Quantity<0?ds.AdjustmentRemarks: BuildIncomingDescription(ds)
-                    ,Entity = !ds.AdjustmentDate.HasValue?ds.Delivery.Supplier.Name:ds.AdjustmentRemarks
+                    ,Entity = ds.Delivery!=null?ds.Delivery.Supplier.Name:ds.AdjustmentRemarks
                     ,Quantity = ds.Quantity
                     ,IsManuallyAdjusted = ds.AdjustmentDate.HasValue
                     ,TransactionDate = !ds.AdjustmentDate.HasValue ? ds.Delivery.DeliveryDate : ds.AdjustmentDate.Value

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SGInventory.Model;
 using NHibernate.Criterion;
+using NHibernate.Transform;
 
 namespace SGInventory.Dal
 {
@@ -338,6 +339,28 @@ namespace SGInventory.Dal
             }
 
             return result;
+        }
+
+        public Delivery SelectLatestAdjustedDelivery(DateTime adjustmentDate)
+        {
+            Delivery delivery = null;
+            var format = "yyyy-MM-dd";
+            var highDate = $"{adjustmentDate.ToString(format)} 23:59:59";
+            var lowDate = $"{adjustmentDate.ToString(format)} 00:00:00";
+
+            using (var session = _sgiHelper.DataHelper.SessionFactory.OpenSession())
+            {
+                var result = session.CreateCriteria<Delivery>()
+                            .Add(Expression.Between("DeliveryDate", Convert.ToDateTime(lowDate), Convert.ToDateTime(highDate)))
+                            .AddOrder(Order.Desc("OrNumber"))
+                            .SetResultTransformer(Transformers.DistinctRootEntity)
+                            .List<Delivery>();
+                if(result.Any())
+                {
+                    delivery = result.FirstOrDefault();
+                }
+            }
+            return delivery;
         }
     }
 }

@@ -37,5 +37,6 @@ namespace SGInventory.Dal
         void DeleteDeliveryDetail(DeliveryDetail deliveryDetail);
 
         List<DeliveryDetail> SelectByCodeOrStockNumber(string code);
+        Delivery SelectLatestAdjustedDelivery(DateTime adjustmentDate);
     }
 }

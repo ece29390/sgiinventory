@@ -33,5 +33,6 @@ namespace SGInventory.Business.Model
         DeliveryDetail GetPrimaryDeliveryDetail(int deliveryDetailId);
 
         void DeleteDeliveryDetail(DeliveryDetail deliveryDetail);
+        string GetAdjustmentNumberBy(DateTime adjustmentDate);
     }
 }

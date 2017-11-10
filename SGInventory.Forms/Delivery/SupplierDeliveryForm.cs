@@ -24,11 +24,9 @@ namespace SGInventory.Delivery
     public partial class SupplierDeliveryForm : Form, IDeliveryPresenterView
     {
         private readonly DeliveryPresenter _presenter;
-        private List<DeliveryDetail> _deliveryDetails;
+        
         private Model.Delivery _delivery;
-        private List<Model.Color> _colors;
-        private List<Model.Size> _sizes;
-        private List<Model.Washing> _washings;
+        
         private Model.DeliveryDetail _selectedDelivery;
         private BusinessModelContainer _container;
         private int _deliveryId;

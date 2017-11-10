@@ -246,31 +246,7 @@ namespace SGInventory.Presenters
             var stocknumberOrBarcode = _deliveryPresenterView.GetStockNumber();
 
             if (deliveryDetail.Id <= 0)
-            {
-                if (!_deliveryPresenterView.GetSelectByProductCode())
-                {                   
-                    var color = _deliveryPresenterView.GetSelectedColor();
-                    if (color == null)
-                    {
-                        _deliveryPresenterView.ShowMessage("Color is invalid");
-                        return;
-                    }
-                    var size = _deliveryPresenterView.GetSelectedSize();
-                    if (size == null)
-                    {
-                        _deliveryPresenterView.ShowMessage("Size is invalid");
-                        return;
-                    }
-                    var washing = _deliveryPresenterView.GetSelectedWashing();
-                    if (washing == null)
-                    {
-                        _deliveryPresenterView.ShowMessage("Washing is invalid");
-                        return;
-                    }                    
-                    stocknumberOrBarcode = SgiHelper.GetProductDetailCode(
-                    stocknumberOrBarcode, color.Code, washing.Code, size.Code);
-                }
-
+            {              
                 var productDetail = _productDetailBusinessModel.SelectByPrimaryId(stocknumberOrBarcode);
 
                 if (productDetail == null || productDetail.IsActive == 0)
@@ -297,15 +273,7 @@ namespace SGInventory.Presenters
 
                 
             }
-
-            //bool isDeliveryAlreadyExists = _deliveryPresenterView.DeliveryAlreadyExists(stocknumberOrBarcode, deliveryDetail.Status,deliveryDetail.Damage);
-
-            //if (isDeliveryAlreadyExists)
-            //{
-            //    _deliveryPresenterView.ShowMessage("Delivery already exists in the panel, you may change it by clicking the \"Edit Deliveries\" button");
-            //    return;
-            //}
-
+           
             if (delivery.DeliveryDetails != null && delivery.DeliveryDetails.Count > 0)
             {
                 var previousStockNumber = delivery.DeliveryDetails.First().ProductDetail.Product.StockNumber;

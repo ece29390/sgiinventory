@@ -104,7 +104,10 @@ namespace SGInventory.Inventory
                     adjustmentRemarks = _deliveryDetail.AdjustmentRemarks;
                     status = _deliveryDetail.Status;
                     StatusDescriptionTextbox.Text = _deliveryDetail.StatusDescription;
-                    SetDamageInCombobox(_deliveryDetail.Damage.Value);
+                    if(_deliveryDetail.Damage.HasValue)
+                    {
+                        SetDamageInCombobox(_deliveryDetail.Damage.Value);
+                    }                    
                 }
                 else
                 {
@@ -240,6 +243,91 @@ namespace SGInventory.Inventory
 
             return true;
         }
+        private Model.Delivery GenerateParentDelivery()
+        {
+            string orNumber = _container.DeliveryBusinessModel.GetAdjustmentNumberBy(baseDeliveryUserControl1.AdjustmentDate);
+            var delivery = new Model.Delivery
+            {
+                CreatedBy = SgiHelper.GetIdentityUserName()
+                                ,
+                CreatedDate = DateTime.Now
+                                ,
+                Supplier = new Supplier { Id = _selectedOutletOrSupplier.Value }
+                                ,
+                DeliveryDate = baseDeliveryUserControl1.AdjustmentDate
+                ,
+                OrNumber = orNumber
+             };
+            return delivery;
+        }
+
+        private void SaveManualDelivery(
+            AdjustmentMode adjustmentMode
+            , ProductStatus status
+            , Damage damage
+            , int signOne
+            , object sender
+            , EventArgs e
+            )
+        {
+            var message = string.Empty;
+            if (_deliveryDetail == null)
+            {
+                var productDetail = _container.ProductDetailBusinessModel.SelectByPrimaryId(_productDetailCode);
+
+                _deliveryDetail = new DeliveryDetail
+                {
+                    Price = productDetail.Product.MarkdownPrice > 0 ? productDetail.Product.MarkdownPrice : productDetail.Product.RegularPrice
+                    ,
+                    ProductDetail = productDetail
+                };
+                AttachParentDeliveryIfModeIsAddToWarehouse(adjustmentMode);
+
+                if (adjustmentMode == AdjustmentMode.Add_to_Warehouse)
+                {
+                    _deliveryDetail.Delivery.DeliveryDetails = new List<DeliveryDetail> { _deliveryDetail };
+                }
+            }
+            else
+            {
+                if (_deliveryDetail.Delivery == null)
+                {
+                    AttachParentDeliveryIfModeIsAddToWarehouse(adjustmentMode);
+                    if (adjustmentMode == AdjustmentMode.Add_to_Warehouse)
+                    {
+                        _deliveryDetail.Delivery.DeliveryDetails = new List<DeliveryDetail> { _deliveryDetail };
+                    }
+                }
+            }
+
+            _deliveryDetail.AdjustmentDate = baseDeliveryUserControl1.AdjustmentDate;
+             
+            if (status == ProductStatus.Damaged)
+            {
+                _deliveryDetail.Damage = (int)damage;
+            }
+           
+
+            _deliveryDetail.Quantity = baseDeliveryUserControl1.Quantity * signOne;
+            _deliveryDetail.Status = (int)status;
+            _deliveryDetail.StatusDescription = StatusDescriptionTextbox.Text;
+            _deliveryDetail.AdjustmentRemarks = txtAdjustmentRemarks.Text;
+            _deliveryDetail.AdjustmentMode = (int)cboMode.SelectedValue;
+                                   
+            message = adjustmentMode == AdjustmentMode.Deduct_from_Warehouse ?
+                _container.DeliveryBusinessModel.SaveDeliveryDetail(_deliveryDetail)
+                : _container.DeliveryBusinessModel.SaveInTransaction(_deliveryDetail.Delivery);
+
+            MessageBox.Show(message);
+
+            if (OnSave != null)
+            {
+                OnSave(sender, e);
+            }
+            _deliveryDetail = null;
+            EntityId = 0;
+            Close();
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             var adjustmentMode = (AdjustmentMode)cboMode.SelectedItem;
@@ -252,51 +340,24 @@ namespace SGInventory.Inventory
             var damage = (Damage)cboDamageStatus.SelectedItem;
             var message = string.Empty;
             var signOne = 1;
-
+            var quantity = 0;
+            var invalidQuantityFormat = $"The suggested quantity is more than the total quantity in the record for product {_productDetailCode}";
             switch (adjustmentMode)
             {
                 case AdjustmentMode.Add_to_Warehouse:
                 case AdjustmentMode.Deduct_from_Warehouse:
-                    if (_deliveryDetail == null)
-                    {
-                        var productDetail = _container.ProductDetailBusinessModel.SelectByPrimaryId(_productDetailCode);
-
-                        _deliveryDetail = new DeliveryDetail
-                        {
-
-                            Price = productDetail.Product.RegularPrice
-                            ,
-                            ProductDetail = productDetail
-                        };
-                    }
-
-                    _deliveryDetail.AdjustmentDate = baseDeliveryUserControl1.AdjustmentDate;
-                    if (status == ProductStatus.Damaged)
-                    {
-                        _deliveryDetail.Damage = (int)damage;
-                    }
-
                     if (adjustmentMode == AdjustmentMode.Deduct_from_Warehouse)
                     {
                         signOne = -1;
                     }
-
-                    _deliveryDetail.Quantity = baseDeliveryUserControl1.Quantity * signOne;
-                    _deliveryDetail.Status = (int)status;
-                    _deliveryDetail.StatusDescription = StatusDescriptionTextbox.Text;
-                    _deliveryDetail.AdjustmentRemarks = txtAdjustmentRemarks.Text;
-                    _deliveryDetail.AdjustmentMode = (int)cboMode.SelectedValue;
-                    _deliveryDetail.Damage = (int)cboDamageStatus.SelectedValue;
-                    message = _container.DeliveryBusinessModel.SaveDeliveryDetail(_deliveryDetail);
-                    MessageBox.Show(message);
-
-                    if (OnSave != null)
+                     quantity = baseDeliveryUserControl1.Quantity * signOne;
+                    if (!IsQuantityValid(adjustmentMode, () => _container.DeliveryBusinessModel.GetDeliveryDetailTotalQuantityByCode(_productDetailCode,status)))
                     {
-                        OnSave(sender, e);
+                        MessageBox.Show(invalidQuantityFormat);
+                        return;
                     }
-                    _deliveryDetail = null;
-                    EntityId = 0;
-                    Close();
+                    SaveManualDelivery(adjustmentMode, status, damage, signOne, sender, e);
+                 
                     break;
                 case AdjustmentMode.Add_to_Outlet:
                 case AdjustmentMode.Deduct_from_Outlet:
@@ -304,11 +365,11 @@ namespace SGInventory.Inventory
                     {
                         signOne = -1;
                     }
-                    var quantity = baseDeliveryUserControl1.Quantity * signOne;
+                     quantity = baseDeliveryUserControl1.Quantity * signOne;
 
                     if(!IsQuantityValid(adjustmentMode,()=>_container.DeliveryToOutletBusinessModel.GetOverallQuantityPerOutlet(_selectedOutletOrSupplier.Value,_productDetailCode)))
                     {
-                        MessageBox.Show($"The suggested quantity is more than the total quantity in the record for product {_productDetailCode}");
+                        MessageBox.Show(invalidQuantityFormat);
                         return;
                     }
 
@@ -318,6 +379,15 @@ namespace SGInventory.Inventory
 
             
         }
+
+        private void AttachParentDeliveryIfModeIsAddToWarehouse(AdjustmentMode adjustmentMode)
+        {
+            if (adjustmentMode == AdjustmentMode.Add_to_Warehouse)
+            {
+                _deliveryDetail.Delivery = GenerateParentDelivery();
+            }
+        }
+
         private bool IsQuantityValid(AdjustmentMode mode,Func<int> getAvailableQuantity)
         {
             if(mode == AdjustmentMode.Add_to_Outlet || mode == AdjustmentMode.Add_to_Warehouse)
@@ -358,7 +428,7 @@ namespace SGInventory.Inventory
 
                 _deliveryToOutletDetail = new DeliveryToOutletDetail
                 {
-                    SuggestedRetailPrice = productDetail.Product.RegularPrice
+                    SuggestedRetailPrice = productDetail.Product.MarkdownPrice > 0 ? productDetail.Product.MarkdownPrice : productDetail.Product.RegularPrice
                     ,
                     ProductDetail = productDetail
                     ,
