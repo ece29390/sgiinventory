@@ -5,7 +5,7 @@ SELECT 		pd.Code AS ProductDetailCode
 			,Color.Name AS ColorName
 			,Washing.Name AS WashingName
 			,Size.Name As SizeName			
-			,IFNULL((DDetail.DDQuantity - DTOD.DTODQuantity),0) AS Quantity
+			,IFNULL((DDetail.DDQuantity - IFNULL(DTOD.DTODQuantity,0)),0) AS Quantity
 	FROM		ProductDetails pd
 	LEFT JOIN	
 	(

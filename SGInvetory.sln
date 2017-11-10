@@ -59,6 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version_4_1_0_0", "Version_
 		add_transactionnumber_sales.sql = add_transactionnumber_sales.sql
 		SGInvetory.DAL\StoredProcedures\SelectActiveProductForSalesByCodeOutletStatus.sql = SGInvetory.DAL\StoredProcedures\SelectActiveProductForSalesByCodeOutletStatus.sql
 		SGInvetory.DAL\StoredProcedures\SelectActiveProductForSalesByStockNumberOutletStatus.sql = SGInvetory.DAL\StoredProcedures\SelectActiveProductForSalesByStockNumberOutletStatus.sql
+		SGInvetory.DAL\StoredProcedures\SelectProductInterviewBy.sql = SGInvetory.DAL\StoredProcedures\SelectProductInterviewBy.sql
 	EndProjectSection
 EndProject
 Global
