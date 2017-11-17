@@ -12,3 +12,9 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\bin
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGIInventory.Logger\obj\Release\SGIInventory.Logger.pdb
+E:\SGInvetory_0623207\SGIInventory.Logger\bin\Release\SGIInventory.Logger.dll
+E:\SGInvetory_0623207\SGIInventory.Logger\bin\Release\SGIInventory.Logger.pdb
+E:\SGInvetory_0623207\SGIInventory.Logger\bin\Release\log4net.dll
+E:\SGInvetory_0623207\SGIInventory.Logger\bin\Release\log4net.xml
+E:\SGInvetory_0623207\SGIInventory.Logger\obj\Release\SGIInventory.Logger.dll
+E:\SGInvetory_0623207\SGIInventory.Logger\obj\Release\SGIInventory.Logger.pdb

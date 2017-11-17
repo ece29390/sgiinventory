@@ -24,7 +24,7 @@ namespace SGInventory.Delivery
         private DeliveryToOutletPresenter _presenter;
         private DeliveryToOutletViewModel _viewModel;
 
-        public DeliveryToOutletForm(BusinessModelContainer container, string packingNumber)
+        private DeliveryToOutletForm(BusinessModelContainer container, string packingNumber)
         {
             InitializeComponent();
             _viewModel = new DeliveryToOutletViewModel();
@@ -48,6 +48,11 @@ namespace SGInventory.Delivery
             ucSaveDeliveryDetail.Button.Text = "Save Delivery";
             var newSize = 6.5f;
             ucSaveDeliveryDetail.Button.Font = new Font(ucSaveDeliveryDetail.Button.Font.Name, newSize);
+        }
+
+        public DeliveryToOutletForm(BusinessModelContainer container, string packingNumber, ProductStatus status) : this(container, packingNumber)
+        {
+            this._status = status;
         }
 
         private void DeliveryToOutletForm_Load(object sender, EventArgs e)
@@ -385,6 +390,8 @@ namespace SGInventory.Delivery
             }
         }
         private DeliveryToOutletEditForm _editForm;
+        private ProductStatus _status;
+
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var administrator = Enum.GetName(typeof(RoleType), RoleType.Administrator);
@@ -459,9 +466,9 @@ namespace SGInventory.Delivery
         {
             userControlSelectProduct1.LoadResult(result,(prodDetail)=>prodDetail.Product.MarkdownPrice>0?prodDetail.Product.MarkdownPrice:prodDetail.Product.RegularPrice);
         }
-        public object GetProductStatus()
+        public ProductStatus GetProductStatus()
         {
-            return (ProductStatus)StatusComboBox.SelectedItem;
+            return _status;
         }
         public void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet)
         {

@@ -107,6 +107,7 @@
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(271, 24);
             this.StatusComboBox.TabIndex = 16;
+            this.StatusComboBox.Visible = false;
             // 
             // deliveryToOutletBindingSource
             // 
@@ -122,6 +123,7 @@
             this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 26;
             this.label5.Text = "Status:";
+            this.label5.Visible = false;
             // 
             // userControlSelectProduct1
             // 

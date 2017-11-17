@@ -31,3 +31,14 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\Views\bin\Release\SGInv
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\Views\obj\Release\SGInventory.Views.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\Views\obj\Release\SGInventory.Views.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\Views\obj\Release\SGInventory.Views.pdb
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Views.dll
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Views.pdb
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.CustomEventArgs.dll
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Model.dll
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.CustomEventArgs.pdb
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\Views\bin\Release\SGInventory.Model.pdb
+E:\SGInvetory_0623207\Views\obj\Release\SGInventory.Views.csprojResolveAssemblyReference.cache
+E:\SGInvetory_0623207\Views\obj\Release\SGInventory.Views.dll
+E:\SGInvetory_0623207\Views\obj\Release\SGInventory.Views.pdb

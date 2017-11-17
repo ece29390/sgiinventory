@@ -43,7 +43,7 @@ namespace SGInventory.Views
         void LoadProductStatusIntoForm(List<ProductStatus> list);
 
         void LoadResultToView(List<ProductDetails> result);
-        object GetProductStatus();
+        ProductStatus GetProductStatus();
         void LoadDeliveryToOutlet(DeliveryToOutlet deliveryToOutlet);
         DialogResult ShowYesNoMessage(string message, string caption);
         void OnSave();

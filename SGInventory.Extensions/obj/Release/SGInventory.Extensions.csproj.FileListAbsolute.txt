@@ -21,3 +21,12 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions\
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions\obj\Release\SGInventory.Extensions.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions\obj\Release\SGInventory.Extensions.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions\obj\Release\SGInventory.Extensions.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Extensions.dll
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Extensions.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Model.dll
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions\bin\Release\SGInventory.Model.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions\obj\Release\SGInventory.Extensions.csprojResolveAssemblyReference.cache
+E:\SGInvetory_0623207\SGInventory.Extensions\obj\Release\SGInventory.Extensions.dll
+E:\SGInvetory_0623207\SGInventory.Extensions\obj\Release\SGInventory.Extensions.pdb

@@ -6,6 +6,8 @@ using SGInventory.Business.Model;
 using SGInventory.Views;
 using SGInventory.Presenters.Model;
 using SGInventory.Model;
+using AutoMapper;
+using SGInventory.Extensions;
 
 namespace SGInventory.Presenters
 {
@@ -50,21 +52,7 @@ namespace SGInventory.Presenters
 
         public List<SalesDisplayModel> ConvertToListOfSalesDisplayModel(List<Sales> sales)
         {
-            var retValue = (from s in sales
-                            select new SalesDisplayModel
-                            {
-                                Code = s.ProductDetail.Code
-                                ,
-                                Id = s.Id
-                                ,
-                                Color = s.ProductDetail.Color.Name
-                                ,
-                                Quantity = s.Quantity
-                                ,
-                                Size = s.ProductDetail.Size.Name
-                                ,
-                                Washing = s.ProductDetail.Washing.Name
-                            }).ToList();
+            var retValue = sales.ToSpecifiedTypeUsingAutoMapper<List<Sales>, List<SalesDisplayModel>>();
             return retValue;
         }
     }

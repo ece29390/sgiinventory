@@ -12,3 +12,7 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\R
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\bin\Release\SGInventory.Enums.pdb
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Enums\obj\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\SGInventory.Enums\bin\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\SGInventory.Enums\bin\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\SGInventory.Enums\obj\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\SGInventory.Enums\obj\Release\SGInventory.Enums.pdb

@@ -23,3 +23,13 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions.
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Extensions.Test.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Extensions.Test.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Extensions.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Extensions.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.csprojResolveAssemblyReference.cache
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Release\SGInventory.Extensions.Test.pdb

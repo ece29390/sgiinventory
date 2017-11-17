@@ -175,11 +175,7 @@ namespace SGInventory.Forms
                 case "ViewDeliveries":
                     form = new DeliveryToOutletSearchForm(_container);
                     form.ShowDialog();
-                    break;
-                case "NewDelivery":
-                    form = new DeliveryToOutletForm(_container, null);
-                    form.ShowDialog();
-                    break;
+                    break;               
 
             }
         }
@@ -224,6 +220,21 @@ namespace SGInventory.Forms
                 var form = new SalesEditForm(_container);
                 return form;
             }));
-        }             
+        }
+
+        private void goodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PopupDeliveryToOutletForm(ProductStatus.Goods);
+        }
+
+        private void damageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PopupDeliveryToOutletForm(ProductStatus.Damaged);
+        }
+        private void PopupDeliveryToOutletForm(ProductStatus status)
+        {
+            var form = new DeliveryToOutletForm(_container, null,status);
+            form.ShowDialog();
+        }
     }
 }

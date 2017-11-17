@@ -80,7 +80,7 @@ namespace SGInventory.Sales
             {
                 var dataPropertyName = dataGridViewListOfSales.Columns[e.ColumnIndex].DataPropertyName;
 
-                if (dataPropertyName == "Id")
+                if (dataPropertyName == "Code")
                 {                    
                     var salesDisplayModel = (SalesDisplayModel)dataGridViewListOfSales.Rows[e.RowIndex].DataBoundItem;
                     SalesEditForm editForm= new SalesEditForm(_container, salesDisplayModel.Id);

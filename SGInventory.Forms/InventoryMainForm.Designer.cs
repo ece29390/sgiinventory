@@ -56,6 +56,8 @@
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.damageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +126,9 @@
             // 
             // createNewDeliveryToolStripMenuItem
             // 
+            this.createNewDeliveryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.goodToolStripMenuItem,
+            this.damageToolStripMenuItem});
             this.createNewDeliveryToolStripMenuItem.Name = "createNewDeliveryToolStripMenuItem";
             this.createNewDeliveryToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.createNewDeliveryToolStripMenuItem.Tag = "NewDelivery";
@@ -285,6 +290,20 @@
             this.colorToolStripMenuItem.Visible = false;
             this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
+            // goodToolStripMenuItem
+            // 
+            this.goodToolStripMenuItem.Name = "goodToolStripMenuItem";
+            this.goodToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.goodToolStripMenuItem.Text = "Good";
+            this.goodToolStripMenuItem.Click += new System.EventHandler(this.goodToolStripMenuItem_Click);
+            // 
+            // damageToolStripMenuItem
+            // 
+            this.damageToolStripMenuItem.Name = "damageToolStripMenuItem";
+            this.damageToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.damageToolStripMenuItem.Text = "Damage";
+            this.damageToolStripMenuItem.Click += new System.EventHandler(this.damageToolStripMenuItem_Click);
+            // 
             // InventoryMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -336,6 +355,8 @@
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem damageToolStripMenuItem;
     }
 }
 

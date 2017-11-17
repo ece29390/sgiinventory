@@ -119,7 +119,8 @@ namespace SGInventory.Delivery
         
         public void OpenDeliveryToOutletEditForm(DeliveryToOutlet deliveryToOutlet)
         {
-            var form = new DeliveryToOutletForm(_container, deliveryToOutlet.PackingListNumber);
+            var status = (ProductStatus)deliveryToOutlet.DeliveryToOutletDetails.First().Status;
+            var form = new DeliveryToOutletForm(_container, deliveryToOutlet.PackingListNumber, status);
             form.ShowDialog();
         }
 

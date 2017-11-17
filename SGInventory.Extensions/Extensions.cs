@@ -5,6 +5,7 @@ using System.Text;
 using SGInventory.Enums;
 using System.Linq.Expressions;
 using SGInventory.Model;
+using AutoMapper;
 
 namespace SGInventory.Extensions
 {
@@ -42,7 +43,7 @@ namespace SGInventory.Extensions
             _codeLetters = _codeLetters ?? GenerateCodeLetters();
 
             return _codeLetters[periodValue];
-            
+
         }
 
         private static Dictionary<int, string> GenerateCodeLetters()
@@ -51,10 +52,18 @@ namespace SGInventory.Extensions
 
             var values = Enum.GetValues(typeof(Years)).Cast<int>().ToList<int>();
 
-            values.ForEach(value => returnValue[value]= Enum.GetName(typeof(Years), value));
-            
+            values.ForEach(value => returnValue[value] = Enum.GetName(typeof(Years), value));
+
             return returnValue;
         }
-      
+
+        public static TDestination ToSpecifiedTypeUsingAutoMapper<TSouce, TDestination>(this TSouce source)
+        {
+            var destination = Mapper.Map<TDestination>(source);
+            return destination;
+        }
+         
+
+
     }
 }

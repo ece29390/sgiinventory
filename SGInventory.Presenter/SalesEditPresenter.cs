@@ -8,6 +8,7 @@ using SGInventory.Helpers;
 using SGInventory.Model;
 using SGInventory.Presenters.Model;
 using SGInventory.Enums;
+using SGInventory.Extensions;
 
 namespace SGInventory.Presenters
 {
@@ -299,21 +300,22 @@ namespace SGInventory.Presenters
 
         private void LoadListOfSales(List<Sales> listOfSales)
         {
-            var retValue = (from l in listOfSales
-                            select new SalesDisplayModel
-                            {
-                                Color = l.ProductDetail.Color.Name
-                                ,
-                                Id = l.Id
-                                ,
-                                Quantity = l.Quantity
-                                ,
-                                Size = l.ProductDetail.Size.Name
-                                ,
-                                Washing = l.ProductDetail.Washing.Name
-                                ,
-                                Code = l.ProductDetail.Code
-                            }).ToList();
+            var retValue = listOfSales.ToSpecifiedTypeUsingAutoMapper<List<Sales>,List<SalesDisplayModel>>();
+                //(from l in listOfSales
+                //            select new SalesDisplayModel
+                //            {
+                //                Color = l.ProductDetail.Color.Name
+                //                ,
+                //                Id = l.Id
+                //                ,
+                //                Quantity = l.Quantity
+                //                ,
+                //                Size = l.ProductDetail.Size.Name
+                //                ,
+                //                Washing = l.ProductDetail.Washing.Name
+                //                ,
+                //                Code = l.ProductDetail.Code
+                //            }).ToList();
             if (DisplayListOfSalesOnAdd != null)
             {
                 DisplayListOfSalesOnAdd(this, new DisplaySalesArg(retValue));

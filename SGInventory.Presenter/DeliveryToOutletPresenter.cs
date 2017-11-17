@@ -162,7 +162,7 @@ namespace SGInventory.Presenters
         public void AddDeliveryToOutletDetail(Action doAfterAdd)
         {
             var quantity = _viewModel.Quantity;
-            Status = (ProductStatus)_iDeliveryToOutletView.GetProductStatus();
+            Status = _iDeliveryToOutletView.GetProductStatus();
 
             if (quantity == 0)
             {

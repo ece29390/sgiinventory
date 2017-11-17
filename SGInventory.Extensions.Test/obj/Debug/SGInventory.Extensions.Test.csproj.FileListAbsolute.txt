@@ -45,3 +45,7 @@ E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Debug\SGInventory.Enums.pd
 E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Debug\SGInventory.Extensions.Test.csprojResolveAssemblyReference.cache
 E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Debug\SGInventory.Extensions.Test.dll
 E:\SGInvetory_0623207\SGInventory.Extensions.Test\obj\Debug\SGInventory.Extensions.Test.pdb
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Debug\AutoMapper.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Debug\System.Runtime.dll
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Debug\AutoMapper.xml
+E:\SGInvetory_0623207\SGInventory.Extensions.Test\bin\Debug\System.Runtime.xml

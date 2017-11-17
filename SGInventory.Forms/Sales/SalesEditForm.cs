@@ -323,7 +323,7 @@ namespace SGInventory.Sales
             if (e.RowIndex > -1)
             {
                  var salesDisplayModel = (SalesDisplayModel)dataGridViewListOfSales.Rows[e.RowIndex].DataBoundItem;
-                if (dataGridViewListOfSales.Columns[e.ColumnIndex].DataPropertyName == "Id")
+                if (dataGridViewListOfSales.Columns[e.ColumnIndex].DataPropertyName == "Code")
                 {                   
                     _presenter.LoadExistingSales(salesDisplayModel.Id);
                 }

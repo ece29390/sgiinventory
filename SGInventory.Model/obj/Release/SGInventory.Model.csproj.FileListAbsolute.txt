@@ -40,3 +40,17 @@ C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Model\bin\R
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Model\obj\Release\SGInventory.Model.csprojResolveAssemblyReference.cache
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Model\obj\Release\SGInventory.Model.dll
 C:\My\SGIInventory_05312016\SGIInventory\Temp\SGInvetory\SGInventory.Model\obj\Release\SGInventory.Model.pdb
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\SGInventory.Model.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\SGInventory.Model.pdb
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\FluentNHibernate.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\Iesi.Collections.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\MySql.Data.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\NHibernate.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\SGInventory.Enums.dll
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\SGInventory.Enums.pdb
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\FluentNHibernate.xml
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\Iesi.Collections.xml
+E:\SGInvetory_0623207\SGInventory.Model\bin\Release\NHibernate.xml
+E:\SGInvetory_0623207\SGInventory.Model\obj\Release\SGInventory.Model.csprojResolveAssemblyReference.cache
+E:\SGInvetory_0623207\SGInventory.Model\obj\Release\SGInventory.Model.dll
+E:\SGInvetory_0623207\SGInventory.Model\obj\Release\SGInventory.Model.pdb

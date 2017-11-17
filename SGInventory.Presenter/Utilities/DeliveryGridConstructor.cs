@@ -12,9 +12,7 @@ using SGInventory.Helpers;
 namespace SGInventory.Presenters.Utilities
 {
     internal class DeliveryGridConstructor
-    {
-        private List<DeliveryDetail> _deliveryDetails;
-        private DataGridView _gvDeliveryDetails;
+    {        
         internal const string ColumnColorName = "colDescriptionName",
                                 ColumnTotal = "colTotal",
                                 HeaderTag ="Header";
@@ -100,7 +98,7 @@ namespace SGInventory.Presenters.Utilities
        
         internal void SummarizeGridDisplay(DataGridView gridView)
         {
-            var colIndex = gridView.Columns.Add(ColumnTotal,"");
+            var colIndex = gridView.Columns.Add(ColumnTotal,"Total");
             gridView.Columns[colIndex].DefaultCellStyle = new DataGridViewCellStyle { ForeColor = System.Drawing.Color.Red };
             gridView.Columns[colIndex].Width = 75;
 
